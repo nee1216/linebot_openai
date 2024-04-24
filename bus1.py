@@ -40,19 +40,11 @@ def get_transit_info():
 def handle_message(event):
     msg = event.message.text
     
-    if msg == '交通資訊':
+    if msg == '交通':
         # 呼叫函數獲取交通資訊
         transit_info = get_transit_info()
         if transit_info:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(transit_info))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage('無法獲取交通資訊'))
-    else:
-        try:
-            # 使用 GPT 回應
-            GPT_answer = GPT_response(msg)
-            print(GPT_answer)
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(GPT_answer))
-        except:
-            print(traceback.format_exc())
-            line_bot_api.reply_message(event.reply_token, TextSendMessage('你好啊'))
+
