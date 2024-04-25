@@ -8,6 +8,11 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+import time
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -33,10 +38,38 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token, message)
+    if event.message.text == "最新消息":
+        get_latest_news(event)
+    else:
+        message = TextSendMessage(text=event.message.text)
+        line_bot_api.reply_message(event.reply_token, message)
 
-import os
+def get_latest_news(event):
+    # Initialize the Chrome WebDriver
+    options = webdriver.ChromeOptions()
+    service = ChromeService(executable_path="chromedriver.exe")
+    driver = webdriver.Chrome(service=service, options=options)
+    
+    try:
+        driver.get("https://www-news.scu.edu.tw/news-7?page=1")
+        time.sleep(5)
+        tbody = driver.find_element(By.XPATH, "//tbody")
+        
+        links = tbody.find_elements(By.TAG_NAME, "a")
+        news_text = "校園頭條:\n"
+        
+        for link in links:
+            news_text += f"- {link.text}: {link.get_attribute('href')}\n"
+            
+        message = TextSendMessage(text=news_text)
+        line_bot_api.reply_message(event.reply_token, message)
+        
+    except Exception as e:
+        print("發生錯誤:", str(e))
+        
+    driver.close()
+
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+
