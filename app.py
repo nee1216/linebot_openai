@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import TextSendMessage, MessageEvent, TextMessage
+from linebot.models import TextSendMessage, MessageEvent, TextMessage, TemplateSendMessage, CarouselTemplate, CarouselColumn, MessageAction, URIAction, PostbackAction
 
 import requests
 from bs4 import BeautifulSoup
@@ -9,9 +9,9 @@ from bs4 import BeautifulSoup
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
 # Channel Secret
-handler = WebhookHandler('0584d0fc476d78024afcd7cbbf8096b4')
+handler = WebhookHandler('YOUR_CHANNEL_SECRET')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -35,11 +35,65 @@ def handle_message(event):
     msg_text = event.message.text
     
     if msg_text == '住宿':
-        # 如果接收到的消息是“住宿”，則執行 new_news 函數
+        # 如果接收到的消息是“住宿”，則執行 new_news 函數並發送 Carousel 模板
         result = new_news()
-        # 發送結果作為回復
-        message = TextSendMessage(text=result)
+        
+        carousel_template = CarouselTemplate(
+            columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://steam.oxxostudio.tw/download/python/line-template-message-demo.jpg',
+                    title='選單 1',
+                    text='說明文字 1',
+                    actions=[
+                        PostbackAction(
+                            label='postback',
+                            data='data1'
+                        ),
+                        MessageAction(
+                            label='hello',
+                            text='hello'
+                        ),
+                        URIAction(
+                            label='oxxo.studio',
+                            uri='http://oxxo.studio'
+                        )
+                    ]
+                ),
+                CarouselColumn(
+                    thumbnail_image_url='https://steam.oxxostudio.tw/download/python/line-template-message-demo2.jpg',
+                    title='選單 2',
+                    text='說明文字 2',
+                    actions=[
+                        PostbackAction(
+                            label='postback',
+                            data='data1'
+                        ),
+                        MessageAction(
+                            label='學餐',
+                            text='hi'
+                        ),
+                        URIAction(
+                            label='STEAM 教育學習網',
+                            uri='https://steam.oxxostudio.tw'
+                        )
+                    ]
+                )
+            ]
+        )
+        
+        message = TemplateSendMessage(alt_text='CarouselTemplate', template=carousel_template)
         line_bot_api.reply_message(event.reply_token, message)
+    
+    elif msg_text == '學餐':
+        # 處理特定訊息“學餐”
+        # 根據您的需求添加處理程式碼
+        # 可以添加類似 new_news() 函數
+        # 然後使用 line_bot_api.reply_message(event.reply_token, message) 發送訊息
+        
+        # 範例：直接回復文字
+        message = TextSendMessage(text='這是學餐的資訊。')
+        line_bot_api.reply_message(event.reply_token, message)
+        
     else:
         # 否則，回復原始消息
         message = TextSendMessage(text=msg_text)
@@ -72,4 +126,3 @@ import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
-
