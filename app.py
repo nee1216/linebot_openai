@@ -2,7 +2,6 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import TextSendMessage, MessageEvent, TextMessage, TemplateSendMessage, CarouselTemplate, CarouselColumn, MessageAction, URIAction, PostbackAction
-
 import requests
 from bs4 import BeautifulSoup
 import os
@@ -33,8 +32,6 @@ def handle_message(event):
     
     if msg_text == '住宿':
         # 發送 Carousel 模板
-        result = new_news()
-        
         carousel_template = CarouselTemplate(
             columns=[
                 CarouselColumn(
@@ -86,7 +83,7 @@ def handle_message(event):
                         ),
                         MessageAction(
                             label='學餐',
-                            text='hi'
+                            text='這是學餐的資訊。'
                         ),
                         URIAction(
                             label='STEAM 教育學習網',
@@ -108,27 +105,6 @@ def handle_message(event):
         # 回應其他訊息
         message = TextSendMessage(text=msg_text)
         line_bot_api.reply_message(event.reply_token, message)
-
-def new_news():
-    url = 'https://web-ch.scu.edu.tw/index.php/housing/web_page/2540'
-    
-    response = requests.get(url)
-    result = ""
-    
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.text, 'html.parser')
-        
-        for i in range(1, 7):
-            for tag in soup.find_all(f'h{i}'):
-                result += f"Heading {i}: {tag.text.strip()}\n"
-                
-        result += "\nParagraphs:\n"
-        for p in soup.find_all('p'):
-            result += f"{p.text.strip()}\n"
-    else:
-        app.logger.error(f"Error fetching {url}: Status code {response.status_code}")
-    
-    return result
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
