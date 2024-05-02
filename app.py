@@ -36,7 +36,7 @@ def handle_message(event):
         # 建立三個輪播樣板
         carousel_columns = [
             CarouselColumn(
-                thumbnail_image_url='https://github.com/nee1216/linebot_openai/blob/04c322993a6e7286568539958baffc5ba027b666/S__201318420_0.jpg',
+                thumbnail_image_url='https://www.google.com/imgres?q=%E6%9C%89%E5%AE%B9%E5%AD%B8%E8%88%8D&imgurl=https%3A%2F%2Fpgw.udn.com.tw%2Fgw%2Fphoto.php%3Fu%3Dhttps%3A%2F%2Fuc.udn.com.tw%2Fphoto%2F2023%2F09%2F05%2Frealtime%2F24829906.jpg%26x%3D0%26y%3D0%26sw%3D0%26sh%3D0%26exp%3D3600&imgrefurl=https%3A%2F%2Fudn.com%2Fnews%2Fstory%2F6928%2F7418820&docid=r07SUWuxS_FcXM&tbnid=nF79q6TVz4cLpM&vet=12ahUKEwjKp7Wk1u6FAxUXcPUHHZxgCzoQM3oECGIQAA..i&w=2508&h=1672&hcb=2&ved=2ahUKEwjKp7Wk1u6FAxUXcPUHHZxgCzoQM3oECGIQAA',
                 title='校外宿舍',
                 text='有容學舍',
                 actions=[
@@ -46,7 +46,7 @@ def handle_message(event):
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://example.com/dorm2.jpg',
+                thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2F247chill.blogspot.com%2F2021%2F08%2Fchuanszu.html&psig=AOvVaw3CDxckcuzvwy0J2E6_8oUY&ust=1714729262489000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLC04rjW7oUDFQAAAAAdAAAAABAE',
                 title='校外宿舍',
                 text='泉思學舍',
                 actions=[
@@ -56,7 +56,7 @@ def handle_message(event):
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://github.com/nee1216/linebot_openai/blob/d1c06d40e5ff5bedef45f5579f8677a98cad1034/S__201318422_0.jpg',
+                thumbnail_image_url='https://233ca8414a.cbaul-cdnwnd.com/5a4223ad91b3073522caa2d53bc72ce4/200000001-9017d9113a/%E6%9F%9A%E8%8A%B3%E6%A8%93.jpg?ph=233ca8414a',
                 title='校內宿舍',
                 text='松勁樓，榕華樓，柚芳樓',
                 actions=[
@@ -98,7 +98,7 @@ def handle_message(event):
     elif user_message == "校外宿舍泉思學舍交通方式":
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="捷運：搭乘淡水信義線到捷運北投站，步行約3分鐘即可抵達。)
+            TextSendMessage(text="捷運：搭乘淡水信義線到捷運北投站，步行約3分鐘即可抵達。")
         )                    
     elif user_message == "校內宿舍地址":
         line_bot_api.reply_message(
