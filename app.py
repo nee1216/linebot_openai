@@ -36,37 +36,37 @@ def handle_message(event):
 
         # 第一個輪播樣板
         carousel_columns.append(CarouselColumn(
-            thumbnail_image_url='https://example.com/dorm1.jpg',
-            title='Dorm 1',
-            text='Choose an option',
+            thumbnail_image_url='S__201318420_0.jpg',
+            title='校外宿舍',
+            text='有容學舍',
             actions=[
-                MessageAction(label='Address', text='Dorm 1 Address'),
-                MessageAction(label='Transportation', text='Dorm 1 Transportation'),
-                MessageAction(label='Fees', text='Dorm 1 Fees'),
+                MessageAction(label='地址', text='地址'),
+                MessageAction(label='交通方式', text='交通方式'),
+                MessageAction(label='住宿費用', text='住宿費用'),
             ]
         ))
 
         # 第二個輪播樣板
         carousel_columns.append(CarouselColumn(
             thumbnail_image_url='https://example.com/dorm2.jpg',
-            title='Dorm 2',
-            text='Choose an option',
+            title='校外宿舍',
+            text='泉思學舍',
             actions=[
-                MessageAction(label='Address', text='Dorm 2 Address'),
-                MessageAction(label='Transportation', text='Dorm 2 Transportation'),
-                MessageAction(label='Fees', text='Dorm 2 Fees'),
+                MessageAction(label='地址', text='地址'),
+                MessageAction(label='交通方式', text='交通方式'),
+                MessageAction(label='住宿費用', text='住宿費用'),
             ]
         ))
 
         # 第三個輪播樣板
         carousel_columns.append(CarouselColumn(
-            thumbnail_image_url='https://example.com/dorm3.jpg',
-            title='Dorm 3',
-            text='Choose an option',
+            thumbnail_image_url='S__201318422_0.jpg',
+            title='校內宿舍',
+            text='松勁樓，榕華樓，柚芳樓',
             actions=[
-                MessageAction(label='Address', text='Dorm 3 Address'),
-                MessageAction(label='Transportation', text='Dorm 3 Transportation'),
-                MessageAction(label='Fees', text='Dorm 3 Fees'),
+                MessageAction(label='地址', text='地址'),
+                MessageAction(label='交通方式', text='交通方式'),
+                MessageAction(label='住宿費用', text='住宿費用'),
             ]
         ))
 
