@@ -36,7 +36,7 @@ def handle_message(event):
         carousel_template = CarouselTemplate(
             columns=[
                 CarouselColumn(
-                    thumbnail_image_url='https://steam.oxxostudio.tw/download/python/line-template-message-demo.jpg',
+                    thumbnail_image_url='S__201318422_0.jpg',
                     title='校內宿舍',
                     text='松勁樓，榕華樓，柚芳樓',
                     actions=[
