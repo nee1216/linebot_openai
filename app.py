@@ -81,17 +81,45 @@ def handle_message(event):
 
     # 根據選擇的地址選項回覆不同訊息
     elif user_message == "校外宿舍有容學舍地址":
-        # 回覆 "HELLO"
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="HELLO")
+            TextSendMessage(text="台北市萬華區大理街140號")
         )
     elif user_message == "校外宿舍泉思學舍地址":
-        # 回覆 "HAHA"
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="HAHA")
+            TextSendMessage(text="台北市北投區北投路二段55號")
         )
+    elif user_message == "校內宿舍地址":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="台北市士林區臨溪路70號")
+        )
+    elif user_message == "校內宿舍交通方式":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="一、自行駕車
+
+1、中山重慶北路交流道（往士林方向）匝道，經百齡橋直行中正路至雙溪公園，右轉至善路。
+2、北二高路線—由堤頂交流道下北二高，往左至內湖路（內湖/大直方向），過自強隧道，直行到至
+善路左轉。
+二、捷運
+
+1、搭乘淡水信義線至捷運士林站，1號出口出站，
+     往中正路方向轉乘公車304、255、620、小18、小19、557至東吳大學站。
+2、搭乘文湖線至捷運劍南路站，往劍潭寺方向出口，轉乘公車620，至東吳大學站。
+三、公車
+
+請於台北車站後站之承德路上搭乘304公車至東吳大學站。
+請事先購買學生型悠遊卡（捷運公車兩用），
+學生公車每段分段點扣費12元；車上投幣每車分段點每人每段15元 。
+四、計程車
+
+1、台北車站至雙溪校區約250元。
+2、士林捷運站至雙溪校區約90元。
+3、松山機場至雙溪校區約200元。")
+        )
+
 
 # 在本地端啟動 Flask 應用程序
 if __name__ == "__main__":
