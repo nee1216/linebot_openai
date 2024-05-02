@@ -36,7 +36,7 @@ def handle_message(event):
         # 建立三個輪播樣板
         carousel_columns = [
             CarouselColumn(
-                thumbnail_image_url='https://www.google.com/imgres?q=%E6%9C%89%E5%AE%B9%E5%AD%B8%E8%88%8D&imgurl=https%3A%2F%2Fpgw.udn.com.tw%2Fgw%2Fphoto.php%3Fu%3Dhttps%3A%2F%2Fuc.udn.com.tw%2Fphoto%2F2023%2F09%2F05%2Frealtime%2F24829906.jpg%26x%3D0%26y%3D0%26sw%3D0%26sh%3D0%26exp%3D3600&imgrefurl=https%3A%2F%2Fudn.com%2Fnews%2Fstory%2F6928%2F7418820&docid=r07SUWuxS_FcXM&tbnid=nF79q6TVz4cLpM&vet=12ahUKEwjKp7Wk1u6FAxUXcPUHHZxgCzoQM3oECGIQAA..i&w=2508&h=1672&hcb=2&ved=2ahUKEwjKp7Wk1u6FAxUXcPUHHZxgCzoQM3oECGIQAA',
+                thumbnail_image_url='https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/09/05/realtime/24829906.jpg&x=0&y=0&sw=0&sh=0&exp=3600',
                 title='校外宿舍',
                 text='有容學舍',
                 actions=[
@@ -46,7 +46,7 @@ def handle_message(event):
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2F247chill.blogspot.com%2F2021%2F08%2Fchuanszu.html&psig=AOvVaw3CDxckcuzvwy0J2E6_8oUY&ust=1714729262489000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLC04rjW7oUDFQAAAAAdAAAAABAE',
+                thumbnail_image_url='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpH4M35vAgbJ4NHWeQy5JFjmhLEP182srNyTKfrad2r2oAmgIEDp8Bf2jYlmHT-aX0oFEfCbaJuX-F9QddqrZn4tkpfME-P6sWILB2ECkw9JINHkVRgpMfBcnmhAniIkCgmHZ_urVoMmw/s1667/IMG_4232.JPG',
                 title='校外宿舍',
                 text='泉思學舍',
                 actions=[
