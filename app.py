@@ -55,7 +55,7 @@ def handle_message(event):
                     ]
                 ),
                 CarouselColumn(
-                    thumbnail_image_url='https://steam.oxxostudio.tw/download/python/line-template-message-demo2.jpg',
+                    thumbnail_image_url='S__201318420_0.jpg',
                     title='選單 2',
                     text='說明文字 2',
                     actions=[
