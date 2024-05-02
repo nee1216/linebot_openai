@@ -36,7 +36,7 @@ def handle_message(event):
 
         # 第一個輪播樣板
         carousel_columns.append(CarouselColumn(
-            thumbnail_image_url='S__201318420_0.jpg',
+            thumbnail_image_url='https://github.com/nee1216/linebot_openai/blob/04c322993a6e7286568539958baffc5ba027b666/S__201318420_0.jpg',
             title='校外宿舍',
             text='有容學舍',
             actions=[
@@ -60,7 +60,7 @@ def handle_message(event):
 
         # 第三個輪播樣板
         carousel_columns.append(CarouselColumn(
-            thumbnail_image_url='S__201318422_0.jpg',
+            thumbnail_image_url='https://github.com/nee1216/linebot_openai/blob/d1c06d40e5ff5bedef45f5579f8677a98cad1034/S__201318422_0.jpg',
             title='校內宿舍',
             text='松勁樓，榕華樓，柚芳樓',
             actions=[
