@@ -31,7 +31,25 @@ def handle_message(event):
     # 接收使用者的訊息
     user_message = event.message.text.strip()
 
-    # 檢查使用者訊息是否為 "住宿"
+    # 定義校內宿舍住宿費用資訊
+    dorm_info = """
+    榕華樓
+    規格：5人雅房
+    住宿費：1,200元（每人/每學期）
+    
+    柚芳樓
+    規格：8人雅房
+    住宿费：10,200元（每人/每学期）
+    网费：800元（每人/每年）
+    保证金：1,000元
+    冷气费用：费用由寝室室友共同分摊
+    
+    松勁楼
+    规格：8人雅房
+    住宿费：800元（每人/每学期）
+    """
+
+    # 檢查使用者訊息
     if user_message == "住宿":
         # 建立三個輪播樣板
         carousel_columns = [
@@ -79,7 +97,7 @@ def handle_message(event):
             carousel_template
         )
 
-    # 根據選擇的地址選項回覆不同訊息
+    # 回應不同的使用者訊息
     elif user_message == "校外宿舍有容學舍地址":
         line_bot_api.reply_message(
             event.reply_token,
@@ -99,7 +117,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="捷運：搭乘淡水信義線到捷運北投站，步行約3分鐘即可抵達。")
-        )                    
+        )
     elif user_message == "校內宿舍地址":
         line_bot_api.reply_message(
             event.reply_token,
@@ -108,11 +126,17 @@ def handle_message(event):
     elif user_message == "校內宿舍交通方式":
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="一、自行駕車\n1、中山重慶北路交流道（往士林方向）匝道，經百齡橋直行中正路至雙溪公園，右轉至善路。\n2、北二高路線—由堤頂交流道下北二高，往左至內湖路（內湖/大直方向），過自強隧道，直行到至善路左轉。\n二、捷運\n1、搭乘淡水信義線至捷運士林站，1號出口出站，\n往中正路方向轉乘公車304、255、620、小18、小19、557至東吳大學站。\n2、搭乘文湖線至捷運劍南路站，往劍潭寺方向出口，轉乘公車620，至東吳大學站。\n三、公車\n請於台北車站後站之承德路上搭乘304公車至東吳大學站。\n請事先購買學生型悠遊卡（捷運公車兩用），\n學生公車每段分段點扣費12元；車上投幣每車分段點每人每段15元 。\n四、計程車\n1、台北車站至雙溪校區約250元。\n2、士林捷運站至雙溪校區約90元。\n3、松山機場至雙溪校區約200元。")
+            TextSendMessage(text="一、自行駕車\n1、中山重慶北路交流道（往士林方向）匝道，經百齡橋直行中正路至雙溪公園，右轉至善路。\n2、北二高路線—由堤頂交流道下北二高，往左至內湖路（內湖/大直方向），過自強隧道，直行到至善路左轉。\n二、捷運\n1、搭乘淡水信義線至捷運士林站，1號出口出站，\n往中正路方向轉乘公車304、255、620、小18、小19、557至東吳大學站。\n2、搭乘文湖線至捷運劍南路站，往劍潭寺方向出口，轉乘公車620，至東吳大學站。\n三、公車\n請於台北車站後站之承德路上搭乘304公車至東吳大學站。\n請事先購買學生型悠遊卡（捷運公車兩用），\n學生公車每段分段點扣費12元；車上投幣每車分段點每人每段15元。\n四、計程車\n1、台北車站至雙溪校區約250元。\n2、士林捷運站至雙溪校區約90元。\n3、松山機場至雙溪校區約200元。")
         )
+    elif user_message == "校內宿舍住宿費用":
+        # 回復校內宿舍住宿費用資訊
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=dorm_info)
+        )
+
 
 
 # 在本地端啟動 Flask 應用程序
 if __name__ == "__main__":
     app.run()
-
