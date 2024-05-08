@@ -1,11 +1,6 @@
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import (
-    MessageEvent,
-    TextMessage,
-    TextSendMessage,
-    FlexSendMessage
-)
+from linebot.models import MessageEvent, TextMessage, FlexSendMessage
 from flask import Flask, request, abort
 
 app = Flask(__name__)
@@ -33,10 +28,10 @@ def callback():
 def handle_message(event):
     user_message = event.message.text
     
-    # 如果使用者要求查看科系簡介
-    if user_message == "科系簡介":
-        # Flex Message 模板
-        flex_message_data = {
+    # 判斷是否是使用者點選科系按鈕
+    if user_message == "科系按鈕":  # 您可以根據用戶消息內容定義自己的判斷條件
+        # 構建 Flex Message
+        flex_message = {
             "type": "bubble",
             "header": {
                 "type": "box",
@@ -61,7 +56,7 @@ def handle_message(event):
                         "type": "text",
                         "text": "🌟先選擇想了解的科系之後，就可以查看該系的必選修課程資訊嘍!!!!",
                         "size": "md",
-                        "wrap": true,
+                        "wrap": True,
                         "weight": "bold"
                     }
                 ]
@@ -78,8 +73,13 @@ def handle_message(event):
                             "type": "uri",
                             "label": "資料科學系",
                             "uri": "https://linecorp.com"
-                        },
-                        "margin": "md"
+                        }
+                    },
+                    # 您可以按要求添加其他按鈕和內容
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
                     },
                     {
                         "type": "button",
@@ -89,8 +89,12 @@ def handle_message(event):
                             "type": "uri",
                             "label": "資料管理系",
                             "uri": "https://linecorp.com"
-                        },
-                        "margin": "md"
+                        }
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
                     },
                     {
                         "type": "button",
@@ -98,10 +102,29 @@ def handle_message(event):
                         "color": "#905c44",
                         "action": {
                             "type": "uri",
-                            "label": "國際貿易系",
+                            "label": "法律系",
                             "uri": "https://linecorp.com"
-                        },
-                        "margin": "md"
+                        }
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "button",
+                        "style": "primary",
+                        "color": "#905c44",
+                        "action": {
+                            "type": "uri",
+                            "label": "日文系",
+                            "uri": "https://linecorp.com"
+                        }
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
                     },
                     {
                         "type": "button",
@@ -111,34 +134,25 @@ def handle_message(event):
                             "type": "uri",
                             "label": "化學系",
                             "uri": "https://linecorp.com"
-                        },
-                        "margin": "md"
-                    },
-                    {
-                        "type": "button",
-                        "style": "primary",
-                        "color": "#905c44",
-                        "action": {
-                            "type": "uri",
-                            "label": "物理系",
-                            "uri": "https://linecorp.com"
-                        },
-                        "margin": "md"
+                        }
                     }
                 ]
             }
         }
         
-        # 創建 FlexSendMessage 並發送
-        flex_message = FlexSendMessage(alt_text="科系簡介", contents=flex_message_data)
-        line_bot_api.reply_message(event.reply_token, flex_message)
-    else:
-        # 回復默認的消息
+        # 發送 Flex Message 給用戶
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="請輸入'科系簡介'以查看相關資訊。")
+            FlexSendMessage(alt_text="選擇想了解的科系", contents=flex_message)
+        )
+    else:
+        # 當使用者消息不是您期待的內容時，發送默認回復
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="請輸入正確的命令。")
         )
 
 if __name__ == "__main__":
     # 使用 Flask 啟動服務器，監聽來自 LINE 的請求
     app.run(port=5000)
+
