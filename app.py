@@ -29,7 +29,7 @@ def handle_message(event):
     user_message = event.message.text
     
     # 判斷是否是使用者點選科系按鈕
-    if user_message == "科系按鈕":  # 您可以根據用戶消息內容定義自己的判斷條件
+    if user_message == "科系簡介":  # 您可以根據用戶消息內容定義自己的判斷條件
         # 構建 Flex Message
         flex_message = {
             "type": "bubble",
@@ -72,7 +72,7 @@ def handle_message(event):
                         "action": {
                             "type": "uri",
                             "label": "資料科學系",
-                            "uri": "https://linecorp.com"
+                            "message": "請選擇你入學學年?"
                         }
                     },
                     # 您可以按要求添加其他按鈕和內容
