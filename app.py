@@ -78,7 +78,11 @@ def handle_message(event):
                             "text": "資料科學系"
                         }
                     },
-                    # 添加其他科系按鈕
+                     {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
+                    },
                     {
                         "type": "button",
                         "style": "primary",
@@ -88,6 +92,11 @@ def handle_message(event):
                             "label": "資料管理系",
                             "text": "資料管理系"
                         }
+                    },
+                     {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
                     },
                     {
                         "type": "button",
@@ -99,6 +108,11 @@ def handle_message(event):
                             "text": "國際貿易系"
                         }
                     },
+                     {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
+                    },
                     {
                         "type": "button",
                         "style": "primary",
@@ -108,6 +122,11 @@ def handle_message(event):
                             "label": "化學系",
                             "text": "化學系"
                         }
+                    },
+                     {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
                     },
                     {
                         "type": "button",
@@ -135,15 +154,15 @@ def handle_message(event):
         quick_reply = QuickReply(items=[
             QuickReplyButton(
                 action=MessageAction(label="110學年", text="110學年"),
-                image_url="https://xxx/image1.png"
+                image_url="https://thumb.silhouette-ac.com/t/8e/8e67ee69573010543bd48066cc2fb04f_t.jpeg"
             ),
             QuickReplyButton(
                 action=MessageAction(label="111學年", text="111學年"),
-                image_url="https://xxx/image2.png"
+                image_url="https://thumb.silhouette-ac.com/t/7b/7b2ef209d3fbed4189b6e8a5686df508_w.jpeg"
             ),
             QuickReplyButton(
                 action=MessageAction(label="112學年", text="112學年"),
-                image_url="https://xxx/image3.png"
+                image_url="https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg"
             )
         ])
         
