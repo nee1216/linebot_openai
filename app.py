@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 import time
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
+import chromedriver.exe from
 
 # LINE Bot 的設定
 line_bot_api = LineBotApi('tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU=')
