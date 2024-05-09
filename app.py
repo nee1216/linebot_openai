@@ -3,6 +3,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, FlexSendMessage, QuickReply, QuickReplyButton, MessageAction, TextSendMessage
 from flask import Flask, request, abort
 import json
+import requests
 
 app = Flask(__name__)
 
@@ -30,28 +31,35 @@ def callback():
     
     return 'OK'
 
-def load_carousel_message(file_path):
-    """從文件加載JSON格式的內容"""
-    with open(file_path, 'r', encoding='utf-8') as file:
-        return json.load(file)
+def load_flex_message(file_path):
+    # 判斷 file_path 是否為 URL
+    if file_path.startswith("http://") or file_path.startswith("https://"):
+        # 使用 requests 發送 HTTP 請求
+        response = requests.get(file_path)
+        # 檢查 HTTP 請求是否成功
+        if response.status_code != 200:
+            raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
+        # 將 JSON 內容解析為字典
+        return response.json()
+    else:
+        # 如果不是 URL，則認為是本地文件路徑
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return json.load(file)
 
-def create_flex_message(carousel_message_data):
-    """創建FlexSendMessage"""
-    return FlexSendMessage(
-        alt_text="110學年 資科系學分",
-        contents=carousel_message_data
-    )
+# 使用該函數加載 Flex Message JSON 文件
+file_path = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"
 
-def send_carousel_message(event):
-    # 加載 JSON 格式的 Carousel Message 內容
-    file_path = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"  # 替換為您的 JSON 文件路徑
-    carousel_message_data = load_carousel_message(file_path)
+# 加載 JSON 文件
+carousel_message = load_flex_message(file_path)
 
-    # 創建 FlexSendMessage
-    flex_message = create_flex_message(carousel_message_data)
+# 創建 FlexSendMessage
+flex_message = FlexSendMessage(
+    alt_text="110學年 資科系學分",
+    contents=carousel_message
+)
 
-    # 發送 FlexSendMessage
-    line_bot_api.reply_message(event.reply_token, flex_message)
+# 發送 FlexSendMessage
+line_bot_api.reply_message(event.reply_token, flex_message)
 
 # 當收到 LINE 消息時的回調函數
 @handler.add(MessageEvent, message=TextMessage)
