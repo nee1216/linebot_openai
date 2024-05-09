@@ -755,8 +755,6 @@ def send_carousel_message(event):
         contents=carousel_message
     )
 
-    return flex_message
-
     # 發送 FlexSendMessage
     line_bot_api.reply_message(event.reply_token, flex_message)
 
