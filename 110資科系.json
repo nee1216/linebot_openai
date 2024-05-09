@@ -275,7 +275,7 @@
                 },
                 "styles": {
                     "footer": {
-                        "separator": True
+                        "separator": true
                     }
                 }
             },
@@ -709,7 +709,7 @@
                 },
                 "styles": {
                     "footer": {
-                        "separator": True
+                        "separator": true
                     }
                 }
             }
