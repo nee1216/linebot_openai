@@ -3,6 +3,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, FlexSendMessage, QuickReply, QuickReplyButton, MessageAction, TextSendMessage
 from flask import Flask, request, abort
 import json
+import requests
 
 app = Flask(__name__)
 
@@ -33,14 +34,14 @@ def callback():
 def load_flex_message(file_path):
     try:
         if file_path.startswith("http://") or file_path.startswith("https://"):
-            # 如果 file_path 是 URL 地址，則使用 HTTP GET 請求下載 JSON 文件
+            # 如果 file_path 是 URL 地址，则使用 HTTP GET 请求下载 JSON 文件
             response = requests.get(file_path)
             if response.status_code != 200:
                 raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
-            # 解析 JSON 內容
+            # 解析 JSON 内容
             return response.json()
         else:
-            # 否則，認為 file_path 是本地文件路徑，使用本地加載方式
+            # 否则，认为 file_path 是本地文件路径，使用本地加载方式
             with open(file_path, 'r', encoding='utf-8') as file:
                 return json.load(file)
     except Exception as e:
@@ -49,7 +50,7 @@ def load_flex_message(file_path):
         return {}
 
 def send_carousel_message(event):
-    # 使用 load_flex_message 函數加載 Flex Message JSON 文件
+    # 使用 load_flex_message 函数加载 Flex Message JSON 文件
     file_path = "https://github.com/nee1216/linebot_openai/blob/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"
     carousel_message = load_flex_message(file_path)
 
