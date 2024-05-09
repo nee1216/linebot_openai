@@ -81,7 +81,206 @@ def send_carousel_message(event):
                                 }
                             ]
                         },
-                        # 此處略去其他科目的定義
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "外 文 (英、日、德、韓文)",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "4學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "生命關懷 & 思維方法",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "各1學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "體 育",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "0學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "通識教育",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "4學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "微積分",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "6學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "程式設計(一) & 程式設計(二)",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "各3學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "巨量資料概論",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "3學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "線性代數",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "3學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "計算機概論",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "3學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "資料庫導論",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "3學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -104,8 +303,13 @@ def send_carousel_message(event):
                 }
             ]
         }
+    },
+  "styles": {
+    "footer": {
+      "separator": true
     }
-
+  }
+}
     # 創建 FlexSendMessage
     flex_message = FlexSendMessage(
         alt_text="110學年 資科系學分",
