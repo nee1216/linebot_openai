@@ -393,8 +393,8 @@ def handle_message(event):
                         "color": "#905c44",
                         "action": {
                             "type": "message",
-                            "label": "國際貿易系",
-                            "text": "國際貿易系"
+                            "label": "法律系",
+                            "text": "法律法律系"
                         }
                     },
                     {
@@ -423,8 +423,8 @@ def handle_message(event):
                         "color": "#905c44",
                         "action": {
                             "type": "message",
-                            "label": "物理系",
-                            "text": "物理系"
+                            "label": "日文系",
+                            "text": "日文系"
                         }
                     }
                 ]
@@ -438,7 +438,7 @@ def handle_message(event):
         )
         
     # 判斷用戶是否選擇了科系
-    elif user_message in ["資料科學系", "資料管理系", "國際貿易系", "化學系", "物理系"]:
+    elif user_message in ["資料科學系", "資料管理系", "法律系", "化學系", "日文系"]:
         # 發送快速回復，讓用戶選擇入學學年
         quick_reply = QuickReply(items=[
             QuickReplyButton(
