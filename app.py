@@ -26,7 +26,7 @@ def callback():
     
     return 'OK'
 
-# 當收到 LINE 消息時的回調函數
+# 在處理訊息的回調函數中添加判斷和回應
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_message = event.message.text
@@ -78,7 +78,7 @@ def handle_message(event):
                             "text": "資料科學系"
                         }
                     },
-                    {
+                     {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -93,7 +93,7 @@ def handle_message(event):
                             "text": "資料管理系"
                         }
                     },
-                    {
+                     {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -108,7 +108,7 @@ def handle_message(event):
                             "text": "國際貿易系"
                         }
                     },
-                    {
+                     {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -123,7 +123,7 @@ def handle_message(event):
                             "text": "化學系"
                         }
                     },
-                    {
+                     {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -169,10 +169,10 @@ def handle_message(event):
         # 發送快速回復給用戶
         reply_text = TextSendMessage(text="請選擇你入學學年?", quick_reply=quick_reply)
         line_bot_api.reply_message(event.reply_token, reply_text)
-        
-    # 判斷用戶是否選擇了資料科學系且入學年份為110學年
-    elif user_message == "110學年" and event.source.user_id == "資料科學系":
-        # 準備 Flex Message
+    
+    # 判斷用戶是否選擇了"資料科學系"和"110學年"
+    elif user_message == "資料科學系" and event.message.text == "110學年":
+        # 构建 Flex Message
         flex_message = {
             "type": "bubble",
             "body": {
@@ -269,14 +269,14 @@ def handle_message(event):
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "社會研究 ",
+                                        "text": "體 育",
                                         "size": "sm",
                                         "color": "#555555",
                                         "flex": 0
                                     },
                                     {
                                         "type": "text",
-                                        "text": "1學分",
+                                        "text": "0學分",
                                         "size": "sm",
                                         "color": "#111111",
                                         "align": "end"
@@ -289,7 +289,7 @@ def handle_message(event):
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "程式設計基礎 ",
+                                        "text": "通識教育",
                                         "size": "sm",
                                         "color": "#555555",
                                         "flex": 0
@@ -309,7 +309,47 @@ def handle_message(event):
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "微積分1 ",
+                                        "text": "微積分",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "6學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "程式設計(一) & 程式設計(二) ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "各3學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "巨量資料概論",
                                         "size": "sm",
                                         "color": "#555555",
                                         "flex": 0
@@ -329,14 +369,14 @@ def handle_message(event):
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "程式設計基礎實習 ",
+                                        "text": "線性代數 ",
                                         "size": "sm",
                                         "color": "#555555",
                                         "flex": 0
                                     },
                                     {
                                         "type": "text",
-                                        "text": "1學分",
+                                        "text": "3學分",
                                         "size": "sm",
                                         "color": "#111111",
                                         "align": "end"
@@ -349,14 +389,34 @@ def handle_message(event):
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "基礎科學課程 ",
+                                        "text": "計算機概論",
                                         "size": "sm",
                                         "color": "#555555",
                                         "flex": 0
                                     },
                                     {
                                         "type": "text",
-                                        "text": "6學分",
+                                        "text": "3學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "資料庫導論",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "3學分",
                                         "size": "sm",
                                         "color": "#111111",
                                         "align": "end"
@@ -387,7 +447,7 @@ def handle_message(event):
             },
             "styles": {
                 "footer": {
-                    "separator": True
+                    "separator": true
                 }
             }
         }
@@ -397,6 +457,7 @@ def handle_message(event):
             event.reply_token,
             FlexSendMessage(alt_text="110學年 資科系學分", contents=flex_message)
         )
+        
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
         line_bot_api.reply_message(
