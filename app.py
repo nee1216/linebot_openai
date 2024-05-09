@@ -212,6 +212,15 @@ def handle_message(event):
         else:
             # 回覆用戶尚未選擇資料科學系
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
+
+    elif user_message == "111學年":
+        # 檢查用戶之前選擇的科系
+        if user_id in user_choices and user_choices[user_id] == "資料科學系":
+            # 調用函數發送彈性消息
+            send_carousel_message(event)
+        else:
+            # 回覆用戶尚未選擇資料科學系
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
         
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
