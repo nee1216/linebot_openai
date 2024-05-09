@@ -78,7 +78,7 @@ def handle_message(event):
                             "text": "資料科學系"
                         }
                     },
-                     {
+                    {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -93,7 +93,7 @@ def handle_message(event):
                             "text": "資料管理系"
                         }
                     },
-                     {
+                    {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -108,7 +108,7 @@ def handle_message(event):
                             "text": "國際貿易系"
                         }
                     },
-                     {
+                    {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -123,7 +123,7 @@ def handle_message(event):
                             "text": "化學系"
                         }
                     },
-                     {
+                    {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -170,6 +170,233 @@ def handle_message(event):
         reply_text = TextSendMessage(text="請選擇你入學學年?", quick_reply=quick_reply)
         line_bot_api.reply_message(event.reply_token, reply_text)
         
+    # 判斷用戶是否選擇了資料科學系且入學年份為110學年
+    elif user_message == "110學年" and event.source.user_id == "資料科學系":
+        # 準備 Flex Message
+        flex_message = {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "110學年 資科系學分",
+                        "weight": "bold",
+                        "color": "#1DB446",
+                        "size": "sm"
+                    },
+                    {
+                        "type": "text",
+                        "text": "大一",
+                        "weight": "bold",
+                        "size": "xxl",
+                        "margin": "md"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "xxl",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國 文",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "外 文 (英、日、德、韓文) ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "生命關懷 & 思維方法 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "各1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "社會研究 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "程式設計基礎 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "微積分1 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "3學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "程式設計基礎實習 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "基礎科學課程 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "6學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "xxl"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "資科系大一必修",
+                                "size": "xs",
+                                "color": "#aaaaaa",
+                                "flex": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "styles": {
+                "footer": {
+                    "separator": True
+                }
+            }
+        }
+        
+        # 發送 Flex Message 給用戶
+        line_bot_api.reply_message(
+            event.reply_token,
+            FlexSendMessage(alt_text="110學年 資科系學分", contents=flex_message)
+        )
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
         line_bot_api.reply_message(
@@ -177,6 +404,6 @@ def handle_message(event):
             TextSendMessage(text="請輸入正確的命令。")
         )
 
-if __name__ == "__main__":
-    # 使用 Flask 啟動服務器，監聽來自 LINE 的請求
-    app.run(port=5000)
+# 啟動 Flask 應用
+if __name__ == '__main__':
+    app.run()
