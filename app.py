@@ -12,6 +12,9 @@ LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
+# 創建字典來追蹤用戶的科系選擇
+user_choices = {}
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # 解析來自 LINE 的請求
@@ -26,10 +29,97 @@ def callback():
     
     return 'OK'
 
+def send_carousel_message(event):
+    # 這是您提供的 JSON 格式
+    bubble_message = {
+        "type": "bubble",
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": "110學年 資科系學分",
+                    "weight": "bold",
+                    "color": "#1DB446",
+                    "size": "sm"
+                },
+                {
+                    "type": "text",
+                    "text": "大一",
+                    "weight": "bold",
+                    "size": "xxl",
+                    "margin": "md"
+                },
+                {
+                    "type": "separator",
+                    "margin": "sm"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": [
+                        {
+                            "type": "box",
+                            "layout": "horizontal",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "國 文",
+                                    "size": "sm",
+                                    "color": "#555555",
+                                    "flex": 0
+                                },
+                                {
+                                    "type": "text",
+                                    "text": "4學分",
+                                    "size": "sm",
+                                    "color": "#111111",
+                                    "align": "end"
+                                }
+                            ]
+                        },
+                        # 此處略去其他科目的定義
+                    ]
+                },
+                {
+                    "type": "separator",
+                    "margin": "xxl"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "margin": "md",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "資科系大一必修",
+                            "size": "xs",
+                            "color": "#aaaaaa",
+                            "flex": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+
+    # 創建 FlexSendMessage
+    flex_message = FlexSendMessage(
+        alt_text="110學年 資科系學分",
+        contents=bubble_message
+    )
+
+    # 發送 FlexSendMessage
+    line_bot_api.reply_message(event.reply_token, flex_message)
+
 # 當收到 LINE 消息時的回調函數
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_message = event.message.text
+    user_id = event.source.user_id  # 獲取用戶的 ID
     
     # 判斷是否是使用者點選科系簡介
     if user_message == "科系簡介":  
@@ -78,7 +168,7 @@ def handle_message(event):
                             "text": "資料科學系"
                         }
                     },
-                     {
+                    {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -93,7 +183,7 @@ def handle_message(event):
                             "text": "資料管理系"
                         }
                     },
-                     {
+                    {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -108,7 +198,7 @@ def handle_message(event):
                             "text": "國際貿易系"
                         }
                     },
-                     {
+                    {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -123,7 +213,7 @@ def handle_message(event):
                             "text": "化學系"
                         }
                     },
-                     {
+                    {
                         "type": "box",
                         "layout": "vertical",
                         "margin": "sm"
@@ -169,6 +259,19 @@ def handle_message(event):
         # 發送快速回復給用戶
         reply_text = TextSendMessage(text="請選擇你入學學年?", quick_reply=quick_reply)
         line_bot_api.reply_message(event.reply_token, reply_text)
+        
+        # 記錄用戶選擇的科系
+        user_choices[user_id] = user_message
+        
+    # 判斷用戶是否選擇了110學年
+    elif user_message == "110學年":
+        # 檢查用戶之前選擇的科系
+        if user_id in user_choices and user_choices[user_id] == "資料科學系":
+            # 調用函數發送彈性消息
+            send_carousel_message(event)
+        else:
+            # 回覆用戶尚未選擇資料科學系
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
         
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
