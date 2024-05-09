@@ -136,15 +136,15 @@ def handle_message(event):
         quick_reply = QuickReply(items=[
             QuickReplyButton(
                 action=MessageAction(label="110學年", text="110學年"),
-                image_url="IMAGE_URL_110"
+                image_url="https://thumb.silhouette-ac.com/t/8e/8e67ee69573010543bd48066cc2fb04f_t.jpeg"
             ),
             QuickReplyButton(
                 action=MessageAction(label="111學年", text="111學年"),
-                image_url="IMAGE_URL_111"
+                image_url="https://thumb.silhouette-ac.com/t/7b/7b2ef209d3fbed4189b6e8a5686df508_w.jpeg"
             ),
             QuickReplyButton(
                 action=MessageAction(label="112學年", text="112學年"),
-                image_url="IMAGE_URL_112"
+                image_url="https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg"
             )
         ])
 
@@ -165,34 +165,34 @@ def handle_message(event):
 def send_carousel_message(event):
     # 建立 Carousel Template Message
     message = TemplateSendMessage(
-        alt_text='Carousel template',
-        template=CarouselTemplate(
-            columns=[
-                CarouselColumn(
-                    thumbnail_image_url='IMAGE_URL_1',
-                    title='標題1',
-                    text='副標題1',
-                    actions=[
-                        URITemplateAction(
-                            label='連結點這邊',
-                            uri='URL_1'
-                        )
-                    ]
-                ),
-                CarouselColumn(
-                    thumbnail_image_url='IMAGE_URL_2',
-                    title='標題2',
-                    text='副標題2',
-                    actions=[
-                        URITemplateAction(
-                            label='連結點這邊',
-                            uri='URL_2'
-                        )
-                    ]
-                )
-            ]
-        )
+    alt_text='Carousel template',
+    template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                thumbnail_image_url='https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg',  # 請提供有效的圖片 URL
+                title='YOUR_TITLE_1',  # 請提供標題
+                text='YOUR_SUBTITLE_1',  # 請提供副標題
+                actions=[
+                    URITemplateAction(
+                        label='YOUR_LABEL_1',  # 請提供行為的描述，例如「連結點這邊」
+                        uri='https://ithelp.ithome.com.tw/articles/10242373'  # 請提供有效的 URL
+                    )
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg',  # 請提供有效的圖片 URL
+                title='YOUR_TITLE_2',  # 請提供標題
+                text='YOUR_SUBTITLE_2',  # 請提供副標題
+                actions=[
+                    URITemplateAction(
+                        label='YOUR_LABEL_2',  # 請提供行為的描述，例如「連結點這邊」
+                        uri='https://ithelp.ithome.com.tw/articles/10242373'  # 請提供有效的 URL
+                    )
+                ]
+            )
+        ]
     )
+)
 
     # 發送 Carousel Template Message 給用戶
     line_bot_api.reply_message(event.reply_token, message)
