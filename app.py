@@ -303,13 +303,8 @@ def send_carousel_message(event):
                 }
             ]
         }
-    },
-  "styles": {
-    "footer": {
-      "separator": true
     }
-  }
-}
+
     # 創建 FlexSendMessage
     flex_message = FlexSendMessage(
         alt_text="110學年 資科系學分",
