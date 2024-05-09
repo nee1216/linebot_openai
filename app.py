@@ -167,7 +167,7 @@ def handle_message(event):
         ])
         
         # 發送快速回復給用戶
-        reply_text = TextSendMessage(text="選擇你入學學年?", quick_reply=quick_reply)
+        reply_text = TextSendMessage(text="請選擇你入學學年?", quick_reply=quick_reply)
         line_bot_api.reply_message(event.reply_token, reply_text)
         
     else:
