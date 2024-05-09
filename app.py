@@ -1,10 +1,6 @@
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import (
-    MessageEvent, TextMessage, TemplateSendMessage, CarouselTemplate,
-    CarouselColumn, URITemplateAction, QuickReply, QuickReplyButton,
-    MessageAction, TextSendMessage
-)
+from linebot.models import MessageEvent, TextMessage, FlexSendMessage, QuickReply, QuickReplyButton, MessageAction, TextSendMessage
 from flask import Flask, request, abort
 
 app = Flask(__name__)
@@ -35,104 +31,126 @@ def callback():
 def handle_message(event):
     user_message = event.message.text
     
-    if user_message == "科系簡介":
-        # 構建 Flex Message 讓用戶選擇科系
-        flex_message = FlexSendMessage(
-            alt_text="選擇想了解的科系",
-            contents={
-                "type": "bubble",
-                "header": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": "選擇想了解的科系",
-                            "align": "center",
-                            "weight": "bold",
-                            "size": "xl",
-                            "color": "#ffffff"
+    # 判斷是否是使用者點選科系簡介
+    if user_message == "科系簡介":  
+        # 構建 Flex Message
+        flex_message = {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "選擇想了解的科系",
+                        "align": "center",
+                        "weight": "bold",
+                        "size": "xl",
+                        "color": "#ffffff"
+                    }
+                ],
+                "backgroundColor": "#471B00"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "🌟先選擇想了解的科系之後，就可以查看該系的必選修課程資訊嘍!!!!",
+                        "size": "md",
+                        "wrap": True,
+                        "weight": "bold"
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "button",
+                        "style": "primary",
+                        "color": "#905c44",
+                        "action": {
+                            "type": "message",
+                            "label": "資料科學系",
+                            "text": "資料科學系"
                         }
-                    ],
-                    "backgroundColor": "#471B00"
-                },
-                "body": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": "🌟先選擇想了解的科系之後，就可以查看該系的必選修課程資訊嘍!",
-                            "size": "md",
-                            "wrap": True,
-                            "weight": "bold"
+                    },
+                     {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "button",
+                        "style": "primary",
+                        "color": "#905c44",
+                        "action": {
+                            "type": "message",
+                            "label": "資料管理系",
+                            "text": "資料管理系"
                         }
-                    ]
-                },
-                "footer": {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                        {
-                            "type": "button",
-                            "style": "primary",
-                            "color": "#905c44",
-                            "action": {
-                                "type": "message",
-                                "label": "資料科學系",
-                                "text": "資料科學系"
-                            }
-                        },
-                        {
-                            "type": "button",
-                            "style": "primary",
-                            "color": "#905c44",
-                            "action": {
-                                "type": "message",
-                                "label": "資料管理系",
-                                "text": "資料管理系"
-                            }
-                        },
-                        {
-                            "type": "button",
-                            "style": "primary",
-                            "color": "#905c44",
-                            "action": {
-                                "type": "message",
-                                "label": "國際貿易系",
-                                "text": "國際貿易系"
-                            }
-                        },
-                        {
-                            "type": "button",
-                            "style": "primary",
-                            "color": "#905c44",
-                            "action": {
-                                "type": "message",
-                                "label": "化學系",
-                                "text": "化學系"
-                            }
-                        },
-                        {
-                            "type": "button",
-                            "style": "primary",
-                            "color": "#905c44",
-                            "action": {
-                                "type": "message",
-                                "label": "物理系",
-                                "text": "物理系"
-                            }
+                    },
+                     {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "button",
+                        "style": "primary",
+                        "color": "#905c44",
+                        "action": {
+                            "type": "message",
+                            "label": "國際貿易系",
+                            "text": "國際貿易系"
                         }
-                    ]
-                }
+                    },
+                     {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "button",
+                        "style": "primary",
+                        "color": "#905c44",
+                        "action": {
+                            "type": "message",
+                            "label": "化學系",
+                            "text": "化學系"
+                        }
+                    },
+                     {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "button",
+                        "style": "primary",
+                        "color": "#905c44",
+                        "action": {
+                            "type": "message",
+                            "label": "物理系",
+                            "text": "物理系"
+                        }
+                    }
+                ]
             }
-        )
-
+        }
+        
         # 發送 Flex Message 給用戶
-        line_bot_api.reply_message(event.reply_token, flex_message)
-
+        line_bot_api.reply_message(
+            event.reply_token,
+            FlexSendMessage(alt_text="選擇想了解的科系", contents=flex_message)
+        )
+        
+    # 判斷用戶是否選擇了科系
     elif user_message in ["資料科學系", "資料管理系", "國際貿易系", "化學系", "物理系"]:
-        # 當用戶選擇了科系後，發送快速回復，讓用戶選擇入學學年
+        # 發送快速回復，讓用戶選擇入學學年
         quick_reply = QuickReply(items=[
             QuickReplyButton(
                 action=MessageAction(label="110學年", text="110學年"),
@@ -147,14 +165,11 @@ def handle_message(event):
                 image_url="https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg"
             )
         ])
-
-        reply_text = TextSendMessage(text="請選擇你入學學年？", quick_reply=quick_reply)
+        
+        # 發送快速回復給用戶
+        reply_text = TextSendMessage(text="請選擇你入學學年?", quick_reply=quick_reply)
         line_bot_api.reply_message(event.reply_token, reply_text)
-
-    elif user_message == "110學年":
-        # 用戶選擇了110學年，發送旋轉木馬模板消息
-        send_carousel_message(event)
-
+        
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
         line_bot_api.reply_message(
@@ -162,42 +177,6 @@ def handle_message(event):
             TextSendMessage(text="請輸入正確的命令。")
         )
 
-def send_carousel_message(event):
-    # 建立 Carousel Template Message
-    message = TemplateSendMessage(
-    alt_text='Carousel template',
-    template=CarouselTemplate(
-        columns=[
-            CarouselColumn(
-                thumbnail_image_url='https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg',  # 請提供有效的圖片 URL
-                title='YOUR_TITLE_1',  # 請提供標題
-                text='YOUR_SUBTITLE_1',  # 請提供副標題
-                actions=[
-                    URITemplateAction(
-                        label='YOUR_LABEL_1',  # 請提供行為的描述，例如「連結點這邊」
-                        uri='https://ithelp.ithome.com.tw/articles/10242373'  # 請提供有效的 URL
-                    )
-                ]
-            ),
-            CarouselColumn(
-                thumbnail_image_url='https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg',  # 請提供有效的圖片 URL
-                title='YOUR_TITLE_2',  # 請提供標題
-                text='YOUR_SUBTITLE_2',  # 請提供副標題
-                actions=[
-                    URITemplateAction(
-                        label='YOUR_LABEL_2',  # 請提供行為的描述，例如「連結點這邊」
-                        uri='https://ithelp.ithome.com.tw/articles/10242373'  # 請提供有效的 URL
-                    )
-                ]
-            )
-        ]
-    )
-)
-
-    # 發送 Carousel Template Message 給用戶
-    line_bot_api.reply_message(event.reply_token, message)
-
 if __name__ == "__main__":
     # 使用 Flask 啟動服務器，監聽來自 LINE 的請求
     app.run(port=5000)
-
