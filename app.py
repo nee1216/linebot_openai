@@ -31,35 +31,29 @@ def callback():
     
     return 'OK'
 
-def load_flex_message(file_path):
-    # 判斷 file_path 是否為 URL
-    if file_path.startswith("http://") or file_path.startswith("https://"):
-        # 使用 requests 發送 HTTP 請求
-        response = requests.get(file_path)
-        # 檢查 HTTP 請求是否成功
-        if response.status_code != 200:
-            raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
-        # 將 JSON 內容解析為字典
+def load_flex_message_from_url(url):
+    response = requests.get(url)
+    if response.status_code == 200:
         return response.json()
     else:
-        # 如果不是 URL，則認為是本地文件路徑
-        with open(file_path, 'r', encoding='utf-8') as file:
-            return json.load(file)
+        raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
 
-# 使用該函數加載 Flex Message JSON 文件
-file_path = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"
-
-# 加載 JSON 文件
-carousel_message = load_flex_message(file_path)
-
-# 創建 FlexSendMessage
-flex_message = FlexSendMessage(
-    alt_text="110學年 資科系學分",
-    contents=carousel_message
-)
-
-# 發送 FlexSendMessage
-line_bot_api.reply_message(event.reply_token, flex_message)
+# 定义发送 carousel message 的函数
+def send_carousel_message(event):
+    # 指定 JSON 文件的 URL
+    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"
+    
+    # 从 URL 加载 JSON 文件内容
+    carousel_message = load_flex_message_from_url(json_url)
+    
+    # 创建 FlexSendMessage
+    flex_message = FlexSendMessage(
+        alt_text="110學年 資科系學分",
+        contents=carousel_message
+    )
+    
+    # 发送 FlexSendMessage
+    line_bot_api.reply_message(event.reply_token, flex_message)
 
 # 當收到 LINE 消息時的回調函數
 @handler.add(MessageEvent, message=TextMessage)
