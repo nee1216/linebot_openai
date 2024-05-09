@@ -39,9 +39,26 @@ def load_flex_message_from_url(url):
         raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
 
 # 定义发送 carousel message 的函数
-def send_carousel_message(event):
+def send_carousel_message110(event):
     # 指定 JSON 文件的 URL
     json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"
+    
+    # 从 URL 加载 JSON 文件内容
+    carousel_message = load_flex_message_from_url(json_url)
+    
+    # 创建 FlexSendMessage
+    flex_message = FlexSendMessage(
+        alt_text="110學年 資科系學分",
+        contents=carousel_message
+    )
+    
+    # 发送 FlexSendMessage
+    line_bot_api.reply_message(event.reply_token, flex_message)
+
+# 定义发送 carousel message 的函数
+def send_carousel_message112(event):
+    # 指定 JSON 文件的 URL
+    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E8%B3%87%E7%A7%91%E7%B3%BB.json"
     
     # 从 URL 加载 JSON 文件内容
     carousel_message = load_flex_message_from_url(json_url)
@@ -208,7 +225,7 @@ def handle_message(event):
         # 檢查用戶之前選擇的科系
         if user_id in user_choices and user_choices[user_id] == "資料科學系":
             # 調用函數發送彈性消息
-            send_carousel_message(event)
+            send_carousel_message110(event)
         else:
             # 回覆用戶尚未選擇資料科學系
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
@@ -217,7 +234,16 @@ def handle_message(event):
         # 檢查用戶之前選擇的科系
         if user_id in user_choices and user_choices[user_id] == "資料科學系":
             # 調用函數發送彈性消息
-            send_carousel_message(event)
+            send_carousel_message111(event)
+        else:
+            # 回覆用戶尚未選擇資料科學系
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
+            
+    elif user_message == "112學年":
+        # 檢查用戶之前選擇的科系
+        if user_id in user_choices and user_choices[user_id] == "資料科學系":
+            # 調用函數發送彈性消息
+            send_carousel_message112(event)
         else:
             # 回覆用戶尚未選擇資料科學系
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
