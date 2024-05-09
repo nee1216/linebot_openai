@@ -44,29 +44,24 @@ def load_flex_message(file_path):
             # 否则，认为 file_path 是本地文件路径，使用本地加载方式
             with open(file_path, 'r', encoding='utf-8') as file:
                 return json.load(file)
-    except Exception as e:
+    except json.JSONDecodeError as e:
         print(f"Error loading JSON: {e}")
-        # 返回一个默认的 JSON 对象或者您认为合适的处理方式
+        # 处理 JSON 解析错误，返回一个默认的 JSON 对象或者您认为合适的处理方式
+        return {}
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        # 处理其他未预见的错误
         return {}
 
-def send_carousel_message(event):
-    # 使用 load_flex_message 函数加载 Flex Message JSON 文件
-    file_path = "https://github.com/nee1216/linebot_openai/blob/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"
-    carousel_message = load_flex_message(file_path)
+# 使用 load_flex_message 函数加载 Flex Message JSON 文件
+file_path = "https://github.com/nee1216/linebot_openai/blob/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"
+carousel_message = load_flex_message(file_path)
 
-    # 如果 JSON 加载成功，则创建 FlexSendMessage
-    if carousel_message:
-        flex_message = FlexSendMessage(
-            alt_text="110學年 資科系學分",
-            contents=carousel_message
-        )
-
-        # 使用 line_bot_api 发送 FlexSendMessage
-        line_bot_api.reply_message(event.reply_token, flex_message)
-    else:
-        # 如果加载 JSON 失败，打印错误信息并发送默认消息
-        print("Failed to load JSON or create Flex Message.")
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="抱歉，無法加載數據。請稍後再試。"))
+# 检查加载的 JSON 内容
+if carousel_message:
+    print("JSON loaded successfully.")
+else:
+    print("Failed to load JSON or create Flex Message.")
 
 # 當收到 LINE 消息時的回調函數
 @handler.add(MessageEvent, message=TextMessage)
