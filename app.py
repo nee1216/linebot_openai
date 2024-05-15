@@ -77,7 +77,14 @@ def callback():
         abort(400)
 
     return 'OK'
-
+    
+def load_flex_message_from_url(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
+        
 # 處理文字訊息事件
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
