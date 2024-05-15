@@ -62,12 +62,12 @@ def handle_message(event):
                     response += "校園頭條: {}\n".format(link.text)
                     response += "連結: {}\n".format(link.get_attribute("href"))
 
+            driver.close()
+
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=response)
             )
-
-            driver.close()
 
         except Exception as e:
             line_bot_api.reply_message(
