@@ -196,5 +196,8 @@ def handle_message1(event):
         else:
             logging.warning(f"No matching restaurant option found: {restaurant}")
 
+# 註冊處理隨機選擇事件
+handler.add(MessageEvent, message=TextMessage)(handle_message1)
+
 if __name__ == "__main__":
     app.run()
