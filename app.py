@@ -18,6 +18,52 @@ logging.basicConfig(level=logging.INFO)
 line_bot_api = LineBotApi('tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('0584d0fc476d78024afcd7cbbf8096b4')
 
+# 定義餐點列表
+menu_options = {
+    '木槿花韓食': [
+        '全州烤牛肉拌飯$100',
+        '明洞炸豬排蓋飯$90',
+        '朝鮮海苔炸雞蓋飯$90',
+        '洋釀炸雞蓋飯$90',
+        '豬肉嫩豆腐鍋(不辣)$110',
+        '泡菜豬肉鍋(微辣)$110'
+    ],
+    '四海遊龍': [
+        '酸辣湯餃(6顆)Dumpling in Hot&Sour Soup$90',
+        '牛肉醬拌麵套餐$80',
+        '高麗菜水餃套餐(10個)$80',
+        '招牌鍋貼套餐(10個)$75',
+        '韓式辣味鍋貼套餐(10個)$80',
+        '酸辣麵套餐$85',
+        '牛肉麵套餐$150'
+    ],
+    '媽媽樂茶餐室': [
+        '港式豬扒腸粉 $60',
+        '港式西多士(花生、巧克力) $45',
+        '港式XO醬炒蘿蔔糕 $55',
+        '港式一丁麻油餐蛋麵 $80',
+        '韓式辛拉麵 $90',
+        '不倒翁起士濃拉麵 $95',
+        '港式豬扒可頌/菠蘿包 $65'
+    ],
+    '強尼兄弟健康廚房': [
+        '蒜香椒鹽雞胸餐盒$108',
+        '牛雞雙重奏餐盒$175',
+        '新鮮蔬食菜飯餐盒$76',
+        '泰式打拋豬餐盒$105',
+        '精緻滷牛腱餐盒$140',
+        '油蔥雞肉飯餐盒$79',
+        '泰式酸辣巴沙魚餐盒$85'
+    ],
+    '丼步喱': [
+        '原味咖喱飯$60',
+        '日式炸豬排定食 pork chop set$85',
+        '蒲燒鯛魚定食Kabayaki sea bream set$85',
+        '菜飯Rice with vegetable$50',
+        '親子丼$80',
+        '親子丼(無菜)$70'
+    ]
+}
 # 處理 Line Bot 的 Webhook 路由
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -42,7 +88,7 @@ def handle_message(event):
         carousel_template_message = create_carousel()
         line_bot_api.reply_message(event.reply_token, carousel_template_message)
 
-    elif user_message == "木槿花小編推薦/避雷":
+    elif user_message == "木槿花韓食 小編推薦/避雷":
         send_carousel_menu1(event)
 
     elif user_message == "木槿花韓食 菜單":
@@ -56,7 +102,7 @@ def create_carousel():
             text='請選擇功能',
             actions=[
                 MessageAction(label='菜單', text='木槿花韓食 菜單'),
-                MessageAction(label='小編推薦', text='木槿花小編推薦/避雷'),
+                MessageAction(label='小編推薦', text='木槿花韓食 小編推薦/避雷'),
                 MessageAction(label='隨機選擇', text='木槿花韓食 隨機選擇')
             ]
         ),
@@ -102,7 +148,7 @@ def create_carousel():
         )
     ])
 
-        template_message = TemplateSendMessage(
+    template_message = TemplateSendMessage(
         alt_text='學餐選擇',
         template=carousel_template
     )
