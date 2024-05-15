@@ -45,7 +45,7 @@ executable_path = driver_path
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == "最近消息":
+    if event.message.text == "最新消息":
         
         line_bot_api.reply_message(
                 event.reply_token,
