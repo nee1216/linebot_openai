@@ -13,7 +13,6 @@ app = Flask(__name__)
 LINE_CHANNEL_ACCESS_TOKEN = "tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU="
 LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 
-
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
@@ -32,18 +31,19 @@ def handle_message(event):
     if event.message.text == "最近消息":
         try:
             options = webdriver.ChromeOptions()
-            service = ChromeService(executable_path="https://github.com/nee1216/linebot_openai/blob/master/chromedriver.exe")
+            service = ChromeService(executable_path="https://raw.githubusercontent.com/nee1216/linebot_openai/master/chromedriver.exe")
             driver = webdriver.Chrome(service=service, options=options)
 
-            driver.get("https://www-news.scu.edu.tw/news-7?page=1")
-            time.sleep(5)
-            tbody = driver.find_element(By.XPATH, "//tbody")
-            
-            links = tbody.find_elements(By.TAG_NAME, "a")
             response = ""
-            for link in links:
-                response += "校園頭條: {}\n".format(link.text)
-                response += "連結: {}\n".format(link.get_attribute("href"))
+            for _ in range(5):  # Run the scraping process 5 times
+                driver.get("https://www-news.scu.edu.tw/news-7?page=1")
+                time.sleep(5)
+                tbody = driver.find_element(By.XPATH, "//tbody")
+                
+                links = tbody.find_elements(By.TAG_NAME, "a")
+                for link in links:
+                    response += "校園頭條: {}\n".format(link.text)
+                    response += "連結: {}\n".format(link.get_attribute("href"))
 
             line_bot_api.reply_message(
                 event.reply_token,
@@ -60,4 +60,3 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run()
-
