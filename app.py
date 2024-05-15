@@ -46,7 +46,7 @@ def latest_news():
         links = tbody.find_all("a")
 
         for link in links:
-            message += "校園頭條:{}".format(link.text)
+            message += "校園頭條:\n{}\n\n".format(link.text)
             message += "連結: {}\n\n".format(link["href"])
 
         return message.strip()
