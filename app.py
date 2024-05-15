@@ -2,11 +2,8 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service as ChromeService
-import time
 import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -34,46 +31,28 @@ def callback():
 def index():
     return "Hello, World!"
 
-chrome_driver_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/chromedriver.exe"
-driver_path = "chromedriver.exe"
-
-response = requests.get(chrome_driver_url)
-with open(driver_path, 'wb') as f:
-    f.write(response.content)
-
-executable_path = driver_path
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "最近消息":
-        try:
-            options = webdriver.ChromeOptions()
-            service = ChromeService(executable_path=executable_path)
-            driver = webdriver.Chrome(service=service, options=options)
+        news_message = latest_news()
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=news_message))
 
-            response = ""
-            for _ in range(5):  # Run the scraping process 5 times
-                driver.get("https://www-news.scu.edu.tw/news-7?page=1")
-                time.sleep(5)
-                tbody = driver.find_element(By.XPATH, "//tbody")
-                
-                links = tbody.find_elements(By.TAG_NAME, "a")
-                for link in links:
-                    response += "校園頭條: {}\n".format(link.text)
-                    response += "連結: {}\n".format(link.get_attribute("href"))
+def latest_news():
+    try:
+        message = ""
+        response = requests.get("https://www-news.scu.edu.tw/news-7?page=1")
+        root = BeautifulSoup(response.text, "html.parser")
+        tbody = root.find("tbody")
+        links = tbody.find_all("a")
 
-            driver.close()
+        for link in links:
+            message += "校園頭條: {}\n".format(link.text)
+            message += "連結: {}\n\n".format(link["href"])
 
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=response)
-            )
-
-        except Exception as e:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="發生錯誤: {}".format(str(e)))
-            )
+        return message.strip()
+    
+    except Exception as e:
+        return '無法取得最新消息，請稍後再試：{}'.format(str(e))
 
 if __name__ == "__main__":
     app.run()
