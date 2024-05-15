@@ -175,5 +175,26 @@ def send_carousel_1menu(event):
     flex_message = FlexSendMessage(alt_text="木槿花韓食 菜單", contents=carousel_message)
     line_bot_api.reply_message(event.reply_token, flex_message)
 
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message1(event):
+    user_message = event.message.text
+    logging.info(f"Received message: {user_message}")
+    
+    if user_message == '學餐':
+        carousel_message = create_carousel()
+        line_bot_api.reply_message(event.reply_token, carousel_message)
+    elif '隨機選擇' in user_message:
+        restaurant = user_message.split(' ')[0]
+        logging.info(f"Processing random choice for: {restaurant}")
+        if restaurant in menu_options:
+            random_choice = random.choice(menu_options[restaurant])
+            logging.info(f"Random choice result: {random_choice}")
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=f"今天推薦你吃: {random_choice}")
+            )
+        else:
+            logging.warning(f"No matching restaurant option found: {restaurant}")
+
 if __name__ == "__main__":
     app.run()
