@@ -56,6 +56,22 @@ def send_carousel_message110(event):
     line_bot_api.reply_message(event.reply_token, flex_message)
 
 # 定义发送 carousel message 的函数
+def send_carousel_message111(event):
+    # 指定 JSON 文件的 URL
+    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E8%B3%87%E7%A7%91%E7%B3%BB.json"
+    
+    # 从 URL 加载 JSON 文件内容
+    carousel_message = load_flex_message_from_url(json_url)
+    
+    # 创建 FlexSendMessage
+    flex_message = FlexSendMessage(
+        alt_text="111學年 資科系學分",
+        contents=carousel_message
+    )
+    
+    # 发送 FlexSendMessage
+    line_bot_api.reply_message(event.reply_token, flex_message)
+# 定义发送 carousel message 的函数
 def send_carousel_message112(event):
     # 指定 JSON 文件的 URL
     json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E8%B3%87%E7%A7%91%E7%B3%BB.json"
@@ -65,7 +81,7 @@ def send_carousel_message112(event):
     
     # 创建 FlexSendMessage
     flex_message = FlexSendMessage(
-        alt_text="110學年 資科系學分",
+        alt_text="112學年 資科系學分",
         contents=carousel_message
     )
     
