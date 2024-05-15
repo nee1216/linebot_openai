@@ -8,7 +8,7 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, CarouselTemplate,
-    CarouselColumn, MessageAction
+    CarouselColumn, MessageAction, URIAction
 )
 
 app = Flask(__name__)
@@ -49,36 +49,30 @@ def handle_message(event):
     user_message = event.message.text.strip()
 
     if user_message == "學餐":
-        # 建立三個輪播樣板
+        # 建立三個按鈕選項
         carousel_columns = [
             CarouselColumn(
                 thumbnail_image_url='https://example.com/image1.jpg',  # 替換成你的圖片URL
-                title='學餐選項1',
-                text='描述1',
+                title='隨機推薦',
+                text='隨機推薦一個餐點',
                 actions=[
-                    MessageAction(label='餐點1', text='餐點1'),
-                    MessageAction(label='餐點2', text='餐點2'),
-                    MessageAction(label='餐點3', text='餐點3'),
+                    MessageAction(label='隨機推薦', text='隨機推薦'),
                 ]
             ),
             CarouselColumn(
                 thumbnail_image_url='https://example.com/image2.jpg',  # 替換成你的圖片URL
-                title='學餐選項2',
-                text='描述2',
+                title='呈現菜單',
+                text='呈現所有菜單',
                 actions=[
-                    MessageAction(label='餐點4', text='餐點4'),
-                    MessageAction(label='餐點5', text='餐點5'),
-                    MessageAction(label='餐點6', text='餐點6'),
+                    URIAction(label='菜單', uri='https://example.com/menu'),
                 ]
             ),
             CarouselColumn(
                 thumbnail_image_url='https://example.com/image3.jpg',  # 替換成你的圖片URL
-                title='學餐選項3',
-                text='描述3',
+                title='私人推薦',
+                text='私人推薦一個餐點',
                 actions=[
-                    MessageAction(label='餐點7', text='餐點7'),
-                    MessageAction(label='餐點8', text='餐點8'),
-                    MessageAction(label='餐點9', text='餐點9'),
+                    MessageAction(label='私人推薦', text='私人推薦'),
                 ]
             )
         ]
@@ -95,27 +89,22 @@ def handle_message(event):
             carousel_template
         )
 
-    elif user_message.startswith("餐點"):
-        # 從訊息中獲取餐點編號
-        try:
-            meal_index = int(user_message.split("餐點")[1])
-            if 1 <= meal_index <= 9:
-                # 根據餐點編號推薦一個隨機餐點
-                recommended_food = random.choice(menu)
-                line_bot_api.reply_message(
-                    event.reply_token,
-                    TextSendMessage(text=f"推薦你今天的餐點是：{recommended_food}")
-                )
-            else:
-                line_bot_api.reply_message(
-                    event.reply_token,
-                    TextSendMessage(text="抱歉，無效的餐點編號。")
-                )
-        except ValueError:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="抱歉，無效的餐點編號。")
-            )
+    elif user_message == "隨機推薦":
+        # 隨機推薦一個餐點
+        recommended_food = random.choice(menu)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f"今天推薦你吃 {recommended_food}！")
+        )
+
+    elif user_message == "私人推薦":
+        # 私人推薦一個餐點
+        # 在這裡你可以自己實現一些邏輯，例如根據使用者的個人喜好進行推薦
+        recommended_food = "推薦的餐點"  # 這裡需要替換成你的推薦邏輯
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f"我特別為你推薦 {recommended_food}！")
+        )
 
 if __name__ == "__main__":
     app.run()
