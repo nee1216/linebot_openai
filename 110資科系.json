@@ -418,7 +418,7 @@
                                         },
                                         {
                                             "type": "text",
-                                            "text": "各3學分",
+                                            "text": "3學分",
                                             "size": "sm",
                                             "color": "#111111",
                                             "align": "end"
