@@ -8,6 +8,7 @@ from linebot.models.events import MessageEvent, TextMessage
 import requests
 import random
 import logging
+import json
 
 app = Flask(__name__)
 
@@ -77,13 +78,6 @@ def callback():
         abort(400)
 
     return 'OK'
-    
-def load_flex_message_from_url(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
         
 # 處理文字訊息事件
 @handler.add(MessageEvent, message=TextMessage)
@@ -162,10 +156,17 @@ def create_carousel():
 
     return template_message
 
+def load_flex_message_from_url(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
+
 def send_carousel_menu1(event):
     json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/menu1.json"
     carousel_message = load_flex_message_from_url(json_url)
-    flex_message = FlexSendMessage(alt_text="木槿花小編推薦/避雷", contents=carousel_message)
+    flex_message = FlexSendMessage(alt_text="木槿花韓食 小編推薦/避雷", contents=carousel_message)
     line_bot_api.reply_message(event.reply_token, flex_message)
 
 def send_carousel_1menu(event):
@@ -173,11 +174,6 @@ def send_carousel_1menu(event):
     carousel_message = load_flex_message_from_url(json_url)
     flex_message = FlexSendMessage(alt_text="木槿花韓食 菜單", contents=carousel_message)
     line_bot_api.reply_message(event.reply_token, flex_message)
-
-def load_flex_message_from_url(url):
-    response = requests.get(url)
-    response.raise_for_status()
-    return response.json()
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
