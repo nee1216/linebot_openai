@@ -95,6 +95,20 @@ def handle_message(event):
     elif user_message == "木槿花韓食 菜單":
         send_carousel_1menu(event)
 
+    elif '隨機選擇' in user_message:
+        restaurant = user_message.split(' ')[0]
+        logging.info(f"Processing random choice for: {restaurant}")
+        if restaurant in menu_options:
+            random_choice = random.choice(menu_options[restaurant])
+            logging.info(f"Random choice result: {random_choice}")
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=f"今天推薦你吃: {random_choice}")
+            )
+        else:
+            logging.warning(f"No matching restaurant option found: {restaurant}")
+
+
 def create_carousel():
     carousel_template = CarouselTemplate(columns=[
         CarouselColumn(
