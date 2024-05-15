@@ -69,7 +69,7 @@ def create_carousel():
             text='請選擇功能',
             actions=[
                 MessageAction(label='菜單', text='木槿花韓食 菜單'),
-                MessageAction(label='小編推薦', text='木槿花韓食 小編推薦'),
+                MessageAction(label='小編推薦', text='木槿花韓食 小編推薦/避雷'),
                 MessageAction(label='隨機選擇', text='木槿花韓食 隨機選擇')
             ]
         ),
@@ -79,37 +79,37 @@ def create_carousel():
             text='選擇功能',
             actions=[
                 MessageAction(label='菜單', text='四海遊龍 菜單'),
-                MessageAction(label='小編推薦', text='四海遊龍 小編推薦'),
+                MessageAction(label='小編推薦', text='四海遊龍 小編推薦/避雷'),
                 MessageAction(label='隨機選擇', text='四海遊龍 隨機選擇')
             ]
         ),
         CarouselColumn(
-            thumbnail_image_url='https://example.com/restaurant3.jpg',
+            thumbnail_image_url='https://megapx-assets.dcard.tw/images/60605333-d75f-4433-9133-5dfbd074cdce/full.jpeg',
             title='媽媽樂茶餐室',
             text='選擇功能',
             actions=[
                 MessageAction(label='菜單', text='媽媽樂茶餐室 菜單'),
-                MessageAction(label='小編推薦', text='媽媽樂茶餐室 小編推薦'),
+                MessageAction(label='小編推薦', text='媽媽樂茶餐室 小編推薦/避雷'),
                 MessageAction(label='隨機選擇', text='媽媽樂茶餐室 隨機選擇')
             ]
         ),
         CarouselColumn(
-            thumbnail_image_url='https://example.com/restaurant4.jpg',
+            thumbnail_image_url='https://tb-static.uber.com/prod/image-proc/processed_images/5ca9bdf981c23febc06bd967c4c91df6/e00617ce8176680d1c4c1a6fb65963e2.png',
             title='強尼兄弟健康廚房',
             text='選擇功能',
             actions=[
                 MessageAction(label='菜單', text='強尼兄弟健康廚房 菜單'),
-                MessageAction(label='小編推薦', text='強尼兄弟健康廚房 小編推薦'),
+                MessageAction(label='小編推薦', text='強尼兄弟健康廚房 小編推薦/避雷'),
                 MessageAction(label='隨機選擇', text='強尼兄弟健康廚房 隨機選擇')
             ]
         ),
         CarouselColumn(
-            thumbnail_image_url='https://example.com/restaurant5.jpg',
+            thumbnail_image_url='https://ap-south-1.linodeobjects.com/nidin-production-v3/store/icons/s_3503_icon_20201008_151537_c1646.jpg',
             title='丼步喱',
             text='選擇功能',
             actions=[
                 MessageAction(label='菜單', text='丼步喱 菜單'),
-                MessageAction(label='小編推薦', text='丼步喱 小編推薦'),
+                MessageAction(label='小編推薦', text='丼步喱 小編推薦/避雷'),
                 MessageAction(label='隨機選擇', text='丼步喱 隨機選擇')
             ]
         )
