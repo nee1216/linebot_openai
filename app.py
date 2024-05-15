@@ -5,6 +5,10 @@ from linebot.models import (
 from linebot.exceptions import InvalidSignatureError
 from linebot.models.events import MessageEvent, TextMessage
 import random
+import logging
+
+# 設定日誌
+logging.basicConfig(level=logging.INFO)
 
 # 用您的 Channel access token 替換
 line_bot_api = LineBotApi('tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU=')
@@ -118,18 +122,26 @@ def create_carousel():
 
     return template_message
 
+@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == '學餐':
+    user_message = event.message.text
+    logging.info(f"收到訊息: {user_message}")
+    
+    if user_message == '學餐':
         carousel_message = create_carousel()
         line_bot_api.reply_message(event.reply_token, carousel_message)
-    elif '隨機選擇' in event.message.text:
-        restaurant = event.message.text.split(' ')[0]
+    elif '隨機選擇' in user_message:
+        restaurant = user_message.split(' ')[0]
+        logging.info(f"處理隨機選擇功能: {restaurant}")
         if restaurant in menu_options:
             random_choice = random.choice(menu_options[restaurant])
+            logging.info(f"隨機選擇結果: {random_choice}")
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=f"{restaurant} 為您隨機選擇的餐點是: {random_choice}")
             )
+        else:
+            logging.warning(f"未找到對應的餐廳選項: {restaurant}")
 
 # 您的 webhook 處理函數（根據您的框架不同可能會有所不同）
 from flask import Flask, request, abort
@@ -140,25 +152,14 @@ app = Flask(__name__)
 def callback():
     signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
+    logging.info(f"接收到請求: {body}")
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
+        logging.error("Invalid signature error")
         abort(400)
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    if event.message.text == '學餐':
-        carousel_message = create_carousel()
-        line_bot_api.reply_message(event.reply_token, carousel_message)
-    elif '隨機選擇' in event.message.text:
-        restaurant = event.message.text.split(' ')[0]
-        if restaurant in menu_options:
-            random_choice = random.choice(menu_options[restaurant])
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=f"{restaurant} 為您隨機選擇的餐點是: {random_choice}")
-            )
-
 if __name__ == "__main__":
     app.run()
+
