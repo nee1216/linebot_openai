@@ -4,9 +4,6 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import requests
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service as ChromeService
 import time
 
 app = Flask(__name__)
@@ -43,30 +40,28 @@ def handle_message(event):
 
 def latest_news():
     try:
-        options = webdriver.ChromeOptions()
-        options.add_argument('--headless')  # 使瀏覽器無頭運行
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
+         response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, 'html.parser')
+                
+                # Assuming the transit information is in an element with id="transit-1"
+                transit_1_element = soup.find(id="transit-1")
+                if transit_1_element:
+                    transit_1_text = transit_1_element.get_text(strip=True)
+                    print("捷運士林站(中正)-東吳大學:")
+                    print(transit_1_text)
+                
+                # Assuming the second part of transit information is in an element with id="transit-2"
+                transit_2_element = soup.find(id="transit-2")
+                if transit_2_element:
+                    transit_2_text = transit_2_element.get_text(strip=True)
+                    print("\n" + transit_2_text)
+                
+                print("---------------------------------------------------------------------------------------")
+            else:
+                print(f"Failed to retrieve the page. Status code: {response.status_code}")
 
-        # 確保你有一個適合的 chromedriver 可執行文件路徑
-        chrome_service = ChromeService(executable_path="/path/to/chromedriver")
-        driver = webdriver.Chrome(service=chrome_service, options=options)
-
-        driver.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583") 
-        driver.maximize_window()
-        time.sleep(3)  # 等待網頁載入
-
-        message = ""
-        
-        table_element = driver.find_element(By.ID, "transit-1")
-        table_text = table_element.text
-        message += "捷運士林站(中正)-東吳大學:\n" + table_text + "\n\n"
-    
-        table_element = driver.find_element(By.ID, "transit-2")
-        table_text = table_element.text
-        message += table_text + "\n"
-
-        driver.quit()
+            time.sleep(5)
         
         return message.strip() 
     
