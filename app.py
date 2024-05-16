@@ -55,7 +55,6 @@ def latest_news():
                 transit_2_text = transit_2_element.get_text(strip=True)
                 message += "\n\n" + transit_2_text
             
-            message += "\n---------------------------------------------------------------------------------------"
             return message.strip()
         else:
             return f"Failed to retrieve the page. Status code: {response.status_code}"
