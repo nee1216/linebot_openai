@@ -62,6 +62,30 @@ def handle_message(event):
                 "layout": "vertical",
                 "contents": [
                     {
+                        "type": "text",    if user_message == "交通":  
+        # 构建 Flex Message
+        flex_message = {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "选择想了解的科系",
+                        "align": "center",
+                        "weight": "bold",
+                        "size": "xl",
+                        "color": "#ffffff"
+                    }
+                ],
+                "backgroundColor": "#471B00"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
                         "type": "text",
                         "text": "🌟先选择想了解的科系之后，就可以查看该系的必选修课程资讯咯!!!!",
                         "size": "md",
