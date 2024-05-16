@@ -31,30 +31,6 @@ def callback():
     
     return 'OK'
 
-def send_transit_info(event, user_message):
-    # 发送公车路线信息给用户
-    if user_message == "士林捷運站-東吳大學":
-        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            transit_element = soup.find(id="transit-1")
-            if transit_element:
-                time_element = transit_element.find(class_="time display-inline text-frame")
-                if time_element:
-                    time_text = time_element.get_text(strip=True)
-                    transit_info = "捷運士林站(中正)-東吳大學:(557)\n" + time_text
-                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=transit_info))
-                else:
-                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="未找到指定的 class 元素。"))
-            else:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="未找到指定的 id 元素。"))
-        else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"无法获取页面内容。状态码: {response.status_code}"))
-    elif user_message == "東吳大學-士林捷運站":
-        # 处理其他路线信息的逻辑，以及其他路线的请求和回复
-        pass
-    # 处理其他公车路线的逻辑，以及其他路线的请求和回复
-
 # 当收到 LINE 消息时的回调函数
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -181,3 +157,28 @@ def handle_message(event):
     # 判断用户是否选择了公车路线
     elif user_message in ["士林捷運站-東吳大學", "東吳大學-士林捷運站", "士林捷運站-東吳大學(錢穆故居)", "東吳大學(錢穆故居)-士林捷運站", "捷運劍南路站-東吳大學(錢穆故居)"]:
         send_transit_info(event, user_message)  # 调用
+
+def send_transit_info(event, user_message):
+    # 发送公车路线信息给用户
+    if user_message == "士林捷運站-東吳大學":
+        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            transit_element = soup.find(id="transit-1")
+            if transit_element:
+                time_element = transit_element.find(class_="time display-inline text-frame")
+                if time_element:
+                    time_text = time_element.get_text(strip=True)
+                    transit_info = "捷運士林站(中正)-東吳大學:(557)\n" + time_text
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=transit_info))
+                else:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="未找到指定的 class 元素。"))
+            else:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="未找到指定的 id 元素。"))
+        else:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"无法获取页面内容。状态码: {response.status_code}"))
+    elif user_message == "東吳大學-士林捷運站":
+        # 处理其他路线信息的逻辑，以及其他路线的请求和回复
+        pass
+    # 处理其他公车路线的逻辑，以及其他路线的请求和回复
+
