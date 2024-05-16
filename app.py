@@ -33,36 +33,28 @@ def index():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == "交通":
+    if event.message.text == "最新消息":
         news_message = latest_news()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=news_message))
 
 def latest_news():
     try:
         message = ""
-        options = webdriver.ChromeOptions()
-        service = ChromeService(executable_path="chromedriver.exe")
-        driver = webdriver.Chrome(service=service, options=options)
+        response = requests.get("https://www-news.scu.edu.tw/news-7?page=1")
+        root = BeautifulSoup(response.text, "html.parser")
+        tbody = root.find("tbody")
+        links = tbody.find_all("a")
 
-        driver.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583") 
-        driver.maximize_window()
-        time.sleep(3) 
+        for link in links:
+            message += "校園頭條: {}".format(link.text)
+            message += "連結: {}\n\n".format(link["href"])
 
-        table_element_1 = driver.find_element(By.ID, "transit-1")
-        table_text_1 = table_element_1.text
-        message += "捷運士林站(中正)-東吳大學:\n{}\n\n".format(table_text_1)
-
-        table_element_2 = driver.find_element(By.ID, "transit-2")
-        table_text_2 = table_element_2.text
-        message += "{}\n".format(table_text_2)
-
-        driver.quit()  # 關閉瀏覽器
-
-        return message.strip()
+        return message.lstrip()
     
     except Exception as e:
         return '無法取得最新消息，請稍後再試：{}'.format(str(e))
 
-
 if __name__ == "__main__":
     app.run()
+
+
