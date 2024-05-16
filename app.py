@@ -34,8 +34,7 @@ def callback():
 def send_transit_info(event, user_message):
     # 发送公车路线信息给用户
     if user_message == "士林捷運站-東吳大學":
-        url = "URL_1"
-        response = requests.get(url)
+        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
             transit_element = soup.find(id="transit-1")
