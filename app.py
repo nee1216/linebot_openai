@@ -4,6 +4,10 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import requests
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+import time
 
 app = Flask(__name__)
 
@@ -33,22 +37,37 @@ def index():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == "最新消息":
+    if event.message.text == "交通":
         news_message = latest_news()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=news_message))
 
 def latest_news():
     try:
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')  # 使瀏覽器無頭運行
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+
+        # 確保你有一個適合的 chromedriver 可執行文件路徑
+        chrome_service = ChromeService(executable_path="/path/to/chromedriver")
+        driver = webdriver.Chrome(service=chrome_service, options=options)
+
+        driver.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583") 
+        driver.maximize_window()
+        time.sleep(3)  # 等待網頁載入
+
         message = ""
-        response = requests.get("https://www-news.scu.edu.tw/news-7?page=1")
-        root = BeautifulSoup(response.text, "html.parser")
-        tbody = root.find("tbody")
-        links = tbody.find_all("a")
+        
+        table_element = driver.find_element(By.ID, "transit-1")
+        table_text = table_element.text
+        message += "捷運士林站(中正)-東吳大學:\n" + table_text + "\n\n"
+    
+        table_element = driver.find_element(By.ID, "transit-2")
+        table_text = table_element.text
+        message += table_text + "\n"
 
-        for link in links:
-            message += "校園頭條:\n{}\n".format(link.text.strip())
-            message += "連結: {}\n\n".format(link["href"])
-
+        driver.quit()
+        
         return message.strip() 
     
     except Exception as e:
@@ -56,5 +75,3 @@ def latest_news():
 
 if __name__ == "__main__":
     app.run()
-
-
