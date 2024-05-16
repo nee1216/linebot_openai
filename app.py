@@ -4,7 +4,6 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import requests
 from bs4 import BeautifulSoup
-import time
 
 app = Flask(__name__)
 
@@ -40,30 +39,26 @@ def handle_message(event):
 
 def latest_news():
     try:
-         response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
-            if response.status_code == 200:
-                soup = BeautifulSoup(response.text, 'html.parser')
-                
-                # Assuming the transit information is in an element with id="transit-1"
-                transit_1_element = soup.find(id="transit-1")
-                if transit_1_element:
-                    transit_1_text = transit_1_element.get_text(strip=True)
-                    print("捷運士林站(中正)-東吳大學:")
-                    print(transit_1_text)
-                
-                # Assuming the second part of transit information is in an element with id="transit-2"
-                transit_2_element = soup.find(id="transit-2")
-                if transit_2_element:
-                    transit_2_text = transit_2_element.get_text(strip=True)
-                    print("\n" + transit_2_text)
-                
-                print("---------------------------------------------------------------------------------------")
-            else:
-                print(f"Failed to retrieve the page. Status code: {response.status_code}")
-
-            time.sleep(5)
-        
-        return message.strip() 
+        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Assuming the transit information is in an element with id="transit-1"
+            transit_1_element = soup.find(id="transit-1")
+            if transit_1_element:
+                transit_1_text = transit_1_element.get_text(strip=True)
+                message = "捷運士林站(中正)-東吳大學:\n" + transit_1_text
+            
+            # Assuming the second part of transit information is in an element with id="transit-2"
+            transit_2_element = soup.find(id="transit-2")
+            if transit_2_element:
+                transit_2_text = transit_2_element.get_text(strip=True)
+                message += "\n\n" + transit_2_text
+            
+            message += "\n---------------------------------------------------------------------------------------"
+            return message.strip()
+        else:
+            return f"Failed to retrieve the page. Status code: {response.status_code}"
     
     except Exception as e:
         return '無法取得最新消息，請稍後再試：{}'.format(str(e))
