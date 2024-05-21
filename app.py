@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, CarouselTemplate, CarouselColumn, MessageAction, FlexSendMessage
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, CarouselTemplate, CarouselColumn, MessageAction, FlexSendMessage, QuickReply, QuickReplyButton
 import requests
 from bs4 import BeautifulSoup
 
@@ -34,24 +34,22 @@ def callback():
 def index():
     return "Hello, World!"
 
-# 定義校內宿舍住宿費用資訊
-    dorm_info = """
-    榕華樓
-    規格：5人雅房
-    住宿費：1,200元（每人/每學期）
+def send_carousel_message(event, year):
+    # 指定 JSON 文件的 URL
+    json_url = f"https://raw.githubusercontent.com/nee1216/linebot_openai/master/{year}%E8%B3%87%E7%A7%91%E7%B3%BB.json"
     
-    柚芳樓
-    規格：8人雅房
-    住宿費：10,200元（每人/每學期）
-    網費：800元（每人/每年）
-    保證金：1,000元
-    冷氣費用：費用由寢室室友共同分攤
+    # 从 URL 加载 JSON 文件内容
+    carousel_message = load_flex_message_from_url(json_url)
     
-    松勁樓
-    規格：8人雅房
-    住宿費：800元（每人/每學期）
-    """
+    # 创建 FlexSendMessage
+    flex_message = FlexSendMessage(
+        alt_text=f"{year}學年 資科系學分",
+        contents=carousel_message
+    )
     
+    # 发送 FlexSendMessage
+    line_bot_api.reply_message(event.reply_token, flex_message)
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_message = event.message.text
@@ -135,7 +133,7 @@ def handle_message(event):
                         "action": {
                             "type": "message",
                             "label": "法律系",
-                            "text": "法律法律系"
+                            "text": "法律系"
                         }
                     },
                     {
@@ -200,24 +198,18 @@ def handle_message(event):
         
         # 記錄用戶選擇的科系
         user_choices[user_id] = user_message
-    elif user_message == "110學年" or user_message == "111學年" or user_message == "112學年":
+    elif user_message in ["110學年", "111學年", "112學年"]:
         # 檢查用戶是否選擇了科系
         if user_id in user_choices:
             department = user_choices[user_id]
-            # 構建 JSON 文件的 URL
-            json_url = f"https://raw.githubusercontent.com/nee1216/linebot_openai/master/{user_message}資訊科系.json"
-            # 從 URL 加載 JSON 文件內容
-            carousel_message = load_flex_message_from_url(json_url)
-            # 創建 FlexSendMessage
-            flex_message = FlexSendMessage(
-                alt_text=f"{user_message}學年 {department}學分",
-                contents=carousel_message
-            )
-            # 發送 FlexSendMessage
-            line_bot_api.reply_message(event.reply_token, flex_message)
+            if department == "資料科學系":
+                send_carousel_message(event, user_message)
+            else:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
         else:
-            # 回覆用戶尚未選擇科系
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇科系。"))
+    elif user_message in ["校外宿舍有容學舍地址", "校外宿舍有容學舍交通方式", "校外宿舍泉思學舍地址", "校外宿舍泉思學舍交通方式", "校內宿舍地址", "校內宿舍交通方式", "校內宿舍住宿費用"]:
+        handle_dormitory_message(event, user_message)
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
         line_bot_api.reply_message(
@@ -282,43 +274,7 @@ def show_dormitory_options(reply_token):
             ]
         )
     ]
-    
-    elif user_message == "校外宿舍有容學舍地址":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="台北市萬華區大理街140號")
-        )
-    elif user_message == "校外宿舍有容學舍交通方式":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="捷運：搭乘板南線到捷運龍山寺站，步行約6分鐘即可抵達。")
-        )
-    elif user_message == "校外宿舍泉思學舍地址":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="台北市北投區北投路二段55號")
-        )
-    elif user_message == "校外宿舍泉思學舍交通方式":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="捷運：搭乘淡水信義線到捷運北投站，步行約3分鐘即可抵達。")
-        )
-    elif user_message == "校內宿舍地址":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="台北市士林區臨溪路70號")
-        )
-    elif user_message == "校內宿舍交通方式":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="一、自行駕車\n1、中山重慶北路交流道（往士林方向）匝道，經百齡橋直行中正路至雙溪公園，右轉至善路。\n2、北二高路線—由堤頂交流道下北二高，往左至內湖路（內湖/大直方向），過自強隧道，直行到至善路左轉。\n二、捷運\n1、搭乘淡水信義線至捷運士林站，1號出口出站，\n往中正路方向轉乘公車304、255、620、小18、小19、557至東吳大學站。\n2、搭乘文湖線至捷運劍南路站，往劍潭寺方向出口，轉乘公車620，至東吳大學站。\n三、公車\n請於台北車站後站之承德路上搭乘304公車至東吳大學站。\n請事先購買學生型悠遊卡（捷運公車兩用），\n學生公車每段分段點扣費12元；車上投幣每車分段點每人每段15元。\n四、計程車\n1、台北車站至雙溪校區約250元。\n2、士林捷運站至雙溪校區約90元。\n3、松山機場至雙溪校區約200元。")
-        )
-    elif user_message == "校內宿舍住宿費用":
-        # 回復校內宿舍住宿費用資訊
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=dorm_info)
-        )
+
     carousel_template = TemplateSendMessage(
         alt_text='Dormitory options',
         template=CarouselTemplate(columns=carousel_columns)
@@ -326,7 +282,54 @@ def show_dormitory_options(reply_token):
 
     line_bot_api.reply_message(reply_token, carousel_template)
 
+def handle_dormitory_message(event, user_message):
+    if user_message == "校外宿舍有容學舍地址":
+        response_text = "台北市萬華區大理街140號"
+    elif user_message == "校外宿舍有容學舍交通方式":
+        response_text = "捷運：搭乘板南線到捷運龍山寺站，步行約6分鐘即可抵達。"
+    elif user_message == "校外宿舍泉思學舍地址":
+        response_text = "台北市北投區北投路二段55號"
+    elif user_message == "校外宿舍泉思學舍交通方式":
+        response_text = "捷運：搭乘淡水信義線到捷運北投站，步行約3分鐘即可抵達。"
+    elif user_message == "校內宿舍地址":
+        response_text = "台北市士林區臨溪路70號"
+    elif user_message == "校內宿舍交通方式":
+        response_text = """一、自行駕車
+1、中山重慶北路交流道（往士林方向）匝道，經百齡橋直行中正路至雙溪公園，右轉至善路。
+2、北二高路線—由堤頂交流道下北二高，往左至內湖路（內湖/大直方向），過自強隧道，直行到至善路左轉。
+二、捷運
+1、搭乘淡水信義線至捷運士林站，1號出口出站，
+往中正路方向轉乘公車304、255、620、小18、小19、557至東吳大學站。
+2、搭乘文湖線至捷運劍南路站，往劍潭寺方向出口，轉乘公車620，至東吳大學站。
+三、公車
+請於台北車站後站之承德路上搭乘304公車至東吳大學站。
+請事先購買學生型悠遊卡（捷運公車兩用），
+學生公車每段分段點扣費12元；車上投幣每車分段點每人每段15元。
+四、計程車
+1、台北車站至雙溪校區約250元。
+2、士林捷運站至雙溪校區約90元。
+3、松山機場至雙溪校區約200元。"""
+    elif user_message == "校內宿舍住宿費用":
+        response_text = """
+榕華樓
+規格：5人雅房
+住宿費：1,200元（每人/每學期）
+
+柚芳樓
+規格：8人雅房
+住宿費：10,200元（每人/每學期）
+網費：800元（每人/每年）
+保證金：1,000元
+冷氣費用：費用由寢室室友共同分攤
+
+松勁樓
+規格：8人雅房
+住宿費：800元（每人/每學期）
+"""
+    else:
+        response_text = "無法識別的命令。"
+
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=response_text))
+
 if __name__ == "__main__":
     app.run()
-
-
