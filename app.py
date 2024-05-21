@@ -36,7 +36,7 @@ def index():
 
 def send_carousel_message(event, year):
     # 指定 JSON 文件的 URL
-    json_url = f"https://raw.githubusercontent.com/nee1216/linebot_openai/master/{year}%E8%B3%87%E7%A7%91%E7%B3%BB.json"
+    json_url = f"https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E8%B3%87%E7%A7%91%E7%B3%BB.json"
     
     # 从 URL 加载 JSON 文件内容
     carousel_message = load_flex_message_from_url(json_url)
@@ -208,7 +208,7 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇科系。"))
-    elif user_message in ["校外宿舍有容學舍地址", "校外宿舍有容學舍交通方式", "校外宿舍泉思學舍地址", "校外宿舍泉思學舍交通方式", "校內宿舍地址", "校內宿舍交通方式", "校內宿舍住宿費用"]:
+    elif user_message in ["校外宿舍有容學舍地址", "校外宿舍有容學舍交通方式", "校外宿舍泉思學舍地址", "校外宿舍泉思學舍交通方式", "校內宿舍地址", "校內宿舍交通方式", "校內宿舍住宿費用", "校外宿舍有容學舍住宿費用", "校外宿舍泉思學舍住宿費用"]:
         handle_dormitory_message(event, user_message)
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
@@ -227,10 +227,9 @@ def load_flex_message_from_url(url):
 def latest_news():
     try:
         message = ""
-        response = requests.get("https://www-news.scu.edu.tw/news-7?page=1")
-        root = BeautifulSoup(response.text, "html.parser")
-        tbody = root.find("tbody")
-        links = tbody.find_all("a")
+        response = requests.get("https://www.scu.edu.tw/intro/news")
+        soup = BeautifulSoup(response.text, 'html.parser')
+        links = soup.select("div.views-field-title a")
 
         for link in links:
             message += "校園頭條:\n{}\n".format(link.text.strip())
@@ -297,15 +296,15 @@ def handle_dormitory_message(event, user_message):
         response_text = """一、自行駕車
 1、中山重慶北路交流道（往士林方向）匝道，經百齡橋直行中正路至雙溪公園，右轉至善路。
 2、北二高路線—由堤頂交流道下北二高，往左至內湖路（內湖/大直方向），過自強隧道，直行到至善路左轉。
-二、捷運
+三、捷運
 1、搭乘淡水信義線至捷運士林站，1號出口出站，
 往中正路方向轉乘公車304、255、620、小18、小19、557至東吳大學站。
 2、搭乘文湖線至捷運劍南路站，往劍潭寺方向出口，轉乘公車620，至東吳大學站。
-三、公車
+四、公車
 請於台北車站後站之承德路上搭乘304公車至東吳大學站。
 請事先購買學生型悠遊卡（捷運公車兩用），
 學生公車每段分段點扣費12元；車上投幣每車分段點每人每段15元。
-四、計程車
+五、計程車
 1、台北車站至雙溪校區約250元。
 2、士林捷運站至雙溪校區約90元。
 3、松山機場至雙溪校區約200元。"""
@@ -325,6 +324,25 @@ def handle_dormitory_message(event, user_message):
 松勁樓
 規格：8人雅房
 住宿費：800元（每人/每學期）
+"""
+    elif user_message == "校外宿舍泉思學舍住宿費用":
+        response_text = """
+泉思學舍
+
+| 規格 | 住宿費（每人/每學期） | 網路費（每人/每學期） | 保證金 | 寝室電費 |
+|------|----------------------|----------------------|--------|----------|
+| 1人套房 | 72,000元 | 1,800元 | 3,000元 | 室友共同分攤 |
+| 2人套房 | 36,000元 | 900元 | 3,000元 | 寝室設有獨立電表 |
+| 4人套房 | 24,000元 | 450元 | 3,000元 | 寝室設有獨立電表 |
+"""
+    elif user_message == "校外宿舍有容學舍住宿費用":
+        response_text = """
+有容學舍
+
+| 規格 | 住宿費（每人/每學期） | 網路費（每人/每學期） | 保證金 | 寝室電費 |
+|------|----------------------|----------------------|--------|----------|
+| 2人套房 | 52,800元 | 依中苹電信112年學生宿 | 3,000元 | 有需求者付費申請 |
+| 4人套房 | 37,200元 | 網方案價格為准 | 3,000元 | 所有用電與同寝室室友共同分攤 |
 """
     else:
         response_text = "無法識別的命令。"
