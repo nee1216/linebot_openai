@@ -179,6 +179,10 @@ def handle_message(event):
         transit_message = get_transit_info("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022584", "捷運士林站(中正) - 東吳大學(錢穆故居)", "內科15往內科: ", "內科16往內科: ")
         flex_message = FlexSendMessage(alt_text="交通資訊", contents=transit_message)
         line_bot_api.reply_message(event.reply_token, flex_message)
+    elif event.message.text == "捷運劍南路→東吳大學(錢穆故居)":
+        transit_message = get_transit_info("https://transit.navitime.com/zh-tw/tw/transfer?start=00016310&goal=00022584", "捷運劍南路站 - 東吳大學(錢穆故居)", "內科15往天母: ", "內科16往北投: ")
+        flex_message = FlexSendMessage(alt_text="交通資訊", contents=transit_message)
+        line_bot_api.reply_message(event.reply_token, flex_message)
 
 def get_transit_info(url, title, route1_label, route2_label):
     try:
@@ -210,33 +214,16 @@ def get_transit_info(url, title, route1_label, route2_label):
                         TextComponent(text=title, weight="bold", size="md"),
                         SeparatorComponent(),
                         TextComponent(text=route1_label + transit_1_text, wrap=True),
-                        SeparatorComponent(),
-                        TextComponent(text=route2_label + transit_2_text, wrap=True)
+                        SeparatorComponent(),                        TextComponent(text=route2_label + transit_2_text, wrap=True)
                     ]
                 )
             )
             return transit_bubble
         else:
-            return BubbleContainer(
-                body=BoxComponent(
-                    layout="vertical",
-                    contents=[
-                        TextComponent(text="無法獲取頁面內容。狀態碼: {}".format(response.status_code), wrap=True)
-                    ]
-                )
-            )
+            return "無法獲取頁面內容。狀態碼: {}".format(response.status_code)
     
     except Exception as e:
-        return BubbleContainer(
-            body=BoxComponent(
-                layout="vertical",
-                contents=[
-                    TextComponent(text='無法取得最新消息，請稍後再試：{}'.format(str(e)), wrap=True)
-                ]
-            )
-        )
+        return '無法取得最新消息，請稍後再試：{}'.format(str(e))
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
