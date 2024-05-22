@@ -1,8 +1,7 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, FlexSendMessage, BubbleContainer, BoxComponent, TextComponent, SeparatorComponent, BubbleStyle
-
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, FlexSendMessage, BubbleContainer, BoxComponent, TextComponent, SeparatorComponent
 import requests
 from bs4 import BeautifulSoup
 
@@ -40,54 +39,46 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, flex_message)
 
 def get_transit_info():
+    url = "https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583"
     try:
-        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
+        response = requests.get(url)
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
             
-            transit_element = soup.find(id="transit-1")
-            
-            if transit_element:
-                # 查找class为'time display-inline text-frame'的元素，并获取其文本内容
-                time_element = transit_element.find(class_="time display-inline text-frame")
-                if time_element:
-                    time_text = time_element.get_text(strip=True)
-                    print("捷運士林站(中正)-東吳大學:(557)")
-                    print(time_text)
-            
-            transit_element = soup.find(id="transit-2")
-
-            if transit_element:
-                # 查找class为'time display-inline text-frame'的元素，并获取其文本内容
-                time_element = transit_element.find(class_="time display-inline text-frame")
-                if time_element:
-                    time_text = time_element.get_text(strip=True)
-                    print("捷運士林站(中正)-東吳大學:(300)")
-                    print(time_text)
-
-            
-            # Create a BubbleContainer for FlexMessage with beautiful layout
             transit_bubble = BubbleContainer(
-                direction='ltr',
                 body=BoxComponent(
-                    layout='vertical',
+                    layout="vertical",
                     contents=[
-                        TextComponent(text="捷運士林站(中正)-東吳大學", weight='bold', size='xl'),
-                        SeparatorComponent(color="#cccccc"),
-                        TextComponent(text=transit_1_text, wrap=True, size='md'),
-                        SeparatorComponent(color="#cccccc"),
-                        TextComponent(text=transit_2_text, wrap=True, size='md')
+                        TextComponent(text="捷運士林站(中正)-東吳大學", weight="bold", size="xl"),
+                        SeparatorComponent()
                     ]
-                ),
-                styles=BubbleStyle(body=('#ffffff', None, None), footer=('#000000', None, None))
+                )
             )
+            
+            # 获取id为'transit-1'的元素
+            transit_element = soup.find(id="transit-1")
+            if transit_element:
+                # 查找class为'time display-inline text-frame'的元素，并获取其文本内容
+                time_element = transit_element.find(class_="time display-inline text-frame")
+                if time_element:
+                    time_text = time_element.get_text(strip=True)
+                    transit_bubble['body']['contents'].append(TextComponent(text=f"(557) {time_text}", wrap=True))
+            
+            # 获取id为'transit-2'的元素
+            transit_element = soup.find(id="transit-2")
+            if transit_element:
+                # 查找class为'time display-inline text-frame'的元素，并获取其文本内容
+                time_element = transit_element.find(class_="time display-inline text-frame")
+                if time_element:
+                    time_text = time_element.get_text(strip=True)
+                    transit_bubble['body']['contents'].append(TextComponent(text=f"(300) {time_text}", wrap=True))
+
             return transit_bubble
         else:
-            return "Failed to retrieve the page. Status code: {}".format(response.status_code)
+            return "无法获取页面内容。"
     
     except Exception as e:
-        return '無法取得最新消息，請稍後再試：{}'.format(str(e))
+        return '无法取得最新消息，错误详情：{}'.format(str(e))
 
 if __name__ == "__main__":
     app.run()
-
