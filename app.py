@@ -154,7 +154,7 @@ def callback():
     signature = request.headers['X-Line-Signature']
 
     # get request body as text
-    body = request.get_data(as_text=True)
+    body = request.get_data(as_text=true)
     app.logger.info("Request body: " + body)
 
     # handle webhook body
