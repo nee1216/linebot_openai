@@ -1,7 +1,8 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, FlexSendMessage, BubbleContainer, BoxComponent, TextComponent, SeparatorComponent
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, FlexSendMessage, BubbleContainer, BoxComponent, TextComponent, SeparatorComponent, BubbleStyle
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -52,18 +53,20 @@ def get_transit_info():
             transit_2_element = soup.find(id="transit-2")
             transit_2_text = transit_2_element.get_text(strip=True) if transit_2_element else ""
             
-            # Create a BubbleContainer for FlexMessage
+            # Create a BubbleContainer for FlexMessage with beautiful layout
             transit_bubble = BubbleContainer(
+                direction='ltr',
                 body=BoxComponent(
-                    layout="vertical",
+                    layout='vertical',
                     contents=[
-                        TextComponent(text="捷運士林站(中正)-東吳大學", weight="bold", size="xl"),
-                        SeparatorComponent(),
-                        TextComponent(text=transit_1_text, wrap=True),
-                        SeparatorComponent(),
-                        TextComponent(text=transit_2_text, wrap=True)
+                        TextComponent(text="捷運士林站(中正)-東吳大學", weight='bold', size='xl'),
+                        SeparatorComponent(color="#cccccc"),
+                        TextComponent(text=transit_1_text, wrap=True, size='md'),
+                        SeparatorComponent(color="#cccccc"),
+                        TextComponent(text=transit_2_text, wrap=True, size='md')
                     ]
-                )
+                ),
+                styles=BubbleStyle(body=('#ffffff', None, None), footer=('#000000', None, None))
             )
             return transit_bubble
         else:
@@ -74,3 +77,4 @@ def get_transit_info():
 
 if __name__ == "__main__":
     app.run()
+
