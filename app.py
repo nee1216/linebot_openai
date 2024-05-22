@@ -39,7 +39,7 @@ def handle_message(event):
 
 def get_transit_info():
     try:
-        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022584&start-time=2024-05-22T16%3A42%3A00&goal-time=")
+        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016310&goal=00022584&start-time=2024-05-22T16%3A54%3A27&goal-time=")
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
             
@@ -64,11 +64,11 @@ def get_transit_info():
                 body=BoxComponent(
                     layout="vertical",
                     contents=[
-                        TextComponent(text="捷運士林站(中正) - 東吳大學(錢穆故居)", weight="bold", size="md"),
+                        TextComponent(text="捷運劍南路站 - 東吳大學(錢穆故居)", weight="bold", size="md"),
                         SeparatorComponent(),
-                        TextComponent(text="內科15往內科: " + transit_1_text, wrap=True),
+                        TextComponent(text="內科15往天母: " + transit_1_text, wrap=True),
                         SeparatorComponent(),
-                        TextComponent(text="內科16往內科: " + transit_2_text, wrap=True)
+                        TextComponent(text="內科16往北投: " + transit_2_text, wrap=True)
                     ]
                 )
             )
