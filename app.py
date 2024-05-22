@@ -11,7 +11,6 @@ LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
-
 # Flex message JSON template
 flex_message_json = {
   "type": "bubble",
@@ -143,7 +142,7 @@ flex_message_json = {
   },
   "styles": {
     "footer": {
-      "separator": true
+      "separator": True
     }
   }
 }
@@ -154,7 +153,7 @@ def callback():
     signature = request.headers['X-Line-Signature']
 
     # get request body as text
-    body = request.get_data(as_text=true)
+    body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
     # handle webhook body
@@ -173,3 +172,4 @@ def handle_message(event):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
