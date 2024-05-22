@@ -39,45 +39,174 @@ def handle_message(event):
 
 def get_transit_info():
     try:
-        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016310&goal=00022584&start-time=2024-05-22T16%3A54%3A27&goal-time=")
+        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # 獲取 id 為 transit-1 的元素
-            transit_1_element = soup.find(id="transit-1")
-            transit_1_text = ""
-            if transit_1_element:
-                time_element_1 = transit_1_element.find(class_="time display-inline text-frame")
-                if time_element_1:
-                    transit_1_text = time_element_1.get_text(strip=True)
-            
-            # 獲取 id 為 transit-2 的元素
-            transit_2_element = soup.find(id="transit-2")
-            transit_2_text = ""
-            if transit_2_element:
-                time_element_2 = transit_2_element.find(class_="time display-inline text-frame")
-                if time_element_2:
-                    transit_2_text = time_element_2.get_text(strip=True)
-            
-            # 建立 BubbleContainer 作為 FlexMessage
+
+            # Retrieve and process transit information
+            transit_info = []
+            for transit_id in ["transit-1", "transit-2"]:
+                transit_element = soup.find(id=transit_id)
+                if transit_element:
+                    time_element = transit_element.find(class_="time display-inline text-frame")
+                    if time_element:
+                        transit_info.append(time_element.get_text(strip=True))
+
+            # Create BubbleContainer for FlexMessage
             transit_bubble = BubbleContainer(
                 body=BoxComponent(
                     layout="vertical",
                     contents=[
-                        TextComponent(text="捷運劍南路站 - 東吳大學(錢穆故居)", weight="bold", size="md"),
+                        TextComponent(text="捷運士林站(中正) - 東吳大學", weight="bold", size="md"),
                         SeparatorComponent(),
-                        TextComponent(text="內科15往天母: " + transit_1_text, wrap=True),
+                        TextComponent(text=f"557路線: {transit_info[0] if len(transit_info) > 0 else '無資料'}", wrap=True),
                         SeparatorComponent(),
-                        TextComponent(text="內科16往北投: " + transit_2_text, wrap=True)
+                        TextComponent(text=f"300路線: {transit_info[1] if len(transit_info) > 1 else '無資料'}", wrap=True)
                     ]
                 )
             )
             return transit_bubble
         else:
             return "無法獲取頁面內容。狀態碼: {}".format(response.status_code)
-    
+
     except Exception as e:
         return '無法取得最新消息，請稍後再試：{}'.format(str(e))
 
 if __name__ == "__main__":
     app.run()
+
+# FlexMessage JSON template
+flex_message_template = {
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#ACD6FF",
+        "cornerRadius": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "公車到站時間",
+            "weight": "bold",
+            "size": "xl",
+            "margin": "xs",
+            "gravity": "center",
+            "align": "center",
+            "color": "#333333",
+            "decoration": "none"
+          }
+        ]
+      },
+      {
+        "type": "separator",
+        "margin": "md"
+      },
+      {
+        "type": "text",
+        "text": "回學校",
+        "margin": "md",
+        "decoration": "none",
+        "align": "center",
+        "gravity": "center",
+        "size": "lg",
+        "color": "#333333",
+        "weight": "bold"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "士林站→東吳大學",
+          "text": "捷運士林站→東吳大學"
+        },
+        "color": "#1E90FF",
+        "margin": "xs"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "士林站→東吳大學(錢穆故居)",
+          "text": "捷運士林站→東吳大學(錢穆故居)"
+        },
+        "color": "#1E90FF",
+        "margin": "xs"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "劍南路→東吳大學(錢穆故居)",
+          "text": "捷運劍南路→東吳大學(錢穆故居)"
+        },
+        "color": "#1E90FF",
+        "margin": "xs"
+      },
+      {
+        "type": "separator",
+        "margin": "xxl"
+      },
+      {
+        "type": "text",
+        "text": "離開學校",
+        "margin": "md",
+        "align": "center",
+        "gravity": "center",
+        "size": "lg",
+        "color": "#333333",
+        "weight": "bold"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "東吳大學→士林站",
+          "text": "東吳大學→捷運士林站"
+        },
+        "color": "#1E90FF",
+        "margin": "xs"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "東吳大學(錢穆故居)→士林站",
+          "text": "東吳大學(錢穆故居)→捷運士林站"
+        },
+        "color": "#1E90FF",
+        "margin": "xs"
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "東吳大學(錢穆故居)→劍南路",
+          "text": "東吳大學(錢穆故居)→捷運劍南路"
+        },
+        "color": "#1E90FF",
+        "margin": "xs"
+      }
+    ]
+  },
+  "styles": {
+    "footer": {
+      "separator": true
+    }
+  }
+}
