@@ -64,7 +64,7 @@ def get_transit_info():
                 body=BoxComponent(
                     layout="vertical",
                     contents=[
-                        TextComponent(text="捷運士林站(中正) - 東吳大學", weight="bold", size="xl"),
+                        TextComponent(text="捷運士林站(中正) - 東吳大學", weight="bold", size="x0.5"),
                         SeparatorComponent(),
                         TextComponent(text="557路線: " + transit_1_text, wrap=True),
                         SeparatorComponent(),
