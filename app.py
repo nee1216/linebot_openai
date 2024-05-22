@@ -172,13 +172,17 @@ def handle_message(event):
         flex_message = FlexSendMessage(alt_text="公車到站時間", contents=flex_message_json)
         line_bot_api.reply_message(event.reply_token, flex_message)
     elif event.message.text == "捷運士林站→東吳大學":
-        transit_message = get_transit_info()
+        transit_message = get_transit_info("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583", "捷運士林站(中正) - 東吳大學", "557路線: ", "300路線: ")
+        flex_message = FlexSendMessage(alt_text="交通資訊", contents=transit_message)
+        line_bot_api.reply_message(event.reply_token, flex_message)
+    elif event.message.text == "捷運士林站→東吳大學(錢穆故居)":
+        transit_message = get_transit_info("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022584", "捷運士林站(中正) - 東吳大學(錢穆故居)", "內科15往內科: ", "內科16往內科: ")
         flex_message = FlexSendMessage(alt_text="交通資訊", contents=transit_message)
         line_bot_api.reply_message(event.reply_token, flex_message)
 
-def get_transit_info():
+def get_transit_info(url, title, route1_label, route2_label):
     try:
-        response = requests.get("https://transit.navitime.com/zh-tw/tw/transfer?start=00016389&goal=00022583")
+        response = requests.get(url)
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
             
@@ -203,11 +207,11 @@ def get_transit_info():
                 body=BoxComponent(
                     layout="vertical",
                     contents=[
-                        TextComponent(text="捷運士林站(中正) - 東吳大學", weight="bold", size="md"),
+                        TextComponent(text=title, weight="bold", size="md"),
                         SeparatorComponent(),
-                        TextComponent(text="557路線: " + transit_1_text, wrap=True),
+                        TextComponent(text=route1_label + transit_1_text, wrap=True),
                         SeparatorComponent(),
-                        TextComponent(text="300路線: " + transit_2_text, wrap=True)
+                        TextComponent(text=route2_label + transit_2_text, wrap=True)
                     ]
                 )
             )
@@ -234,4 +238,5 @@ def get_transit_info():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
