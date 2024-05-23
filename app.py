@@ -39,103 +39,19 @@ def load_flex_message_from_url(url):
         raise Exception(f"Failed to fetch JSON from URL: {response.status_code}")
 
 # 定义发送 carousel message 的函数
-def send_carousel_message110(event):
-    # 指定 JSON 文件的 URL
-    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json"
-    
+def send_carousel_message(event, url, alt_text):
     # 从 URL 加载 JSON 文件内容
-    carousel_message = load_flex_message_from_url(json_url)
+    carousel_message = load_flex_message_from_url(url)
     
     # 创建 FlexSendMessage
     flex_message = FlexSendMessage(
-        alt_text="110學年 資科系學分",
+        alt_text=alt_text,
         contents=carousel_message
     )
     
     # 发送 FlexSendMessage
     line_bot_api.reply_message(event.reply_token, flex_message)
 
-# 定义发送 carousel message 的函数
-def send_carousel_message111(event):
-    # 指定 JSON 文件的 URL
-    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E8%B3%87%E7%A7%91%E7%B3%BB.json"
-    
-    # 从 URL 加载 JSON 文件内容
-    carousel_message = load_flex_message_from_url(json_url)
-    
-    # 创建 FlexSendMessage
-    flex_message = FlexSendMessage(
-        alt_text="111學年 資科系學分",
-        contents=carousel_message
-    )
-    
-    # 发送 FlexSendMessage
-    line_bot_api.reply_message(event.reply_token, flex_message)
-# 定义发送 carousel message 的函数
-def send_carousel_message112(event):
-    # 指定 JSON 文件的 URL
-    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E8%B3%87%E7%A7%91%E7%B3%BB.json"
-    
-    # 从 URL 加载 JSON 文件内容
-    carousel_message = load_flex_message_from_url(json_url)
-    
-    # 创建 FlexSendMessage
-    flex_message = FlexSendMessage(
-        alt_text="112學年 資科系學分",
-        contents=carousel_message
-    )
-    
-    # 发送 FlexSendMessage
-    line_bot_api.reply_message(event.reply_token, flex_message)
-
-# 定义发送 carousel message 的函数
-def send_carousel_messageA110(event):
-    # 指定 JSON 文件的 URL
-    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E5%8C%96%E5%AD%B8%E7%B3%BB.json"
-    
-    # 从 URL 加载 JSON 文件内容
-    carousel_message = load_flex_message_from_url(json_url)
-    
-    # 创建 FlexSendMessage
-    flex_message = FlexSendMessage(
-        alt_text="110學年 化學系學分",
-        contents=carousel_message
-    )
-    # 发送 FlexSendMessage
-    line_bot_api.reply_message(event.reply_token, flex_message)
-
-# 定义发送 carousel message 的函数
-def send_carousel_messageA111(event):
-    # 指定 JSON 文件的 URL
-    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E5%8C%96%E5%AD%B8%E7%B3%BB.json"
-    
-    # 从 URL 加载 JSON 文件内容
-    carousel_message = load_flex_message_from_url(json_url)
-    
-    # 创建 FlexSendMessage
-    flex_message = FlexSendMessage(
-        alt_text="111學年 化學系學分",
-        contents=carousel_message
-    )
-    # 发送 FlexSendMessage
-    line_bot_api.reply_message(event.reply_token, flex_message)
-
-# 定义发送 carousel message 的函数
-def send_carousel_messageA112(event):
-    # 指定 JSON 文件的 URL
-    json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E5%8C%96%E5%AD%B8%E7%B3%BB.json"
-    
-    # 从 URL 加载 JSON 文件内容
-    carousel_message = load_flex_message_from_url(json_url)
-    
-    # 创建 FlexSendMessage
-    flex_message = FlexSendMessage(
-        alt_text="112學年 化學系學分",
-        contents=carousel_message
-    )
-    # 发送 FlexSendMessage
-    line_bot_api.reply_message(event.reply_token, flex_message)
-    
 # 當收到 LINE 消息時的回調函數
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -216,7 +132,7 @@ def handle_message(event):
                         "action": {
                             "type": "message",
                             "label": "法律系",
-                            "text": "法律法律系"
+                            "text": "法律系"
                         }
                     },
                     {
@@ -284,72 +200,29 @@ def handle_message(event):
         # 記錄用戶選擇的科系
         user_choices[user_id] = user_message
         
-    # 判斷用戶是否選擇了110學年
-    elif user_message == "110學年":
-        # 檢查用戶之前選擇的科系
-        if user_id in user_choices and user_choices[user_id] == "資料科學系":
-            # 調用函數發送彈性消息
-            send_carousel_message110(event)
-        else:
-            # 回覆用戶尚未選擇資料科學系
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
-
-    elif user_message == "111學年":
-        # 檢查用戶之前選擇的科系
-        if user_id in user_choices and user_choices[user_id] == "資料科學系":
-            # 調用函數發送彈性消息
-            send_carousel_message111(event)
-        else:
-            # 回覆用戶尚未選擇資料科學系
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
-            
-    elif user_message == "112學年":
-        # 檢查用戶之前選擇的科系
-        if user_id in user_choices and user_choices[user_id] == "資料科學系":
-            # 調用函數發送彈性消息
-            send_carousel_message112(event)
-        else:
-            # 回覆用戶尚未選擇資料科學系
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
-
-    elif user_message == "110學年":
-        # 檢查用戶之前選擇的科系
-        if user_id in user_choices and user_choices[user_id] == "化學系":
-            # 調用函數發送彈性消息
-            send_carousel_messageA110(event)
-        else:
-            # 回覆用戶尚未選擇資料科學系
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇化學系。"))
-
-    elif user_message == "111學年":
-        # 檢查用戶之前選擇的科系
-        if user_id in user_choices and user_choices[user_id] == "化學系":
-            # 調用函數發送彈性消息
-            send_carousel_messageA111(event)
-        else:
-            # 回覆用戶尚未選擇資料科學系
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇化學系。"))
-
-    elif user_message == "112學年":
-        # 檢查用戶之前選擇的科系
-        if user_id in user_choices and user_choices[user_id] == "化學系":
-            # 調用函數發送彈性消息
-            send_carousel_messageA112(event)
-        else:
-            # 回覆用戶尚未選擇資料科學系
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇化學系。"))
-        
+    # 處理不同科系和學年的查詢
     else:
-        # 當使用者消息不是您期待的內容時，發送默認回復
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="請輸入正確的命令。")
-        )
+        if user_id in user_choices:
+            department = user_choices[user_id]
+            if department == "資料科學系":
+                if user_message == "110學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json", "110學年 資科系學分")
+                elif user_message == "111學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E8%B3%87%E7%A7%91%E7%B3%BB.json", "111學年 資科系學分")
+                elif user_message == "112學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E8%B3%87%E7%A7%91%E7%B3%BB.json", "112學年 資科系學分")
+                else:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請選擇正確的學年。"))
+            elif department == "化學系":
+                if user_message == "110學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E5%8C%96%E5%AD%B8%E7%B3%BB.json", "110學年 化學系學分")
+                elif user_message == "111學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E5%8C%96%E5%AD%B8%E7%B3%BB.json", "111學年 化學系學分")
+                elif user_message == "112學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E5%8C%96%E5%AD%B8%E7%B3%BB.json", "112學年 化學系學分")
+                else:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請選擇正確的學年。"))
+            # 为其他科系添加类似的逻辑
 
 if __name__ == "__main__":
-    # 使用 Flask 啟動服務器，監聽來自 LINE 的請求
-    app.run(port=5000)
-
-
-
-
+    app.run(port=12345)
