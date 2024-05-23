@@ -1,0 +1,3507 @@
+{
+    "type": "carousel",
+    "contents": [
+        {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "111學年 法律系學分",
+                        "weight": "bold",
+                        "color": "#1DB446",
+                        "size": "sm"
+                    },
+                    {
+                        "type": "text",
+                        "text": "大一",
+                        "weight": "bold",
+                        "size": "xxl",
+                        "margin": "md"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "xxl",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "必修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國 文",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "外 文 (英、日、德、韓文)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "生命關懷 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "思維方法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "通識課程",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "體 育",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                        "text": "0學分"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法總則",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法總則專題",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "中華民國憲法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "3學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑法總則",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "6學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "英美法導讀",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "選修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "法學緒論"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "法制史"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "會計學"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "3學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "金融科技"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "英文法律資料檢索"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "邏輯"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "邏輯推理應用"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "政治學 "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "社會學"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "法律人生涯探索與抉擇 (一) "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "法律人生涯探索與抉擇 (二)"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "法律系大一必選修",
+                                "size": "xs",
+                                "color": "#aaaaaa",
+                                "flex": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "styles": {
+                "footer": {
+                    "separator": true
+                }
+            }
+        },
+        {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "111學年 法律系學分",
+                        "weight": "bold",
+                        "color": "#1DB446",
+                        "size": "sm"
+                    },
+                    {
+                        "type": "text",
+                        "text": "大二",
+                        "weight": "bold",
+                        "size": "xxl",
+                        "margin": "md"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "xxl",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "必修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "外 文 (英、日、德、韓文)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "通識課程",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "體 育",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                        "text": "0學分"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法債編總論(一)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法債編總論(二)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法物權(一) ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法物權(二) ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "財產法專題",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法親屬",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "行政法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑法分則",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "英美侵權行為法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國際公法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "選修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "消費者保護法 "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "經濟學"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "資本市場概論"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "網路與科技法律總論"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "人工智慧法律"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "法院組織法 "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "憲法專題研究 "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "憲法案例解析"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "刑法總則爭議問題（一）"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "刑法總則爭議問題（二）"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "刑罰執行法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "美國著作權法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "美國商標法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "大陸法律制度"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "心理學"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "法學日文"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "法律系大二必選修",
+                                "size": "xs",
+                                "color": "#aaaaaa",
+                                "flex": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "styles": {
+                "footer": {
+                    "separator": true
+                }
+            }
+        },
+        {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "111學年 法律系學分",
+                        "weight": "bold",
+                        "color": "#1DB446",
+                        "size": "sm"
+                    },
+                    {
+                        "type": "text",
+                        "text": "大三",
+                        "weight": "bold",
+                        "size": "xxl",
+                        "margin": "md"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "xxl",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "必修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "職涯錨定",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "人工智慧跨域應用",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "通識課程",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end",
+                                        "text": "2學分"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "法律倫理學",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法債編各論",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民法繼承",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民事訴訟法(一) ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "3學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "商事法總論及公司法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "保險法 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "訴願法及行政訴訟法 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑事訴訟法(一)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑事訴訟法(二) ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "英美契約法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "6學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "選修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "身分法專題"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "債法專題"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "票據法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "智慧財產權--著作權"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "智慧財產權--商標法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "智慧財產權--專利法 "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "地方自治法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "國家賠償法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "行政法專題研究"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "行政法案例解析"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "犯罪學"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "財經刑法(一)"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "財經刑法(二)"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "刑法分則爭議問題"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "美國行政法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "美國反歧視法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "國際與區域人權法 "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "國際金融法"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "text": "法律服務學習"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "法律系大三必選修",
+                                "size": "xs",
+                                "color": "#aaaaaa",
+                                "flex": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "styles": {
+                "footer": {
+                    "separator": true
+                }
+            }
+        },
+        {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "111學年 法律系學分",
+                        "weight": "bold",
+                        "color": "#1DB446",
+                        "size": "sm"
+                    },
+                    {
+                        "type": "text",
+                        "text": "大四",
+                        "weight": "bold",
+                        "size": "xxl",
+                        "margin": "md"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "xxl",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "必修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "法理學",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民事訴訟法(二)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "3學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "英美刑法及刑事訴訟法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "美國憲法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "選修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國際私法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "醫事法專題講座",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "仲裁法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "非訟事件法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民事法綜合研習（一）",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民事法綜合研習（二）",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "勞工法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "家事事件法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "海商法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "信託法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "公平交易法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "商事法案例解析",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "金融法總論",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "金融法各論",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "證券交易法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "財經法律專題",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "稅法總論",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "稅法各論",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "營業秘密法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "原住民族智慧財產權法 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "立法程序與技術",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "土地法及土地登記規則",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "公私協力法制(政府採購 及促參法)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "社會法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "環境法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "當代熱門議題講座",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑法案例解析",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑事訴訟法案例解析",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "少年法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑事偵查實務",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "美國民事訴訟案例專題",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "美國貿易法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "航空太空法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國際法綜合研習",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "法律攻防實務演習-民事法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "法律攻防實務演習-刑事法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "法律實務實習",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": []
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "法律系大四必選修",
+                                "size": "xs",
+                                "color": "#aaaaaa",
+                                "flex": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "styles": {
+                "footer": {
+                    "separator": true
+                }
+            }
+        },
+        {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "111學年 法律系學分",
+                        "weight": "bold",
+                        "color": "#1DB446",
+                        "size": "sm"
+                    },
+                    {
+                        "type": "text",
+                        "text": "大五",
+                        "weight": "bold",
+                        "size": "xxl",
+                        "margin": "md"
+                    },
+                    {
+                        "type": "separator",
+                        "margin": "sm"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "margin": "xxl",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "必修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "無必修",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "選修科目學分:",
+                                        "size": "md",
+                                        "color": "#555555",
+                                        "flex": 0,
+                                        "decoration": "none",
+                                        "weight": "bold",
+                                        "margin": "none"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "強制執行法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "破產法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "公證法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民事法綜合研習（三）",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民事法綜合研習（四）",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "民事法專題講座",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "證券交易法案例研習 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "憲法與行政法綜合研習(一)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "憲法與行政法綜合研習(二)",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "公務員法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑法綜合研習（一）",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑法綜合研習（二）",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "刑事法綜合研習",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "科技刑法 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "證據法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "英文契約審閱",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國際商務與英文契約撰擬",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "海洋法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國際經濟法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "歐洲聯盟法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "AI新興法制與國際投資",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國際貿易法",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國際經貿與商務談判",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "國際爭端之解決 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "司法文書與訴訟實務 ",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "4學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "深度訴訟實務解析",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "2學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "法律競賽演習",
+                                        "size": "sm",
+                                        "color": "#555555",
+                                        "flex": 0
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "1學分",
+                                        "size": "sm",
+                                        "color": "#111111",
+                                        "align": "end"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": []
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "margin": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "法律系大五必選修",
+                                "size": "xs",
+                                "color": "#aaaaaa",
+                                "flex": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "styles": {
+                "footer": {
+                    "separator": true
+                }
+            }
+        }
+    ]
+}
+
