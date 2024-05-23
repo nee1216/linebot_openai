@@ -5,6 +5,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
+import os
 
 app = Flask(__name__)
 
@@ -14,6 +15,24 @@ LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
+
+def get_element_text(url, href):
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    chromedriver_path = os.path.join(current_dir, "chromedriver.exe")
+    
+    options = webdriver.ChromeOptions()
+    service = ChromeService(executable_path=chromedriver_path)
+    driver = webdriver.Chrome(service=service, options=options)
+
+    driver.get(url)
+    driver.implicitly_wait(10)
+
+    element = driver.find_element(By.CSS_SELECTOR, f'a[href="{href}"]')
+    text = element.text.strip()
+
+    driver.quit()
+
+    return text
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -31,21 +50,6 @@ def callback():
 @app.route("/")
 def index():
     return "Hello, World!"
-
-def get_element_text(url, href):
-    options = webdriver.ChromeOptions()
-    service = ChromeService(executable_path="chromedriver.exe")
-    driver = webdriver.Chrome(service=service, options=options)
-
-    driver.get(url)
-    driver.implicitly_wait(10)
-
-    element = driver.find_element(By.CSS_SELECTOR, f'a[href="{href}"]')
-    text = element.text.strip()
-
-    driver.quit()
-
-    return text
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
