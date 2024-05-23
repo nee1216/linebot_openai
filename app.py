@@ -34,6 +34,7 @@ def callback():
 def index():
     return "Hello, World!"
 
+# 定义发送 carousel message 的函数
 def send_carousel_message(event, url, alt_text):
     # 从 URL 加载 JSON 文件内容
     carousel_message = load_flex_message_from_url(url)
@@ -199,7 +200,7 @@ def handle_message(event):
         # 檢查用戶是否選擇了科系
         if user_id in user_choices:
             department = user_choices[user_id]
-             if department == "資料科學系":
+            if department == "資料科學系":
                 if user_message == "110學年":
                     send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json", "110學年 資科系學分")
                 elif user_message == "111學年":
@@ -242,6 +243,8 @@ def handle_message(event):
                     send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E6%97%A5%E6%96%87%E7%B3%BB.json", "111學年 化學系學分")
                 elif user_message == "112學年":
                     send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E6%97%A5%E6%96%87%E7%B3%BB.json", "112學年 化學系學分")
+                else:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請選擇正確的學年。"))
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
         else:
@@ -395,3 +398,5 @@ def handle_dormitory_message(event, user_message):
 
 if __name__ == "__main__":
     app.run()
+
+
