@@ -34,7 +34,6 @@ def index():
 
 def get_element_text(url, href):
     options = webdriver.ChromeOptions()
-    service = ChromeService(executable_path="chromedriver.exe")
     driver = webdriver.Chrome(service=service, options=options)
 
     driver.get(url)
