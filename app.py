@@ -2,9 +2,8 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service as ChromeService
+import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -32,19 +31,14 @@ def callback():
 def index():
     return "Hello, World!"
 
-def get_element_text(url, href):
-    options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=service, options=options)
-
-    driver.get(url)
-    driver.implicitly_wait(10)
-
-    element = driver.find_element(By.CSS_SELECTOR, f'a[href="{href}"]')
-    text = element.text.strip()
-
-    driver.quit()
-
-    return text
+def get_element_text(url, selector):
+    response = requests.get(url)
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.text, 'html.parser')
+        element = soup.select_one(selector)
+        if element:
+            return element.text.strip()
+    return "無法取得資訊"
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -52,19 +46,16 @@ def handle_message(event):
 
     if user_message == "557公車":
         url = 'https://yunbus.tw/lite/route.php?id=TPE17333'
-        href = 'https://yunbus.tw/#!stop/TPE171189'
-        bus_info = get_element_text(url, href)
+        selector = 'a[href="https://yunbus.tw/#!stop/TPE171189"]'
+        bus_info = get_element_text(url, selector)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"557公車: {bus_info}"))
     elif user_message == "300公車":
         url = 'https://yunbus.tw/lite/route.php?id=TPE15532'
-        href = 'https://yunbus.tw/#!stop/TPE29089'
-        bus_info = get_element_text(url, href)
+        selector = 'a[href="https://yunbus.tw/#!stop/TPE29089"]'
+        bus_info = get_element_text(url, selector)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"300公車: {bus_info}"))
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入有效指令"))
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
