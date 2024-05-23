@@ -195,7 +195,12 @@ def handle_message(event):
         
         # 記錄用戶選擇的科系
         user_choices[user_id] = user_message
-        
+
+    elif user_message in ["校外宿舍有容學舍地址", "校外宿舍有容學舍交通方式", "校外宿舍有容學舍住宿費用",
+                          "校外宿舍泉思學舍地址", "校外宿舍泉思學舍交通方式", "校外宿舍泉思學舍住宿費用",
+                          "校內宿舍地址", "校內宿舍交通方式", "校內宿舍住宿費用"]:
+        handle_dormitory_message(event, user_message)
+
     # 處理不同科系和學年的查詢
     else:
         if user_id in user_choices:
@@ -271,15 +276,12 @@ def latest_news():
         return '無法取得最新消息，請稍後再試：{}'.format(str(e))
 
 def show_dormitory_options(reply_token):
-    dormitory_message = TemplateSendMessage(
-        alt_text='Dormitory Options',
-        template=CarouselTemplate(
-            columns=[
-                CarouselColumn(
-                    thumbnail_image_url='https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/09/05/realtime/24829906.jpg&x=0&y=0&sw=0&sh=0&exp=3600',
-                    title='校外宿舍',
-                    text='有容學舍',
-                    actions=[
+    carousel_columns = [
+        CarouselColumn(
+            thumbnail_image_url='https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/09/05/realtime/24829906.jpg&x=0&y=0&sw=0&sh=0&exp=3600',
+            title='校外宿舍',
+            text='有容學舍',
+            actions=[
                 MessageAction(label='地址', text='校外宿舍有容學舍地址'),
                 MessageAction(label='交通方式', text='校外宿舍有容學舍交通方式'),
                 MessageAction(label='住宿費用', text='校外宿舍有容學舍住宿費用'),
@@ -307,12 +309,9 @@ def show_dormitory_options(reply_token):
         )
     ]
 
-    carousel_template = TemplateSendMessage(
-        alt_text='Dormitory options',
-        template=CarouselTemplate(columns=carousel_columns)
-    )
-
-    line_bot_api.reply_message(reply_token, dormitory_message)
+    carousel_template = CarouselTemplate(columns=carousel_columns)
+    template_message = TemplateSendMessage(alt_text="住宿", template=carousel_template)
+    line_bot_api.reply_message(reply_token, template_message)
 
 def handle_dormitory_message(event, user_message):
     if user_message == "校外宿舍有容學舍地址":
@@ -389,4 +388,3 @@ def handle_dormitory_message(event, user_message):
 
 if __name__ == "__main__":
     app.run()
-
