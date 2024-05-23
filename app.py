@@ -202,7 +202,7 @@ def handle_message(event):
         handle_dormitory_message(event, user_message)
 
     # 處理不同科系和學年的查詢
-    else:
+    elif:
         if user_id in user_choices:
             department = user_choices[user_id]
             if department == "資料科學系":
