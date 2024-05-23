@@ -115,8 +115,8 @@ def handle_message(event):
                         "color": "#905c44",
                         "action": {
                             "type": "message",
-                            "label": "資料管理系",
-                            "text": "資料管理系"
+                            "label": "資訊管理系",
+                            "text": "資訊管理系"
                         }
                     },
                     {
