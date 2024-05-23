@@ -34,16 +34,13 @@ def callback():
 def index():
     return "Hello, World!"
 
-def send_carousel_message(event, year):
-    # 指定 JSON 文件的 URL
-    json_url = f"https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E8%B3%87%E7%A7%91%E7%B3%BB.json"
-    
+def send_carousel_message(event, url, alt_text):
     # 从 URL 加载 JSON 文件内容
-    carousel_message = load_flex_message_from_url(json_url)
+    carousel_message = load_flex_message_from_url(url)
     
     # 创建 FlexSendMessage
     flex_message = FlexSendMessage(
-        alt_text=f"{year}學年 資科系學分",
+        alt_text=alt_text,
         contents=carousel_message
     )
     
@@ -202,8 +199,49 @@ def handle_message(event):
         # 檢查用戶是否選擇了科系
         if user_id in user_choices:
             department = user_choices[user_id]
-            if department == "資料科學系":
-                send_carousel_message(event, user_message)
+             if department == "資料科學系":
+                if user_message == "110學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%A7%91%E7%B3%BB.json", "110學年 資科系學分")
+                elif user_message == "111學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E8%B3%87%E7%A7%91%E7%B3%BB.json", "111學年 資科系學分")
+                elif user_message == "112學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E8%B3%87%E7%A7%91%E7%B3%BB.json", "112學年 資科系學分")
+                else:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請選擇正確的學年。"))
+            elif department == "化學系":
+                if user_message == "110學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E5%8C%96%E5%AD%B8%E7%B3%BB.json", "110學年 化學系學分")
+                elif user_message == "111學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E5%8C%96%E5%AD%B8%E7%B3%BB.json", "111學年 化學系學分")
+                elif user_message == "112學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E5%8C%96%E5%AD%B8%E7%B3%BB.json", "112學年 化學系學分")
+                else:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請選擇正確的學年。"))
+            elif department == "資訊管理系":
+                if user_message == "110學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E8%B3%87%E7%AE%A1%E7%B3%BB.json", "110學年 化學系學分")
+                elif user_message == "111學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E8%B3%87%E7%AE%A1%E7%B3%BB.json", "111學年 化學系學分")
+                elif user_message == "112學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E8%B3%87%E7%AE%A1%E7%B3%BB.json", "112學年 化學系學分")
+                else:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請選擇正確的學年。"))
+            elif department == "法律系":
+                if user_message == "110學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E6%B3%95%E5%BE%8B%E7%B3%BB.json", "110學年 化學系學分")
+                elif user_message == "111學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E6%B3%95%E5%BE%8B%E7%B3%BB.json", "111學年 化學系學分")
+                elif user_message == "112學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E6%B3%95%E5%BE%8B%E7%B3%BB.json", "112學年 化學系學分")
+                else:
+                    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請選擇正確的學年。"))
+            elif department == "日文系":
+                if user_message == "110學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/110%E6%97%A5%E6%96%87%E7%B3%BB.json", "110學年 化學系學分")
+                elif user_message == "111學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/111%E6%97%A5%E6%96%87%E7%B3%BB.json", "111學年 化學系學分")
+                elif user_message == "112學年":
+                    send_carousel_message(event, "https://raw.githubusercontent.com/nee1216/linebot_openai/master/112%E6%97%A5%E6%96%87%E7%B3%BB.json", "112學年 化學系學分")
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
         else:
