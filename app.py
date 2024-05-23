@@ -228,15 +228,16 @@ def latest_news():
     try:
         message = ""
         response = requests.get("https://www-news.scu.edu.tw/news-7?page=1")
-        soup = BeautifulSoup(response.text, 'html.parser')
-        links = soup.select("div.views-field-title a")
+        root = BeautifulSoup(response.text, "html.parser")
+        tbody = root.find("tbody")
+        links = tbody.find_all("a")
 
         for link in links:
             message += "校園頭條:\n{}\n".format(link.text.strip())
             message += "連結: {}\n\n".format(link["href"])
 
         return message.strip() 
-        
+    
     except Exception as e:
         return '無法取得最新消息，請稍後再試：{}'.format(str(e))
 
