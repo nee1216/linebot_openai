@@ -42,6 +42,9 @@ def get_transit_info():
         bus_557_text = get_element_text('https://yunbus.tw/lite/route.php?id=TPE17333', 'https://yunbus.tw/#!stop/TPE171189')
         bus_300_text = get_elements_text('https://yunbus.tw/lite/route.php?id=TPE15532', 'https://yunbus.tw/#!stop/TPE29089')
         
+        if bus_557_text == "無法獲取資訊" or bus_300_text == "無法獲取資訊":
+            return "無法獲取巴士資訊"
+        
         # 建立 BubbleContainer 作為 FlexMessage
         transit_bubble = BubbleContainer(
             body=BoxComponent(
@@ -57,24 +60,32 @@ def get_transit_info():
         )
         return transit_bubble
     except Exception as e:
-        return '無法取得最新消息，請稍後再試：{}'.format(str(e))
+        error_message = '無法取得最新消息，請稍後再試：{}'.format(str(e))
+        app.logger.error(error_message)
+        return error_message
 
 def get_element_text(url, href):
-    response = requests.get(url)
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.text, 'html.parser')
-        element = soup.select_one(f'a[href="{href}"]')
-        if element:
-            return element.text.strip()
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            element = soup.select_one(f'a[href="{href}"]')
+            if element:
+                return element.text.strip()
+    except Exception as e:
+        app.logger.error('無法獲取資訊：{}'.format(str(e)))
     return "無法獲取資訊"
 
 def get_elements_text(url, href):
-    response = requests.get(url)
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.text, 'html.parser')
-        element = soup.select_one(f'a[href="{href}"]')
-        if element:
-            return element.text.strip()
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            element = soup.select_one(f'a[href="{href}"]')
+            if element:
+                return element.text.strip()
+    except Exception as e:
+        app.logger.error('無法獲取資訊：{}'.format(str(e)))
     return "無法獲取資訊"
 
 if __name__ == "__main__":
