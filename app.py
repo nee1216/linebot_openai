@@ -297,7 +297,7 @@ def handle_message(event):
             event.reply_token,
             FlexSendMessage(alt_text="選擇想了解的科系", contents=flex_message)
         )
-    elif user_message in ["資料科學系", "資料管理系", "法律系", "化學系", "日文系"]:
+    elif user_message in ["資料科學系", "資訊管理系", "法律系", "化學系", "日文系"]:
         # 發送快速回復，讓用戶選擇入學學年
         quick_reply = QuickReply(items=[
             QuickReplyButton(
