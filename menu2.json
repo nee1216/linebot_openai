@@ -1,0 +1,1191 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "媽媽樂餐飲室",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "點心小食",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "燒餅(青蔥)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$45",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "燒餅(紅豆)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$45",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "港式西多士(花生、巧克力)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$45",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "港士XO醬炒蘿蔔糕",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$55",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "新加坡國民厚片",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$45",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "澳門帶骨豬扒包",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "現烤香港菠蘿油",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$50",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "泰式檸檬雞柳條",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$35",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "歐姆起士薯餅塔",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$45",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "菜單",
+                    "weight": "bold",
+                    "color": "#1DB446",
+                    "size": "sm"
+                  },
+                  {
+                    "type": "text",
+                    "text": "媽媽樂餐飲室",
+                    "weight": "bold",
+                    "size": "xxl",
+                    "margin": "md"
+                  },
+                  {
+                    "type": "text",
+                    "text": "特色腸粉",
+                    "size": "xs",
+                    "color": "#aaaaaa",
+                    "wrap": true
+                  },
+                  {
+                    "type": "separator",
+                    "margin": "xxl"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "港式豬扒腸粉",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$60",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "港式肉鬆腸粉",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$55",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "港式混醬腸粉",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$45",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "義式燻雞腸粉",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$60",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "老闆鮪魚腸粉",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$60",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "薯薯餅腸粉",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$55",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "滑蛋起士腸粉",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$45",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "芋頭控腸粉",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$55",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "原味滑蛋腸粉",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$35",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "黃金栗米腸粉",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$45",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "separator",
+                    "margin": "xxl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "媽媽樂餐飲室",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "波羅包",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "港式豬扒可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$65",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "老闆鮪魚可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$65",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "義式燻雞可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$65",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "滑蛋起士可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$55",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "正韓炸雞可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "熔岩花生可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "阿拉斯加鱈魚可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "孜然XO雞腿可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "明太子鮮蝦可頌/波羅包",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "菜單",
+                "weight": "bold",
+                "color": "#1DB446",
+                "size": "sm"
+              },
+              {
+                "type": "text",
+                "text": "四海遊龍",
+                "weight": "bold",
+                "size": "xxl",
+                "margin": "md"
+              },
+              {
+                "type": "text",
+                "text": "粉炒麵食",
+                "size": "xs",
+                "color": "#aaaaaa",
+                "wrap": true
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式一丁麻油餐蛋麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$80",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式一丁豬骨餐蛋麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$80",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式一丁黑蒜餐蛋麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$80",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "韓式辛拉麵",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$90",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "不倒翁起士濃拉麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$95",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "廣式沙茶炒麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$75",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "宮保雞丁炒麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$75",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "奶油培根炒麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$75",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "XO牛肉炒麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$75",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "澳門豬扒炒麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "80",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "澳門雞扒炒麵",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$80",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "菜單",
+                "weight": "bold",
+                "color": "#1DB446",
+                "size": "sm"
+              },
+              {
+                "type": "text",
+                "text": "媽媽樂餐飲室",
+                "weight": "bold",
+                "size": "xxl",
+                "margin": "md"
+              },
+              {
+                "type": "text",
+                "text": "招牌飲料",
+                "size": "xs",
+                "color": "#aaaaaa",
+                "wrap": true
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式絲襪奶茶",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$35",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港市鴛鴦奶茶",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$35",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式凍檸茶",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$35",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式凍檸七",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$35",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式凍檸蜜",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$35",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式阿華田",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$35",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "港式朱古力",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$35",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "韓國柚子冰茶",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$30",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+
