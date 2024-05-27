@@ -1,0 +1,1328 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "四海遊龍",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "湯餃",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "酸辣湯餃(6顆)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$90",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "玉米湯餃(6顆)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$90",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "牛肉湯餃(6顆)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$90",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "四海遊龍",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "雲吞系列",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "鮮肉雲吞湯(4顆)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$55",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "菜肉雲吞湯(4顆)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$55",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "蝦肉雲吞湯(4顆)",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$65",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "鮮肉大抄手(5顆)",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$70",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "菜肉大抄手(5顆)",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$70",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "蝦肉大抄手(5顆)",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "鮮肉雲吞面(4顆)",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "菜肉雲吞麵(4顆)",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$75",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "蝦肉雲吞麵(4顆)",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$85",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "菜單",
+                "weight": "bold",
+                "color": "#1DB446",
+                "size": "sm"
+              },
+              {
+                "type": "text",
+                "text": "四海遊龍",
+                "weight": "bold",
+                "size": "xxl",
+                "margin": "md"
+              },
+              {
+                "type": "text",
+                "text": "套餐",
+                "size": "xs",
+                "color": "#aaaaaa",
+                "wrap": true
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "牛肉乾拌麵套餐",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$105",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "牛肉醬拌麵套餐",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$80",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "高麗菜水餃套餐(10顆)",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$80",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "招牌鍋貼套餐(10顆)",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$75",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "韓式辣味鍋貼套餐(10顆)",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$80",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "酸辣麵套餐",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$85",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "牛肉麵套餐",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$150",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "菜單",
+                    "weight": "bold",
+                    "color": "#1DB446",
+                    "size": "sm"
+                  },
+                  {
+                    "type": "text",
+                    "text": "四海遊龍",
+                    "weight": "bold",
+                    "size": "xxl",
+                    "margin": "md"
+                  },
+                  {
+                    "type": "text",
+                    "text": "麵食類",
+                    "size": "xs",
+                    "color": "#aaaaaa",
+                    "wrap": true
+                  },
+                  {
+                    "type": "separator",
+                    "margin": "xxl"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "牛汁乾麵",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$50",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "肉燥乾麵",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$50",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "川味椒麻乾麵",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$50",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "酸辣麵",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$75",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "貢丸麵",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$60",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "魚丸麵",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$60",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "牛肉湯麵(副滷蛋)",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$70",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "牛肉醬拌麵(乾)",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$65",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "牛肉乾拌麵",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$100",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "牛肉麵(6塊牛肉)",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$150",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "塔香辣肉醬麵(乾)",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$65",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "塔香辣肉醬麵(湯)",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$70",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "separator",
+                    "margin": "xxl"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "菜單",
+                "weight": "bold",
+                "color": "#1DB446",
+                "size": "sm"
+              },
+              {
+                "type": "text",
+                "text": "四海遊龍",
+                "weight": "bold",
+                "size": "xxl",
+                "margin": "md"
+              },
+              {
+                "type": "text",
+                "text": "鍋貼",
+                "size": "xs",
+                "color": "#aaaaaa",
+                "wrap": true
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "招牌鍋貼(8個)",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$56",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "韓式辣味鍋貼(8個)",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$64",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "菜單",
+                "weight": "bold",
+                "color": "#1DB446",
+                "size": "sm"
+              },
+              {
+                "type": "text",
+                "text": "四海遊龍",
+                "weight": "bold",
+                "size": "xxl",
+                "margin": "md"
+              },
+              {
+                "type": "text",
+                "text": "水餃",
+                "size": "xs",
+                "color": "#aaaaaa",
+                "wrap": true
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "高麗菜水餃(8個)",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$56",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "韭菜水餃(8顆)",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$56",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "韓式辣味水餃(8顆)",
+                        "size": "sm",
+                        "color": "#555555",
+                        "flex": 0
+                      },
+                      {
+                        "type": "text",
+                        "text": "$64",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "玉米水餃(8顆)",
+                        "size": "sm",
+                        "color": "#555555"
+                      },
+                      {
+                        "type": "text",
+                        "text": "$56",
+                        "size": "sm",
+                        "color": "#111111",
+                        "align": "end"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "separator",
+                "margin": "xxl"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "菜單",
+                    "weight": "bold",
+                    "color": "#1DB446",
+                    "size": "sm"
+                  },
+                  {
+                    "type": "text",
+                    "text": "四海遊龍",
+                    "weight": "bold",
+                    "size": "xxl",
+                    "margin": "md"
+                  },
+                  {
+                    "type": "text",
+                    "text": "湯品",
+                    "size": "xs",
+                    "color": "#aaaaaa",
+                    "wrap": true
+                  },
+                  {
+                    "type": "separator",
+                    "margin": "xxl"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "貢丸湯",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$35",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "魚丸湯",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$35",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "酸辣湯",
+                            "size": "sm",
+                            "color": "#555555",
+                            "flex": 0
+                          },
+                          {
+                            "type": "text",
+                            "text": "$35",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "玉米濃湯",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$35",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "牛肉湯",
+                            "size": "sm",
+                            "color": "#555555"
+                          },
+                          {
+                            "type": "text",
+                            "text": "$80",
+                            "size": "sm",
+                            "color": "#111111",
+                            "align": "end"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "四海遊龍",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "飲品",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "豆漿",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$20",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "紅茶",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$20",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "紅茶豆漿",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$20",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "杏仁豆漿",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$25",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    }
+  ]
+}
+
