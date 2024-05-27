@@ -1,0 +1,891 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "強尼兄弟健康廚房",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "飲品",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "無糖豆漿",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$27",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "冬瓜茶",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$27",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "薏仁漿",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$36",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "深韻紅冷萃茶",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$40",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "鐵觀音冷萃茶",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$40",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "四季春冷萃茶",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$40",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "強尼兄弟健康廚房",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "健康廚房餐盒",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "黑胡椒嫩肩雞胸餐盒",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$99",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "蒜香椒鹽雞胸餐盒",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$108",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "照燒風味雞胸餐盒",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$108",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "牛雞雙重奏餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$175",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "新鮮蔬食菜販餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$76",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "日式豬丼餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$97",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "日式牛丼餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$103",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "紐澳良棒腿餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$89",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "香蔥雞腿排餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$116",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "泰式打拋豬餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$105",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "精緻滷牛腱餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$140",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "油蔥雞肉飯餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$79",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "泰式酸辣巴沙魚餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$85",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "檸香松阪豬餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$129",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "柚香胡麻雪花牛餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$110",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "柚香胡麻梅花牛餐盒",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$107",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "強尼兄弟健康廚房",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "主菜單點",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "油蔥雞肉飯",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$49",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "泰式酸辣巴沙魚",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$46",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "紐澳良棒腿",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$50",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "黑胡椒嫩肩雞肉",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$50",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "香蔥雞腿排",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$59",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "蒜香椒鹽雞肉",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$55",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "檸香松阪豬",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$81",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "照燒風味肌肉",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$55",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "柚香胡麻雪花牛",
+                    "size": "sm",
+                    "color": "#555555"
+                  },
+                  {
+                    "type": "text",
+                    "text": "$66",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "菜單",
+            "weight": "bold",
+            "color": "#1DB446",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "強尼兄弟健康廚房",
+            "weight": "bold",
+            "size": "xxl",
+            "margin": "md"
+          },
+          {
+            "type": "text",
+            "text": "湯品",
+            "size": "xs",
+            "color": "#aaaaaa",
+            "wrap": true
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "xxl",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "牛肉清湯",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$35",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "蒜頭雞湯",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$53",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "剝皮辣椒清湯",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$53",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "經典羅宋湯",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                  },
+                  {
+                    "type": "text",
+                    "text": "$53",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          }
+        ]
+      },
+      "styles": {
+        "footer": {
+          "separator": true
+        }
+      }
+    }
+  ]
+}
+
