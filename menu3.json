@@ -1,0 +1,264 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "micro",
+      "hero": {
+        "type": "image",
+        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVyejgsusydhP2xqxKKdcClYEQI7kzXA2woe3e7X4bGg&s",
+        "size": "full",
+        "aspectMode": "cover",
+        "aspectRatio": "320:213"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "豆漿",
+            "weight": "bold",
+            "size": "sm",
+            "wrap": true
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "text",
+                "text": "5.0",
+                "size": "xs",
+                "color": "#8c8c8c",
+                "margin": "md",
+                "flex": 0
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "喝的到豆味，喜歡豆香的都去衝!",
+                    "wrap": true,
+                    "color": "#8c8c8c",
+                    "size": "xs",
+                    "flex": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "spacing": "sm",
+        "paddingAll": "13px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "micro",
+      "hero": {
+        "type": "image",
+        "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRa6bZ-XG7DZuLwqktdGU1kfx6fHp7gMpKdKXxdg13mcQ&s",
+        "size": "full",
+        "aspectMode": "cover",
+        "aspectRatio": "320:213"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "玉米水餃(*8個)",
+            "weight": "bold",
+            "size": "sm",
+            "wrap": true
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
+              },
+              {
+                "type": "text",
+                "text": "4.0",
+                "size": "sm",
+                "color": "#8c8c8c",
+                "margin": "md",
+                "flex": 0
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "小編認為餃類之冠非玉米水餃莫屬!玉米給很多~",
+                    "wrap": true,
+                    "color": "#8c8c8c",
+                    "size": "xs",
+                    "flex": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "spacing": "sm",
+        "paddingAll": "13px"
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "micro",
+      "hero": {
+        "type": "image",
+        "url": "https://tb-static.uber.com/prod/image-proc/processed_images/739afae652f872abd3004dfc01fe05bd/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        "size": "full",
+        "aspectMode": "cover",
+        "aspectRatio": "320:213"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "牛肉醬拌麵(乾)",
+            "weight": "bold",
+            "size": "sm"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
+              },
+              {
+                "type": "icon",
+                "size": "xs",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
+              },
+              {
+                "type": "text",
+                "text": "3.0",
+                "size": "sm",
+                "color": "#8c8c8c",
+                "margin": "md",
+                "flex": 0
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "偏鹹，但味道很足，有豆干",
+                    "wrap": true,
+                    "color": "#8c8c8c",
+                    "size": "xs",
+                    "flex": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "spacing": "sm",
+        "paddingAll": "13px"
+      }
+    }
+  ]
+}
+
+
