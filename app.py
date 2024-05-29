@@ -13,8 +13,8 @@ LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 
 
 # LINE Bot credentials
-line_bot_api = LineBotApi('YOUR_CHANNEL_ACCESS_TOKEN')
-handler = WebhookHandler('YOUR_CHANNEL_SECRET')
+line_bot_api = LineBotApi('LINE_CHANNEL_ACCESS_TOKEN')
+handler = WebhookHandler('LINE_CHANNEL_SECRET')
 
 # Your scraping functions
 def get_element_text(url, href):
