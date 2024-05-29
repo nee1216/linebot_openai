@@ -14,22 +14,6 @@ line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 
-def get_element_text(url, href):
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
-    }
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()  # Check if the request was successful
-
-    soup = BeautifulSoup(response.content, 'html.parser')
-    
-    element = soup.select_one(f'a[href="{href}"]')
-    
-    if element:
-        return element.text.strip()
-    else:
-        return f'找不到具有 href="{href}" 的元素。'
-
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
@@ -45,16 +29,45 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == '交通':
-        # Call your web scraping functions here
-        result1 = get_element_text('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')
-        result2 = get_element_text('https://yunbus.tw/lite/route.php?id=TPE15681', 'https://yunbus.tw/#!stop/TPE121572')
-        
-        # Send the results back to the user
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=f'內科通勤專車15: {result1}\n內科通勤專車16: {result2}')
-        )
+    message = event.message.text
+    if message.startswith('Get Element Text:'):
+        url, href = message.split(':', 1)[1].strip().split(',')
+        get_element_text(url, href, event)
+    elif message.startswith('Get Elements Text:'):
+        url, href = message.split(':', 1)[1].strip().split(',')
+        get_elements_text(url, href, event)
+
+def get_element_text(url, href, event):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # Confirm request success
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    element = soup.select_one(f'a[href="{href}"]')
+
+    if element:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="內科通勤專車15:" + element.text.strip()))
+    else:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f'找不到具有 href="{href}" 的元素。'))
+
+def get_elements_text(url, href, event):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
+    }
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # Confirm request success
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    element = soup.select_one(f'a[href="{href}"]')
+
+    if element:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="內科通勤專車16:" + element.text.strip()))
+    else:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f'找不到具有 href="{href}" 的元素。'))
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
