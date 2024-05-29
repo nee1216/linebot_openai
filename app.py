@@ -13,7 +13,6 @@ LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
-
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
@@ -30,12 +29,19 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    if message.startswith('Get Element Text:'):
+    if "交通" in message:
+        handle_traffic_query(event)
+    elif message.startswith('Get Element Text:'):
         url, href = message.split(':', 1)[1].strip().split(',')
         get_element_text(url, href, event)
     elif message.startswith('Get Elements Text:'):
         url, href = message.split(':', 1)[1].strip().split(',')
         get_elements_text(url, href, event)
+
+def handle_traffic_query(event):
+    # 在這裡添加處理交通查詢的相應功能
+    reply_message = "您輸入了交通相關的訊息，我們正在處理..."
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
 
 def get_element_text(url, href, event):
     headers = {
