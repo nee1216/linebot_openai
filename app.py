@@ -39,8 +39,8 @@ def handle_message(event):
             title='請選擇交通資訊',
             text='請選擇要查詢的交通資訊',
             actions=[
-                PostbackAction(label='內科通勤專車15', data='action=bus15'),
-                PostbackAction(label='內科通勤專車16', data='action=bus16')
+                PostbackAction(label='內科通勤專車15', get_element_text('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')),
+                PostbackAction(label='內科通勤專車16', get_elements_text('https://yunbus.tw/lite/route.php?id=TPE15681', 'https://yunbus.tw/#!stop/TPE121572'))
             ]
         )
         template_message = TemplateSendMessage(
