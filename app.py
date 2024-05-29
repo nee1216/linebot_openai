@@ -373,14 +373,9 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇科系。"))
-    elif user_message in ["校外宿舍有容學舍地址", "校外宿舍有容學舍交通方式", "校外宿舍泉思學舍地址", "校外宿舍泉思學舍交通方式", "校內宿舍地址", "校內宿舍交通方式", "校內宿舍住宿費用", "校外宿舍有容學舍住宿費用", "校外宿舍泉思學舍住宿費用"]:
+    else user_message in ["校外宿舍有容學舍地址", "校外宿舍有容學舍交通方式", "校外宿舍泉思學舍地址", "校外宿舍泉思學舍交通方式", "校內宿舍地址", "校內宿舍交通方式", "校內宿舍住宿費用", "校外宿舍有容學舍住宿費用", "校外宿舍泉思學舍住宿費用"]:
         handle_dormitory_message(event, user_message)
-    else:
-        # 當使用者消息不是您期待的內容時，發送默認回復
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="請輸入正確的命令。")
-        )
+    
 
 
 def load_flex_message_from_url(url):
