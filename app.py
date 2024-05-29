@@ -53,41 +53,46 @@ def handle_message(event):
 def handle_postback(event):
     data = event.postback.data
     if data == 'action=bus15':
-        get_element_text('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')
+        get_element_text(event.reply_token)
     elif data == 'action=bus16':
-        get_elements_text('https://yunbus.tw/lite/route.php?id=TPE15681', 'https://yunbus.tw/#!stop/TPE121572')
+        get_elements_text(event.reply_token)
 
-def get_element_text(url, href):
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()  # 確認請求成功
+def get_element_text(reply_token):
+    url = 'https://yunbus.tw/lite/route.php?id=TPE15680'
+    href = 'https://yunbus.tw/#!stop/TPE54724'
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+    
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # 確認請求成功
+        soup = BeautifulSoup(response.content, 'html.parser')
+        element = soup.select_one(f'a[href="{href}"]')
+        
+        if element:
+            line_bot_api.reply_message(reply_token, TextSendMessage(text="內科通勤專車15: " + element.text.strip()))
+        else:
+            line_bot_api.reply_message(reply_token, TextSendMessage(text=f'找不到具有 href="{href}" 的元素。'))
+    except Exception as e:
+        line_bot_api.reply_message(reply_token, TextSendMessage(text='無法取得最新消息，請稍後再試：{}'.format(str(e))))
 
-    soup = BeautifulSoup(response.content, 'html.parser')
+def get_elements_text(reply_token):
+    url = 'https://yunbus.tw/lite/route.php?id=TPE15681'
+    href = 'https://yunbus.tw/#!stop/TPE121572'
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
     
-    element = soup.select_one(f'a[href="{href}"]')
-    
-    if element:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="內科通勤專車15: " + element.text.strip()))
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f'找不到具有 href="{href}" 的元素。'))
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # 確認請求成功
+        soup = BeautifulSoup(response.content, 'html.parser')
+        element = soup.select_one(f'a[href="{href}"]')
+        
+        if element:
+            line_bot_api.reply_message(reply_token, TextSendMessage(text="內科通勤專車16: " + element.text.strip()))
+        else:
+            line_bot_api.reply_message(reply_token, TextSendMessage(text=f'找不到具有 href="{href}" 的元素。'))
+    except Exception as e:
+        line_bot_api.reply_message(reply_token, TextSendMessage(text='無法取得最新消息，請稍後再試：{}'.format(str(e))))
 
-def get_elements_text(url, href):
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()  # 確認請求成功
-
-    soup = BeautifulSoup(response.content, 'html.parser')
-    
-    element = soup.select_one(f'a[href="{href}"]')
-    
-    if element:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="內科通勤專車16: " + element.text.strip()))
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f'找不到具有 href="{href}" 的元素。'))
 
 if __name__ == "__main__":
     app.run()
