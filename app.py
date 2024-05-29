@@ -1,7 +1,7 @@
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
-from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, FlexSendMessage, BubbleContainer, BoxComponent, TextComponent, SeparatorComponent
+from linebot.exceptions import InvalidSignatureError, LineBotApiError
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import requests
 from bs4 import BeautifulSoup
 
@@ -33,60 +33,17 @@ def index():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "交通":
-        transit_message = get_transit_info()
-        flex_message = FlexSendMessage(alt_text="交通資訊", contents=transit_message)
-        line_bot_api.reply_message(event.reply_token, flex_message)
+        try:
+            transit_info = get_transit_info()
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=transit_info))
+        except Exception as e:
+            app.logger.error("Error: " + str(e))
+            abort(500)
 
 def get_transit_info():
     try:
-        url = 'https://yunbus.tw/lite/route.php?id=TPE15680'
-        href = 'https://yunbus.tw/#!stop/TPE54724'
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        }
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()  # 確認請求成功
-
-        soup = BeautifulSoup(response.content, 'html.parser')
-
-        element = soup.select_one(f'a[href="{href}"]')
-
-        transit_1_text = ""
-        if element:
-            transit_1_text = element.text.strip()
-        else:
-            transit_1_text = f'找不到具有 href="{href}" 的元素。'
-
-        url = 'https://yunbus.tw/lite/route.php?id=TPE15681'
-        href = 'https://yunbus.tw/#!stop/TPE121572'
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()  # 確認請求成功
-
-        soup = BeautifulSoup(response.content, 'html.parser')
-
-        element = soup.select_one(f'a[href="{href}"]')
-
-        transit_2_text = ""
-        if element:
-            transit_2_text = element.text.strip()
-        else:
-            transit_2_text = f'找不到具有 href="{href}" 的元素。'
-
-        # 建立 BubbleContainer 作為 FlexMessage
-        transit_bubble = BubbleContainer(
-            body=BoxComponent(
-                layout="vertical",
-                contents=[
-                    TextComponent(text="捷運劍南路站 - 東吳大學(錢穆故居)", weight="bold", size="md"),
-                    SeparatorComponent(),
-                    TextComponent(text="內科15往內科: " + transit_1_text, wrap=True),
-                    SeparatorComponent(),
-                    TextComponent(text="內科16往內科: " + transit_2_text, wrap=True)
-                ]
-            )
-        )
-        return transit_bubble
-    
+        # 在此處進行爬蟲或其他方式獲取交通資訊的邏輯
+        return "這裡是交通資訊"
     except Exception as e:
         return '無法取得最新消息，請稍後再試：{}'.format(str(e))
 
