@@ -56,6 +56,9 @@ def handle_postback(event):
         get_element_text('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')
     elif data == 'action=bus16':
         get_elements_text('https://yunbus.tw/lite/route.php?id=TPE15681', 'https://yunbus.tw/#!stop/TPE121572')
+    else:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="未知的操作"))
+
 
 def get_element_text(url, href):
     headers = {
