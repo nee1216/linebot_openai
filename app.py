@@ -120,52 +120,65 @@ def handle_message(event):
     if user_message == "最新消息":
         news_message = latest_news()
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=news_message))
+        return
     elif user_message == "住宿":
         show_dormitory_options(event.reply_token)
+        return
     elif user_message == "學餐":
         # 建立輪播模板消息
         carousel_template_message = create_carousel()
         line_bot_api.reply_message(event.reply_token, carousel_template_message)
+        return
 
 
     elif user_message == "木槿花韓食 小編推薦/避雷":
         send_carousel_menu1(event)
+        return
 
 
     elif user_message == "木槿花韓食 菜單":
         send_carousel_1menu(event)
+        return
 
 
     elif user_message == "媽媽樂茶餐室 小編推薦/避雷":
         send_carousel_menu2(event)
+        return
 
 
     elif user_message == "媽媽樂茶餐室 菜單":
         send_carousel_2menu(event)
+        return
 
 
     elif user_message == "四海遊龍 小編推薦/避雷":
         send_carousel_menu3(event)
+        return
 
 
     elif user_message == "四海遊龍 菜單":
         send_carousel_3menu(event)
+        return
 
 
     elif user_message == "強尼兄弟健康廚房 小編推薦/避雷":
         send_carousel_menu4(event)
+        return
 
 
     elif user_message == "強尼兄弟健康廚房 菜單":
         send_carousel_4menu(event)
+        return
 
 
     elif user_message == "丼步喱 小編推薦/避雷":
         send_carousel_menu5(event)
+        return
 
 
     elif user_message == "丼步喱 菜單":
         send_carousel_5menu(event)
+        return
 
 
     elif '隨機選擇' in user_message:
@@ -178,6 +191,7 @@ def handle_message(event):
                 event.reply_token,
                 TextSendMessage(text=f"今天推薦你吃: {random_choice}")
             )
+            return
         else:
             logging.warning(f"No matching restaurant option found: {restaurant}")
 
@@ -297,6 +311,7 @@ def handle_message(event):
             event.reply_token,
             FlexSendMessage(alt_text="選擇想了解的科系", contents=flex_message)
         )
+        return
     elif user_message in ["資料科學系", "資訊管理系", "法律系", "化學系", "日文系"]:
         # 發送快速回復，讓用戶選擇入學學年
         quick_reply = QuickReply(items=[
@@ -320,6 +335,7 @@ def handle_message(event):
        
         # 記錄用戶選擇的科系
         user_choices[user_id] = user_message
+        return
     elif user_message in ["110學年", "111學年", "112學年"]:
         # 檢查用戶是否選擇了科系
         if user_id in user_choices:
@@ -373,9 +389,19 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇資料科學系。"))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請先選擇科系。"))
-    else user_message in ["校外宿舍有容學舍地址", "校外宿舍有容學舍交通方式", "校外宿舍泉思學舍地址", "校外宿舍泉思學舍交通方式", "校內宿舍地址", "校內宿舍交通方式", "校內宿舍住宿費用", "校外宿舍有容學舍住宿費用", "校外宿舍泉思學舍住宿費用"]:
+            return
+    elif user_message in ["校外宿舍有容學舍地址", "校外宿舍有容學舍交通方式", "校外宿舍泉思學舍地址", "校外宿舍泉思學舍交通方式", "校內宿舍地址", "校內宿舍交通方式", "校內宿舍住宿費用", "校外宿舍有容學舍住宿費用", "校外宿舍泉思學舍住宿費用"]:
         handle_dormitory_message(event, user_message)
-    
+        return
+
+    else:
+        # 當使用者消息不是您期待的內容時，發送默認回復
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="請輸入正確的命令。")
+        )
+
+ 
 
 
 def load_flex_message_from_url(url):
