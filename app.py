@@ -34,7 +34,6 @@ def index():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "交通":
-        data = event.postback.data
         if data == 'action=bus15':
             get_element_text('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')
         elif data == 'action=bus16':
