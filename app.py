@@ -34,13 +34,18 @@ def index():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "交通":
+        data = event.postback.data
+        if data == 'action=bus15':
+            get_element_text('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')
+        elif data == 'action=bus16':
+            get_elements_text('https://yunbus.tw/lite/route.php?id=TPE15681', 'https://yunbus.tw/#!stop/TPE121572')
         # 點選交通按鈕時回覆按鈕模板
         buttons_template = ButtonsTemplate(
             title='請選擇交通資訊',
             text='請選擇要查詢的交通資訊',
             actions=[
-                PostbackAction(label='內科通勤專車15', get_element_text('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')),
-                PostbackAction(label='內科通勤專車16', get_elements_text('https://yunbus.tw/lite/route.php?id=TPE15681', 'https://yunbus.tw/#!stop/TPE121572'))
+                PostbackAction(label='內科通勤專車15', data == 'action=bus15'),
+                PostbackAction(label='內科通勤專車16', data == 'action=bus16')
             ]
         )
         template_message = TemplateSendMessage(
