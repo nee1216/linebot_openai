@@ -18,7 +18,7 @@ webhook_handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 def get_element_text(url, href):
     options = webdriver.ChromeOptions()
-    service = ChromeService(executable_path="chromedriver-win64.zip")
+    service = ChromeService(executable_path="chromedriver")
     driver = webdriver.Chrome(service=service, options=options)
 
     driver.get(url)
