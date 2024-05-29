@@ -44,8 +44,8 @@ def handle_message(event):
             title='請選擇交通資訊',
             text='請選擇要查詢的交通資訊',
             actions=[
-                PostbackAction(label='內科通勤專車15', data == 'action=bus15'),
-                PostbackAction(label='內科通勤專車16', data == 'action=bus16')
+                PostbackAction(label='內科通勤專車15', data = 'action=bus15'),
+                PostbackAction(label='內科通勤專車16', data = 'action=bus16')
             ]
         )
         template_message = TemplateSendMessage(
