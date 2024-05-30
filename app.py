@@ -10,7 +10,6 @@ app = Flask(__name__)
 LINE_CHANNEL_ACCESS_TOKEN = "tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU="
 LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 
-
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
@@ -42,7 +41,7 @@ def handle_message(event):
 
 def get_element_text(reply_token, url, href):
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
     }
     try:
         response = requests.get(url, headers=headers)
@@ -52,9 +51,10 @@ def get_element_text(reply_token, url, href):
         element = soup.select_one(f'a[href="{href}"]')
 
         if element:
-            line_bot_api.reply_message(reply_token, TextSendMessage(text="內科通勤專車: " + element.text.strip()))
+            message = f"內科通勤專車: {element.text.strip()}"
         else:
-            line_bot_api.reply_message(reply_token, TextSendMessage(text=f'找不到具有 href="{href}" 的元素。'))
+            message = f'找不到具有 href="{href}" 的元素。'
+        line_bot_api.reply_message(reply_token, TextSendMessage(text=message))
     except Exception as e:
         line_bot_api.reply_message(reply_token, TextSendMessage(text='無法取得最新消息，請稍後再試：{}'.format(str(e))))
 
