@@ -17,7 +17,7 @@ line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 # 設置日誌
-if __name__ != "__main__":
+if __name__ == "__main__":
     handler = RotatingFileHandler('error.log', maxBytes=10000, backupCount=1)
     handler.setLevel(logging.ERROR)
     app.logger.addHandler(handler)
@@ -194,7 +194,7 @@ def scrape_station_info(url):
     soup = BeautifulSoup(response.content, "html.parser")
 
     # 尋找捷運士林站(中正)的元素
-    station_element = soup.find("a", class_="default_cursor", title="捷運士林站(中正)")
+    station_element = soup.find("a", class_="default_cursor", title="東吳大學")
 
     if station_element:
         # 獲取該元素對應的 tr 元素內容並返回
