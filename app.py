@@ -53,9 +53,12 @@ def scrape_station_info(url):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "交通":
-        url = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
-        station_info = scrape_station_info(url)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=station_info))
+        url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
+        url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
+        station_info1 = scrape_station_info(url1)
+        station_info2 = scrape_station_info(url2)
+        reply_message = f"第一個網站捷運士林站(中正)的內容：\n{station_info1}\n\n第二個網站捷運士林站(中正)的內容：\n{station_info2}"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入「捷運士林站(中正)資訊」查詢相關資訊。"))
 
