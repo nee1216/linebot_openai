@@ -49,7 +49,7 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, template_message)
 
-@handler.add(PostbackAction)
+@handler.add(PostbackEvent)
 def handle_postback(event):
     data = event.postback.data
     if data == 'action=bus15':
