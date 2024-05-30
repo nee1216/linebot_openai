@@ -239,9 +239,20 @@ def handle_message(event):
         elif event.message.text == "東吳大學(錢穆故居)→捷運士林站":
             url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
             url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
+            url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
+            url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
             station_info3 = scrape_station_info1(url1)
             station_info4 = scrape_station_info1(url2)
-            reply_message = f"557公車：\n{station_info3}\n\n300公車：\n{station_info4}"
+            station_info5 = scrape_station_info1(url3)
+            station_info6 = scrape_station_info1(url4)
+            reply_message = f"557公車：\n{station_info3}\n\n300公車：\n{station_info4}\n\n內科15公車：\n{station_info5}\n\n內科16公車：\n{station_info6}"
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        elif event.message.text == "東吳大學(錢穆故居)→捷運劍南路":
+            url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
+            url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
+            station_info7 = scrape_station_info1(url3)
+            station_info8 = scrape_station_info1(url4)
+            reply_message = f"內科15公車：\n{station_info7}\n\n內科16公車：\n{station_info8}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入正確的關鍵字查詢相關資訊。"))
