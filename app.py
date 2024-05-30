@@ -7,7 +7,6 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-# LINE Bot 的 Channel Access Token 和 Channel Secret
 LINE_CHANNEL_ACCESS_TOKEN = "tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU="
 LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 
@@ -16,13 +15,10 @@ handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    # 取得簽名
+    # 確認 Line Webhook 的請求
     signature = request.headers['X-Line-Signature']
-    # 取得訊息主體
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
 
-    # 驗證簽名
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
@@ -30,40 +26,44 @@ def callback():
 
     return 'OK'
 
-@app.route("/")
-def index():
-    return "Hello, World!"
-
-def get_bus_status(bus_url, stop_href):
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
-    try:
-        response = requests.get(bus_url, headers=headers)
-        response.raise_for_status()  # 確認請求成功
-        soup = BeautifulSoup(response.content, 'html.parser')
-        element = soup.select_one(f'a[href="{stop_href}"]')
-        if element:
-            return element.text.strip()
-        else:
-            return f'找不到具有 href="{stop_href}" 的元素。'
-    except Exception as e:
-        return f'無法取得最新消息，請稍後再試：{str(e)}'
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "交通":
-        reply_text = "請輸入想查詢的專車號碼（如：內科通勤專車15 或 內科通勤專車16）"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
-    elif event.message.text == "內科通勤專車15":
-        bus_status = get_bus_status('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')
-        reply_text = f"內科通勤專車15: {bus_status}"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
-    elif event.message.text == "內科通勤專車16":
-        bus_status = get_bus_status('https://yunbus.tw/lite/route.php?id=TPE15681', 'https://yunbus.tw/#!stop/TPE121572')
-        reply_text = f"內科通勤專車16: {bus_status}"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+        route15_info = get_element_text('https://yunbus.tw/lite/route.php?id=TPE15680', 'https://yunbus.tw/#!stop/TPE54724')
+        route16_info = get_elements_text('https://yunbus.tw/lite/route.php?id=TPE15681', 'https://yunbus.tw/#!stop/TPE121572')
+
+        response_message = f"內科通勤專車15: {route15_info}\n內科通勤專車16: {route16_info}"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=response_message))
+
+def get_element_text(url, href):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+    element = soup.select_one(f'a[href="{href}"]')
+
+    if element:
+        return element.text.strip()
     else:
-        reply_text = "無法識別的指令，請輸入“交通”來查詢交通資訊。"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_text))
+        return f'找不到具有 href="{href}" 的元素。'
+
+def get_elements_text(url, href):
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+    element = soup.select_one(f'a[href="{href}"]')
+
+    if element:
+        return element.text.strip()
+    else:
+        return f'找不到具有 href="{href}" 的元素。'
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
