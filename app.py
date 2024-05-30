@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import MessageEvent, TextMessage, FlexSendMessage, BubbleContainer, TextComponent
 
 app = Flask(__name__)
 
@@ -57,8 +57,13 @@ def handle_message(event):
         url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
         station_info1 = scrape_station_info(url1)
         station_info2 = scrape_station_info(url2)
-        reply_message = f"第一個網站捷運士林站(中正)的內容：\n{station_info1}\n\n第二個網站捷運士林站(中正)的內容：\n{station_info2}"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+
+        bubble = BubbleContainer(
+            body=TextComponent(text=f"第一個網站捷運士林站(中正)的內容：\n{station_info1}\n\n第二個網站捷運士林站(中正)的內容：\n{station_info2}", wrap=True)
+        )
+
+        flex_message = FlexSendMessage(alt_text="捷運站資訊", contents=bubble)
+        line_bot_api.reply_message(event.reply_token, flex_message)
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入「捷運士林站(中正)資訊」查詢相關資訊。"))
 
