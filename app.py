@@ -213,7 +213,7 @@ def handle_message(event):
             url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
             station_info1 = scrape_station_info(url1)
             station_info2 = scrape_station_info(url2)
-            reply_message = f"557捷運士林站(中正)的內容：\n{station_info1}\n\n300捷運士林站(中正)的內容：\n{station_info2}"
+            reply_message = f"557公車：{station_info1}\n300公車：{station_info2}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入正確的關鍵字查詢相關資訊。"))
