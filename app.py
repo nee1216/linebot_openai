@@ -199,7 +199,7 @@ def handle_message(event):
         station_info1 = scrape_station_info(url1)
         reply_message = f"557公車：{station_info1}"
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        print("----------------------")
+    elif event.message.text == "東吳大學→捷運士林站":
         url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
         station_info2 = scrape_station_info(url2)
         reply_message = f"300公車：{station_info2}"
