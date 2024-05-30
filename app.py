@@ -4,6 +4,8 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, FlexSendMessage, TextSendMessage
 import requests
 from bs4 import BeautifulSoup
+import logging
+from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
 
@@ -13,6 +15,12 @@ LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
+
+# 設置日誌
+if __name__ != "__main__":
+    handler = RotatingFileHandler('error.log', maxBytes=10000, backupCount=1)
+    handler.setLevel(logging.ERROR)
+    app.logger.addHandler(handler)
 
 # Flex message JSON template
 flex_message_json = {
@@ -152,20 +160,25 @@ flex_message_json = {
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    # get X-Line-Signature header value
-    signature = request.headers['X-Line-Signature']
-
-    # get request body as text
-    body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
-
-    # handle webhook body
     try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
+        # get X-Line-Signature header value
+        signature = request.headers['X-Line-Signature']
 
-    return 'OK'
+        # get request body as text
+        body = request.get_data(as_text=True)
+        app.logger.info("Request body: " + body)
+
+        # handle webhook body
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            app.logger.error("Invalid signature. Check your channel access token/channel secret.")
+            abort(400)
+
+        return 'OK'
+    except Exception as e:
+        app.logger.error(f"Exception in /callback: {e}")
+        abort(500)
 
 # 爬取捷運站信息的函式
 def scrape_station_info(url):
@@ -181,31 +194,32 @@ def scrape_station_info(url):
     soup = BeautifulSoup(response.content, "html.parser")
 
     # 尋找捷運士林站(中正)的元素
-    station_element = soup.find("a", class_="default_cursor", title="東吳大學")
+    station_element = soup.find("a", class_="default_cursor", title="捷運士林站(中正)")
 
     if station_element:
         # 獲取該元素對應的 tr 元素內容並返回
         return station_element.find_parent("tr").text.strip()
     else:
-        return f"找不到東吳大學的內容。"
+        return f"找不到捷運士林站(中正)的內容。"
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == "交通":
-        flex_message = FlexSendMessage(alt_text="公車到站時間", contents=flex_message_json)
-        line_bot_api.reply_message(event.reply_token, flex_message)
-    elif event.message.text == "東吳大學→捷運士林站":
-        url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
-        station_info1 = scrape_station_info(url1)
-        reply_message = f"557公車：{station_info1}"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-    elif event.message.text == "東吳大學→捷運士林站":
-        url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
-        station_info2 = scrape_station_info(url2)
-        reply_message = f"300公車：{station_info2}"
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入正確的關鍵字查詢相關資訊。"))
+    try:
+        if event.message.text == "交通":
+            flex_message = FlexSendMessage(alt_text="公車到站時間", contents=flex_message_json)
+            line_bot_api.reply_message(event.reply_token, flex_message)
+        elif event.message.text == "東吳大學→捷運士林站":
+            url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
+            url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
+            station_info1 = scrape_station_info(url1)
+            station_info2 = scrape_station_info(url2)
+            reply_message = f"557捷運士林站(中正)的內容：\n{station_info1}\n\n300捷運士林站(中正)的內容：\n{station_info2}"
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        else:
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入正確的關鍵字查詢相關資訊。"))
+    except Exception as e:
+        app.logger.error(f"Exception in handle_message: {e}")
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="發生錯誤，請稍後再試。"))
 
 if __name__ == "__main__":
     app.run(debug=True)
