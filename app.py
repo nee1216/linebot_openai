@@ -35,7 +35,7 @@ def index():
     return "Hello, World!"
 
 def get_bus_status(bus_url, stop_href):
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
     try:
         response = requests.get(bus_url, headers=headers)
         response.raise_for_status()  # 確認請求成功
