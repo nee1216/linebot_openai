@@ -200,7 +200,28 @@ def scrape_station_info(url):
         # 獲取該元素對應的 tr 元素內容並返回
         return station_element.find_parent("tr").text.strip()
     else:
-        return f"找不到捷運士林站(中正)的內容。"
+        return f"找不到東吳大學的內容。"
+
+def scrape_station_info1(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+    # 發送 GET 請求
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # 確認請求成功
+
+    # 解析 HTML 內容
+    soup = BeautifulSoup(response.content, "html.parser")
+
+    # 尋找捷運士林站(中正)的元素
+    station_element = soup.find("a", class_="default_cursor", title="東吳大學(錢穆故居)")
+
+    if station_element:
+        # 獲取該元素對應的 tr 元素內容並返回
+        return station_element.find_parent("tr").text.strip()
+    else:
+        return f"找不到東吳大學(錢穆故居)的內容。"
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -213,7 +234,14 @@ def handle_message(event):
             url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
             station_info1 = scrape_station_info(url1)
             station_info2 = scrape_station_info(url2)
-            reply_message = f"557公車：{station_info1}\n300公車：{station_info2}"
+            reply_message = f"557公車：\n{station_info1}\n\n300公車：\n{station_info2}"
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        elif event.message.text == "東吳大學(錢穆故居)→捷運士林站":
+            url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
+            url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
+            station_info3 = scrape_station_info1(url1)
+            station_info4 = scrape_station_info1(url2)
+            reply_message = f"557公車：\n{station_info3}\n\n300公車：\n{station_info4}"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
         else:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入正確的關鍵字查詢相關資訊。"))
