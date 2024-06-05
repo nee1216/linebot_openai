@@ -619,8 +619,7 @@ def handle_message(event):
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="請輸入正確的命令。")
+            event.reply_token
         )
 
 
