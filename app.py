@@ -824,24 +824,7 @@ def handle_dormitory_message(event, user_message):
 
 
 
-def get_transportation_info():
-    # 替换为处理交通信息的逻辑
-    transportation_info = """
-    校園交通資訊：
 
-    公車站點：
-    1. 校門口
-    2. 圖書館
-    3. 科技大樓
-
-    最近的捷運站：
-    1. 南港展覽館站（步行10分鐘）
-    2. 後山埤站（步行15分鐘）
-
-    計程車服務：
-    可使用各大叫車 APP 或聯絡當地計程車公司。
-    """
-    return transportation_info
 
 @app.route("/callback", methods=['POST'])
 def callback():
