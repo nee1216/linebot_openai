@@ -2,28 +2,34 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, CarouselTemplate, CarouselColumn, MessageAction, FlexSendMessage, QuickReply, QuickReplyButton
-from linebot.models.events import MessageEvent, TextMessage
 import requests
 from bs4 import BeautifulSoup
 import random
 import logging
-import json
 from logging.handlers import RotatingFileHandler
 
+
 app = Flask(__name__)
+
 
 # LINE Bot 的 Channel Access Token 和 Channel Secret
 LINE_CHANNEL_ACCESS_TOKEN = "tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU="
 LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 
+
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
-logging.basicConfig(level=logging.INFO)
+
+# 設置日誌
 if __name__ == "__main__":
     handler = RotatingFileHandler('error.log', maxBytes=10000, backupCount=1)
     handler.setLevel(logging.ERROR)
     app.logger.addHandler(handler)
+
+
+logging.basicConfig(level=logging.INFO)
+
 
 menu_options = {
     '木槿花韓食': [
@@ -71,8 +77,12 @@ menu_options = {
     ]
 }
 
+
+
+
 # 創建字典來追蹤用戶的科系選擇
 user_choices = {}
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -80,16 +90,20 @@ def callback():
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
+
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
 
+
     return 'OK'
+
 
 @app.route("/")
 def index():
     return "Hello, World!"
+
 
 # 定义发送 carousel message 的函数
 def send_carousel_message(event, url, alt_text):
@@ -104,7 +118,8 @@ def send_carousel_message(event, url, alt_text):
    
     # 发送 FlexSendMessage
     line_bot_api.reply_message(event.reply_token, flex_message)
-@handler.add(MessageEvent, message=TextMessage)
+
+
 def handle_message(event):
     user_message = event.message.text
     user_id = event.source.user_id  # 獲取用戶的 ID
@@ -116,17 +131,80 @@ def handle_message(event):
     elif user_message == "住宿":
         show_dormitory_options(event.reply_token)
         return
-    
     elif user_message == "學餐":
         # 建立輪播模板消息
         carousel_template_message = create_carousel()
         line_bot_api.reply_message(event.reply_token, carousel_template_message)
         return
-
-
+    elif user_message == "交通":
+        flex_message = FlexSendMessage(alt_text="公車到站時間", contents=flex_message_json)
+        line_bot_api.reply_message(event.reply_token, flex_message)
+        return
+    elif user_message == "東吳大學→捷運士林站":
+        url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
+        url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
+        station_info1 = scrape_station_info(url1)
+        station_info2 = scrape_station_info(url2)
+        reply_message = f"557公車：\n{station_info1}\n\n300公車：\n{station_info2}"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        return
+    elif user_message == "東吳大學(錢穆故居)→捷運士林站":
+        url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
+        url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
+        url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
+        url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
+        station_info3 = scrape_station_info1(url1)
+        station_info4 = scrape_station_info1(url2)
+        station_info5 = scrape_station_info1(url3)
+        station_info6 = scrape_station_info1(url4)
+        reply_message = f"557公車：\n{station_info3}\n\n300公車：\n{station_info4}\n\n內科15公車：\n{station_info5}\n\n內科16公車：\n{station_info6}"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        return
+    elif user_message == "東吳大學(錢穆故居)→捷運劍南路":
+        url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
+        url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
+        url5 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=681"
+        station_info7 = scrape_station_info1(url3)
+        station_info8 = scrape_station_info1(url4)
+        station_info15 = scrape_station_info1(url5)
+        reply_message = f"內科15公車：\n{station_info7}\n\n內科16公車：\n{station_info8}\n\n681公車：\n{station_info15}"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        return
+    elif user_message == "捷運士林站→東吳大學":
+        url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
+        url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
+        station_info9 = scrape_station_info2(url1)
+        station_info10 = scrape_station_info2(url2)
+        reply_message = f"557公車：\n{station_info9}\n\n300公車：\n{station_info10}"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        return
+    elif user_message == "捷運士林站→東吳大學(錢穆故居)":
+        url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
+        url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
+        url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
+        url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
+        station_info9 = scrape_station_info2(url1)
+        station_info10 = scrape_station_info2(url2)
+        station_info11 = scrape_station_info2(url3)
+        station_info12 = scrape_station_info2(url4)
+        reply_message = f"557公車：\n{station_info9}\n\n300公車：\n{station_info10}\n\n內科15公車：\n{station_info11}\n\n內科16公車：\n{station_info12}"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        return
+    elif user_message == "捷運劍南路→東吳大學(錢穆故居)":
+        url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
+        url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
+        url5 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=681"
+        station_info13 = scrape_station_info3(url3)
+        station_info14 = scrape_station_info3(url4)
+        station_info16 = scrape_station_info3(url5)
+        reply_message = f"內科15公車：\n{station_info13}\n\n內科16公車：\n{station_info14}\n\n681公車：\n{station_info16}"
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
+        return
     elif user_message == "木槿花韓食 小編推薦/避雷":
         send_carousel_menu1(event)
         return
+
+
 
 
     elif user_message == "木槿花韓食 菜單":
@@ -134,9 +212,13 @@ def handle_message(event):
         return
 
 
+
+
     elif user_message == "媽媽樂茶餐室 小編推薦/避雷":
         send_carousel_menu2(event)
         return
+
+
 
 
     elif user_message == "媽媽樂茶餐室 菜單":
@@ -144,9 +226,13 @@ def handle_message(event):
         return
 
 
+
+
     elif user_message == "四海遊龍 小編推薦/避雷":
         send_carousel_menu3(event)
         return
+
+
 
 
     elif user_message == "四海遊龍 菜單":
@@ -154,9 +240,13 @@ def handle_message(event):
         return
 
 
+
+
     elif user_message == "強尼兄弟健康廚房 小編推薦/避雷":
         send_carousel_menu4(event)
         return
+
+
 
 
     elif user_message == "強尼兄弟健康廚房 菜單":
@@ -164,14 +254,20 @@ def handle_message(event):
         return
 
 
+
+
     elif user_message == "丼步喱 小編推薦/避雷":
         send_carousel_menu5(event)
         return
 
 
+
+
     elif user_message == "丼步喱 菜單":
         send_carousel_5menu(event)
         return
+
+
 
 
     elif '隨機選擇' in user_message:
@@ -187,146 +283,6 @@ def handle_message(event):
             return
         else:
             logging.warning(f"No matching restaurant option found: {restaurant}")
-
-    elif user_message == "交通":
-        flex_message_json = {
-    "type": "bubble",
-    "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-            {
-                "type": "box",
-                "layout": "vertical",
-                "backgroundColor": "#ACD6FF",
-                "cornerRadius": "md",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "公車到站時間",
-                        "weight": "bold",
-                        "size": "xl",
-                        "margin": "xs",
-                        "gravity": "center",
-                        "align": "center",
-                        "color": "#333333",
-                        "decoration": "none"
-                    }
-                ]
-            },
-            {
-                "type": "separator",
-                "margin": "md"
-            },
-            {
-                "type": "text",
-                "text": "回學校",
-                "margin": "md",
-                "decoration": "none",
-                "align": "center",
-                "gravity": "center",
-                "size": "lg",
-                "color": "#333333",
-                "weight": "bold"
-            },
-            {
-                "type": "button",
-                "style": "link",
-                "height": "sm",
-                "action": {
-                    "type": "message",
-                    "label": "士林站→東吳大學",
-                    "text": "捷運士林站→東吳大學"
-                },
-                "color": "#1E90FF",
-                "margin": "xs"
-            },
-            {
-                "type": "button",
-                "style": "link",
-                "height": "sm",
-                "action": {
-                    "type": "message",
-                    "label": "士林站→東吳大學(錢穆故居)",
-                    "text": "捷運士林站→東吳大學(錢穆故居)"
-                },
-                "color": "#1E90FF",
-                "margin": "xs"
-            },
-            {
-                "type": "button",
-                "style": "link",
-                "height": "sm",
-                "action": {
-                    "type": "message",
-                    "label": "劍南路→東吳大學(錢穆故居)",
-                    "text": "捷運劍南路→東吳大學(錢穆故居)"
-                },
-                "color": "#1E90FF",
-                "margin": "xs"
-            },
-            {
-                "type": "separator",
-                "margin": "xxl"
-            },
-            {
-                "type": "text",
-                "text": "離開學校",
-                "margin": "md",
-                "align": "center",
-                "gravity": "center",
-                "size": "lg",
-                "color": "#333333",
-                "weight": "bold"
-            },
-            {
-                "type": "button",
-                "style": "link",
-                "height": "sm",
-                "action": {
-                    "type": "message",
-                    "label": "東吳大學→士林站",
-                    "text": "東吳大學→捷運士林站"
-                },
-                "color": "#1E90FF",
-                "margin": "xs"
-            },
-            {
-                "type": "button",
-                "style": "link",
-                "height": "sm",
-                "action": {
-                    "type": "message",
-                    "label": "東吳大學(錢穆故居)→士林站",
-                    "text": "東吳大學(錢穆故居)→捷運士林站"
-                },
-                "color": "#1E90FF",
-                "margin": "xs"
-            },
-            {
-                "type": "button",
-                "style": "link",
-                "height": "sm",
-                "action": {
-                    "type": "message",
-                    "label": "東吳大學(錢穆故居)→劍南路",
-                    "text": "東吳大學(錢穆故居)→捷運劍南路"
-                },
-                "color": "#1E90FF",
-                "margin": "xs"
-            }
-        ]
-    },
-    "styles": {
-        "footer": {
-            "separator": True
-        }
-    }
-}
-
-        
-
-   
 
 
     elif user_message == "科系簡介":
@@ -527,14 +483,13 @@ def handle_message(event):
         handle_dormitory_message(event, user_message)
         return
 
+
     else:
         # 當使用者消息不是您期待的內容時，發送默認回復
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="請輸入正確的命令。")
         )
-
- 
 
 
 def load_flex_message_from_url(url):
@@ -600,13 +555,19 @@ def create_carousel():
     ])
 
 
+
+
     template_message = TemplateSendMessage(
         alt_text='學餐選擇',
         template=carousel_template
     )
 
 
+
+
     return template_message
+
+
 
 
 def send_carousel_menu1(event):
@@ -616,11 +577,15 @@ def send_carousel_menu1(event):
     line_bot_api.reply_message(event.reply_token, flex_message)
 
 
+
+
 def send_carousel_1menu(event):
     json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/1menu.json"
     carousel_message = load_flex_message_from_url(json_url)
     flex_message = FlexSendMessage(alt_text="木槿花韓食 菜單", contents=carousel_message)
     line_bot_api.reply_message(event.reply_token, flex_message)
+
+
 
 
 def send_carousel_menu2(event):
@@ -630,11 +595,15 @@ def send_carousel_menu2(event):
     line_bot_api.reply_message(event.reply_token, flex_message)
 
 
+
+
 def send_carousel_2menu(event):
     json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/2menu.json"
     carousel_message = load_flex_message_from_url(json_url)
     flex_message = FlexSendMessage(alt_text="媽媽樂茶餐室 菜單", contents=carousel_message)
     line_bot_api.reply_message(event.reply_token, flex_message)
+
+
 
 
 def send_carousel_menu3(event):
@@ -644,11 +613,15 @@ def send_carousel_menu3(event):
     line_bot_api.reply_message(event.reply_token, flex_message)
 
 
+
+
 def send_carousel_3menu(event):
     json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/3menu.json"
     carousel_message = load_flex_message_from_url(json_url)
     flex_message = FlexSendMessage(alt_text="四海遊龍 菜單", contents=carousel_message)
     line_bot_api.reply_message(event.reply_token, flex_message)
+
+
 
 
 def send_carousel_menu4(event):
@@ -658,11 +631,15 @@ def send_carousel_menu4(event):
     line_bot_api.reply_message(event.reply_token, flex_message)
 
 
+
+
 def send_carousel_4menu(event):
     json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/4menu.json"
     carousel_message = load_flex_message_from_url(json_url)
     flex_message = FlexSendMessage(alt_text="強尼兄弟健康廚房 菜單", contents=carousel_message)
     line_bot_api.reply_message(event.reply_token, flex_message)
+
+
 
 
 def send_carousel_menu5(event):
@@ -672,11 +649,15 @@ def send_carousel_menu5(event):
     line_bot_api.reply_message(event.reply_token, flex_message)
 
 
+
+
 def send_carousel_5menu(event):
     json_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/5menu.json"
     carousel_message = load_flex_message_from_url(json_url)
     flex_message = FlexSendMessage(alt_text="丼步喱 菜單", contents=carousel_message)
     line_bot_api.reply_message(event.reply_token, flex_message)
+
+
 
 
 def latest_news():
@@ -688,15 +669,21 @@ def latest_news():
         links = tbody.find_all("a")
 
 
+
+
         for link in links:
             message += "校園頭條:\n{}\n".format(link.text.strip())
             message += "連結: {}\n\n".format(link["href"])
+
+
 
 
         return message.strip()
    
     except Exception as e:
         return '無法取得最新消息，請稍後再試：{}'.format(str(e))
+
+
 
 
 def show_dormitory_options(reply_token):
@@ -734,13 +721,70 @@ def show_dormitory_options(reply_token):
     ]
 
 
+
+
     carousel_template = TemplateSendMessage(
         alt_text='Dormitory options',
         template=CarouselTemplate(columns=carousel_columns)
     )
 
 
+
+
     line_bot_api.reply_message(reply_token, carousel_template)
+
+
+
+
+# 住宿選項函數
+def show_dormitory_options(reply_token):
+    carousel_columns = [
+        CarouselColumn(
+            thumbnail_image_url='https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/09/05/realtime/24829906.jpg&x=0&y=0&sw=0&sh=0&exp=3600',
+            title='校外宿舍',
+            text='有容學舍',
+            actions=[
+                MessageAction(label='地址', text='校外宿舍有容學舍地址'),
+                MessageAction(label='交通方式', text='校外宿舍有容學舍交通方式'),
+                MessageAction(label='住宿費用', text='校外宿舍有容學舍住宿費用'),
+            ]
+        ),
+        CarouselColumn(
+            thumbnail_image_url='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpH4M35vAgbJ4NHWeQy5JFjmhLEP182srNyTKfrad2r2oAmgIEDp8Bf2jYlmHT-aX0oFEfCbaJuX-F9QddqrZn4tkpfME-P6sWILB2ECkw9JINHkVRgpMfBcnmhAniIkCgmHZ_urVoMmw/s1667/IMG_4232.JPG',
+            title='校外宿舍',
+            text='泉思學舍',
+            actions=[
+                MessageAction(label='地址', text='校外宿舍泉思學舍地址'),
+                MessageAction(label='交通方式', text='校外宿舍泉思學舍交通方式'),
+                MessageAction(label='住宿費用', text='校外宿舍泉思學舍住宿費用'),
+            ]
+        ),
+        CarouselColumn(
+            thumbnail_image_url='https://233ca8414a.cbaul-cdnwnd.com/5a4223ad91b3073522caa2d53bc72ce4/200000001-9017d9113a/%E6%9F%9A%E8%8A%B3%E6%A8%93.jpg?ph=233ca8414a',
+            title='校內宿舍',
+            text='松勁樓，榕華樓，柚芳樓',
+            actions=[
+                MessageAction(label='地址', text='校內宿舍地址'),
+                MessageAction(label='交通方式', text='校內宿舍交通方式'),
+                MessageAction(label='住宿費用', text='校內宿舍住宿費用'),
+            ]
+        )
+    ]
+
+
+
+
+    carousel_template = TemplateSendMessage(
+        alt_text='Dormitory options',
+        template=CarouselTemplate(columns=carousel_columns)
+    )
+
+
+
+
+    line_bot_api.reply_message(reply_token, carousel_template)
+
+
 
 
 def handle_dormitory_message(event, user_message):
@@ -780,12 +824,16 @@ def handle_dormitory_message(event, user_message):
 冷氣費用：費用由寢室室友共同分攤
 
 
+
+
 柚芳樓(女宿)
 規格：8人雅房
 住宿費：10,200元（每人/每學期）
 網費：800元（每人/每學期）
 保證金：1,000元
 冷氣費用：費用由寢室室友共同分攤
+
+
 
 
 松勁樓(男宿)
@@ -817,65 +865,172 @@ def handle_dormitory_message(event, user_message):
         response_text = "無法識別的命令。"
 
 
+
+
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=response_text))
 
 
 
-def get_transportation_info():
-    # 替换为处理交通信息的逻辑
-    transportation_info = """
-    校園交通資訊：
 
-    公車站點：
-    1. 校門口
-    2. 圖書館
-    3. 科技大樓
 
-    最近的捷運站：
-    1. 南港展覽館站（步行10分鐘）
-    2. 後山埤站（步行15分鐘）
 
-    計程車服務：
-    可使用各大叫車 APP 或聯絡當地計程車公司。
-    """
-    return transportation_info
 
-def callback():
-    try:
-        # get X-Line-Signature header value
-        signature = request.headers['X-Line-Signature']
 
-        # get request body as text
-        body = request.get_data(as_text=True)
-        app.logger.info("Request body: " + body)
+# Transport options flex message content
+flex_message_json = {
+    "type": "bubble",
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "backgroundColor": "#ACD6FF",
+                "cornerRadius": "md",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "公車到站時間",
+                        "weight": "bold",
+                        "size": "xl",
+                        "margin": "xs",
+                        "gravity": "center",
+                        "align": "center",
+                        "color": "#333333",
+                        "decoration": "none"
+                    }
+                ]
+            },
+            {
+                "type": "separator",
+                "margin": "md"
+            },
+            {
+                "type": "text",
+                "text": "回學校",
+                "margin": "md",
+                "decoration": "none",
+                "align": "center",
+                "gravity": "center",
+                "size": "lg",
+                "color": "#333333",
+                "weight": "bold"
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "height": "sm",
+                "action": {
+                    "type": "message",
+                    "label": "士林站→東吳大學",
+                    "text": "捷運士林站→東吳大學"
+                },
+                "color": "#1E90FF",
+                "margin": "xs"
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "height": "sm",
+                "action": {
+                    "type": "message",
+                    "label": "士林站→東吳大學(錢穆故居)",
+                    "text": "捷運士林站→東吳大學(錢穆故居)"
+                },
+                "color": "#1E90FF",
+                "margin": "xs"
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "height": "sm",
+                "action": {
+                    "type": "message",
+                    "label": "劍南路→東吳大學(錢穆故居)",
+                    "text": "捷運劍南路→東吳大學(錢穆故居)"
+                },
+                "color": "#1E90FF",
+                "margin": "xs"
+            },
+            {
+                "type": "separator",
+                "margin": "xxl"
+            },
+            {
+                "type": "text",
+                "text": "離開學校",
+                "margin": "md",
+                "align": "center",
+                "gravity": "center",
+                "size": "lg",
+                "color": "#333333",
+                "weight": "bold"
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "height": "sm",
+                "action": {
+                    "type": "message",
+                    "label": "東吳大學→士林站",
+                    "text": "東吳大學→捷運士林站"
+                },
+                "color": "#1E90FF",
+                "margin": "xs"
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "height": "sm",
+                "action": {
+                    "type": "message",
+                    "label": "東吳大學(錢穆故居)→士林站",
+                    "text": "東吳大學(錢穆故居)→捷運士林站"
+                },
+                "color": "#1E90FF",
+                "margin": "xs"
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "height": "sm",
+                "action": {
+                    "type": "message",
+                    "label": "東吳大學(錢穆故居)→劍南路",
+                    "text": "東吳大學(錢穆故居)→捷運劍南路"
+                },
+                "color": "#1E90FF",
+                "margin": "xs"
+            }
+        ]
+    },
+    "styles": {
+        "footer": {
+            "separator": True
+        }
+    }
+}
 
-        # handle webhook body
-        try:
-            handler.handle(body, signature)
-        except InvalidSignatureError:
-            app.logger.error("Invalid signature. Check your channel access token/channel secret.")
-            abort(400)
 
-        return 'OK'
-    except Exception as e:
-        app.logger.error(f"Exception in /callback: {e}")
-        abort(500)
-
-# 爬取捷運站信息的函式
 def scrape_station_info(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
 
+
     # 發送 GET 請求
     response = requests.get(url, headers=headers)
     response.raise_for_status()  # 確認請求成功
 
+
     # 解析 HTML 內容
     soup = BeautifulSoup(response.content, "html.parser")
 
+
     # 尋找捷運士林站(中正)的元素
     station_element = soup.find("a", class_="default_cursor", title="東吳大學")
+
 
     if station_element:
         # 獲取該元素對應的 tr 元素內容並返回
@@ -883,20 +1038,25 @@ def scrape_station_info(url):
     else:
         return f"找不到東吳大學的內容。"
 
+
 def scrape_station_info1(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
 
+
     # 發送 GET 請求
     response = requests.get(url, headers=headers)
     response.raise_for_status()  # 確認請求成功
 
+
     # 解析 HTML 內容
     soup = BeautifulSoup(response.content, "html.parser")
 
+
     # 尋找捷運士林站(中正)的元素
     station_element = soup.find("a", class_="default_cursor", title="東吳大學(錢穆故居)")
+
 
     if station_element:
         # 獲取該元素對應的 tr 元素內容並返回
@@ -904,114 +1064,59 @@ def scrape_station_info1(url):
     else:
         return f"找不到東吳大學(錢穆故居)的內容。"
 
+
 def scrape_station_info2(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
 
+
     # 發送 GET 請求
     response = requests.get(url, headers=headers)
     response.raise_for_status()  # 確認請求成功
 
+
     # 解析 HTML 內容
     soup = BeautifulSoup(response.content, "html.parser")
 
+
     # 尋找捷運士林站(中正)的元素
     station_element = soup.find("a", class_="default_cursor", title="捷運士林站(中正)")
+
 
     if station_element:
         # 獲取該元素對應的 tr 元素內容並返回
         return station_element.find_parent("tr").text.strip()
     else:
         return f"找不到捷運士林站(中正)的內容。"
-    
+   
 def scrape_station_info3(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
 
+
     # 發送 GET 請求
     response = requests.get(url, headers=headers)
     response.raise_for_status()  # 確認請求成功
 
+
     # 解析 HTML 內容
     soup = BeautifulSoup(response.content, "html.parser")
 
+
     # 尋找捷運士林站(中正)的元素
     station_element = soup.find("a", class_="default_cursor", title="捷運劍南路站")
+
 
     if station_element:
         # 獲取該元素對應的 tr 元素內容並返回
         return station_element.find_parent("tr").text.strip()
     else:
         return f"找不到捷運劍南路站的內容。"
-    
-def handle_message(event):
-    try:
-        if event.message.text == "交通":
-            flex_message = FlexSendMessage(alt_text="公車到站時間", contents=flex_message_json)
-            line_bot_api.reply_message(event.reply_token, flex_message)
-        elif event.message.text == "東吳大學→捷運士林站":
-            url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
-            url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
-            station_info1 = scrape_station_info(url1)
-            station_info2 = scrape_station_info(url2)
-            reply_message = f"557公車：\n{station_info1}\n\n300公車：\n{station_info2}"
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        elif event.message.text == "東吳大學(錢穆故居)→捷運士林站":
-            url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
-            url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
-            url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
-            url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
-            station_info3 = scrape_station_info1(url1)
-            station_info4 = scrape_station_info1(url2)
-            station_info5 = scrape_station_info1(url3)
-            station_info6 = scrape_station_info1(url4)
-            reply_message = f"557公車：\n{station_info3}\n\n300公車：\n{station_info4}\n\n內科15公車：\n{station_info5}\n\n內科16公車：\n{station_info6}"
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        elif event.message.text == "東吳大學(錢穆故居)→捷運劍南路":
-            url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
-            url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
-            url5 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=681"
-            station_info7 = scrape_station_info1(url3)
-            station_info8 = scrape_station_info1(url4)
-            station_info15 = scrape_station_info1(url5)
-            reply_message = f"內科15公車：\n{station_info7}\n\n內科16公車：\n{station_info8}\n\n681公車：\n{station_info15}"
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        elif event.message.text == "捷運士林站→東吳大學":
-            url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
-            url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
-            station_info9 = scrape_station_info2(url1)
-            station_info10 = scrape_station_info2(url2)
-            reply_message = f"557公車：\n{station_info9}\n\n300公車：\n{station_info10}"
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        elif event.message.text == "捷運士林站→東吳大學(錢穆故居)":
-            url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
-            url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
-            url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
-            url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
-            station_info9 = scrape_station_info2(url1)
-            station_info10 = scrape_station_info2(url2)
-            station_info11 = scrape_station_info2(url3)
-            station_info12 = scrape_station_info2(url4)
-            reply_message = f"557公車：\n{station_info9}\n\n300公車：\n{station_info10}\n\n內科15公車：\n{station_info11}\n\n內科16公車：\n{station_info12}"
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        elif event.message.text == "捷運劍南路→東吳大學(錢穆故居)":
-            url3 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A15"
-            url4 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=%E5%85%A7%E7%A7%91%E9%80%9A%E5%8B%A4%E5%B0%88%E8%BB%8A16"
-            url5 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=681"
-            station_info13 = scrape_station_info3(url3)
-            station_info14 = scrape_station_info3(url4)
-            station_info16 = scrape_station_info3(url5)
-            reply_message = f"內科15公車：\n{station_info13}\n\n內科16公車：\n{station_info14}\n\n681公車：\n{station_info16}"
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
-        else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="請輸入正確的關鍵字查詢相關資訊。"))
-    except Exception as e:
-        app.logger.error(f"Exception in handle_message: {e}")
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="發生錯誤，請稍後再試。"))
-
-
-
+   
 if __name__ == "__main__":
-    app.run(port=8000)
+    app.run(debug=True)
+
+
+
