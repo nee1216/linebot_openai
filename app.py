@@ -306,7 +306,7 @@ def handle_message(event):
         url1 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=557#"
         url2 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=300"
         station_info9 = scrape_station_info2(url1)
-        station_info10 = scrape_station_info2(url2)
+        station_info10 = scrape_station_info2_300(url2)
         reply_message = f"557公車：\n{station_info9}\n\n300公車：\n{station_info10}"
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
         return
@@ -707,7 +707,39 @@ def scrape_station_info2(url):
         return station_element.find_parent("tr").text.strip()
     else:
         return f"找不到捷運士林站(中正)的內容。"
-   
+def scrape_station_info2_300(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+
+    # 發送 GET 請求
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # 確認請求成功
+
+
+    # 解析 HTML 內容
+    soup = BeautifulSoup(response.content, "html.parser")
+
+    # 尋找捷運士林站(中正)的元素
+    station_element = soup.find("a", class_="default_cursor", title="捷運士林站(中正)")
+    
+    counter = 0
+
+    for station_element in station_elements:
+        counter += 1
+        if counter == 2:
+            print("300公車:", station_element.find_parent("tr").text.strip())
+            break
+    else:
+        if counter < 2:
+            print("找不到捷運士林站(中正)的內容。")
+
+    # if station_element:
+    #     # 獲取該元素對應的 tr 元素內容並返回
+    #     return station_element.find_parent("tr").text.strip()
+    # else:
+    #     return f"找不到捷運士林站(中正)的內容。"
 def scrape_station_info3(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
