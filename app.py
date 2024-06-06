@@ -298,7 +298,7 @@ def handle_message(event):
         url5 = "https://atis.taipei.gov.tw/aspx/businfomation/presentinfo.aspx?lang=zh-Hant-TW&ddlName=681"
         station_info7 = scrape_station_info1(url3)
         station_info8 = scrape_station_info1(url4)
-        station_info15 = scrape_station_info1(url5)
+        station_info15 = scrape_station_info1_681(url5)
         reply_message = f"內科15公車：\n{station_info7}\n\n內科16公車：\n{station_info8}\n\n681公車：\n{station_info15}"
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply_message))
         return
@@ -763,6 +763,40 @@ def scrape_station_info3(url):
         return station_element.find_parent("tr").text.strip()
     else:
         return f"找不到捷運劍南路站的內容。"
+
+def scrape_station_info1_681(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+
+    # 發送 GET 請求
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # 確認請求成功
+
+
+    # 解析 HTML 內容
+    soup = BeautifulSoup(response.content, "html.parser")
+
+
+    # 尋找捷運士林站(中正)的元素
+    station_element = soup.find("a", class_="default_cursor", title="東吳大學(錢穆故居)")
+
+    counter = 0
+    for station_element in station_elements:
+        counter += 1
+        if counter == 1:
+            return station_element.find_parent("tr").text.strip()
+            break
+        else:
+            if counter < 1:
+                return f"找不到東吳大學(錢穆故居)的內容。"
+
+    # if station_element:
+    #     # 獲取該元素對應的 tr 元素內容並返回
+    #     return station_element.find_parent("tr").text.strip()
+    # else:
+    #     return f"找不到東吳大學(錢穆故居)的內容。"
    
 def create_carousel():
     carousel_template = CarouselTemplate(columns=[
