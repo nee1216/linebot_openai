@@ -727,11 +727,11 @@ def scrape_station_info2_300(url):
     counter = 0
     for station_element in station_elements:
         counter += 1
-        if counter == 2:
+        if counter == 1:
             return station_element.find_parent("tr").text.strip()
             break
         else:
-            if counter < 2:
+            if counter < 0:
                 return f"找不到捷運士林站(中正)的內容。"
 
     # if station_element:
