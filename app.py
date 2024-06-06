@@ -726,7 +726,7 @@ def scrape_station_info2_300(url):
     
     counter = 0
 
-    for station_element in station_elements:
+    for station_elements in station_element:
         counter += 1
         if counter == 2:
             print("300公車:", station_element.find_parent("tr").text.strip())
