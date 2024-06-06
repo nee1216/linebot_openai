@@ -780,7 +780,7 @@ def scrape_station_info1_681(url):
 
 
     # 尋找捷運士林站(中正)的元素
-    station_element = soup.find("a", class_="default_cursor", title="東吳大學(錢穆故居)")
+    station_elements = soup.find("a", class_="default_cursor", title="東吳大學(錢穆故居)")
 
     counter = 0
     for station_element in station_elements:
