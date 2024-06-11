@@ -44,11 +44,11 @@ def handle_message(event):
         quick_reply = QuickReply(items=[
             QuickReplyButton(
                 action=MessageAction(label="一般公告", text="一般公告"),
-                image_url="https://thumb.silhouette-ac.com/t/8e/8e67ee69573010543bd48066cc2fb04f_t.jpeg"
+                image_url="https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg"
             ),
             QuickReplyButton(
                 action=MessageAction(label="學術活動", text="學術活動"),
-                image_url="https://thumb.silhouette-ac.com/t/7b/7b2ef209d3fbed4189b6e8a5686df508_w.jpeg"
+                image_url="https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg"
             ),
             QuickReplyButton(
                 action=MessageAction(label="學生活動", text="學生活動"),
