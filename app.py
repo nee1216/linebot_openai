@@ -2,24 +2,28 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, QuickReply, QuickReplyButton, MessageAction
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service as ChromeService
-import time
 import requests
+from bs4 import BeautifulSoup
+import logging
 
 app = Flask(__name__)
 
-# LINE Bot 的 Channel Access Token 和 Channel Secret
+# LINE Bot's Channel Access Token and Channel Secret
 LINE_CHANNEL_ACCESS_TOKEN = "tsGykdGQN1KnwwQWwkkmq7JM0ji0RnYXFa0DBN3sfLVJ4wgcXudGmWpUZst3ZDBHXCL7xp2NhVrR1eDJKdExozjb6DInsSdHeSw1rtrjmz9Bi3Tx/YiI1g4/yGU95a0Jg15MyGM9QFCNdrM2SfU+XQdB04t89/1O/w1cDnyilFU="
 LINE_CHANNEL_SECRET = "0584d0fc476d78024afcd7cbbf8096b4"
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
-@app.route("/callback", methods=['POST'])
+logging.basicConfig(level=logging.INFO)
+
+# Store user choices
+user_choices = {}
+
+
+@app.route("/callback", methods=["POST"])
 def callback():
-    signature = request.headers['X-Line-Signature']
+    signature = request.headers["X-Line-Signature"]
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
@@ -28,164 +32,75 @@ def callback():
     except InvalidSignatureError:
         abort(400)
 
-    return 'OK'
+    return "OK"
 
-@app.route("/")
-def index():
-    return "Hello, World!"
-
-chrome_driver_url = "https://github.com/nee1216/linebot_openai/blob/master/chromedriver"
-driver_path = "chromedriver.exe"
-
-response = requests.get(chrome_driver_url)
-with open(driver_path, 'wb') as f:
-    f.write(response.content)
-
-executable_path = driver_path
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.message.text == "最近消息":
-        quick_reply_buttons = QuickReply(
-            items=[
-                QuickReplyButton(action=MessageAction(label="一般公告", text="一般公告")),
-                QuickReplyButton(action=MessageAction(label="學術活動", text="學術活動")),
-                QuickReplyButton(action=MessageAction(label="學生活動", text="學生活動")),
-                QuickReplyButton(action=MessageAction(label="徵才公告", text="徵才公告")),
-            ]
-        )
+    user_message = event.message.text
+    user_id = event.source.user_id
 
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="請選擇你想了解的校園頭條類別：", quick_reply=quick_reply_buttons)
-        )
-
-    elif event.message.text == "一般公告":
-        try:
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            service = ChromeService(executable_path=executable_path)
-            driver = webdriver.Chrome(service=service, options=options)
-
-            driver.get("https://news.scu.edu.tw/news-3")
-            time.sleep(5)
-            tbody = driver.find_element(By.XPATH, "//tbody")
-            links = tbody.find_elements(By.TAG_NAME, "a")
-            
-            response = "一般公告:\n"
-            for link in links:
-                response += "{}\n連結: {}\n".format(link.text, link.get_attribute("href"))
-
-            if not links:
-                response += "目前沒有相關的公告。"
-
-            driver.close()
-
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=response)
+    if user_message in ["最新消息"]:
+        quick_reply = QuickReply(items=[
+            QuickReplyButton(
+                action=MessageAction(label="一般公告", text="一般公告"),
+                image_url="https://thumb.silhouette-ac.com/t/8e/8e67ee69573010543bd48066cc2fb04f_t.jpeg"
+            ),
+            QuickReplyButton(
+                action=MessageAction(label="學術活動", text="學術活動"),
+                image_url="https://thumb.silhouette-ac.com/t/7b/7b2ef209d3fbed4189b6e8a5686df508_w.jpeg"
+            ),
+            QuickReplyButton(
+                action=MessageAction(label="學生活動", text="學生活動"),
+                image_url="https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg"
+            ),
+            QuickReplyButton(
+                action=MessageAction(label="校園頭條", text="校園頭條"),
+                image_url="https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg"
+            ),
+            QuickReplyButton(
+                action=MessageAction(label="徵才公告", text="徵才公告"),
+                image_url="https://thumb.silhouette-ac.com/t/8b/8be9d87e1fae34579fc57eb9abf7900c_t.jpeg"
             )
+        ])
 
-        except Exception as e:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="發生錯誤: {}".format(str(e)))
-            )
+        reply_text = TextSendMessage(text="請選擇你想查看的最新消息類型", quick_reply=quick_reply)
+        line_bot_api.reply_message(event.reply_token, reply_text)
 
-    elif event.message.text == "學術活動":
-        try:
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            service = ChromeService(executable_path=executable_path)
-            driver = webdriver.Chrome(service=service, options=options)
+        user_choices[user_id] = user_message
+        return
 
-            driver.get("https://news.scu.edu.tw/news-4")
-            time.sleep(5)
-            tbody = driver.find_element(By.XPATH, "//tbody")
-            links = tbody.find_elements(By.TAG_NAME, "a")
-            
-            response = "學術活動:\n"
-            for link in links:
-                response += "{}\n連結: {}\n".format(link.text, link.get_attribute("href"))
+    if user_message in ["一般公告", "學術活動", "學生活動", "校園頭條", "徵才公告"]:
+        news_message = get_latest_news(user_message)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=news_message))
 
-            if not links:
-                response += "目前沒有相關的活動。"
 
-            driver.close()
+def get_latest_news(news_type):
+    url_map = {
+        "校園頭條": "https://news.scu.edu.tw/news-7",
+        "一般公告": "https://news.scu.edu.tw/news-3",
+        "學生活動": "https://news.scu.edu.tw/news-5",
+        "徵才公告": "https://news.scu.edu.tw/news-6",
+        "學術活動": "https://news.scu.edu.tw/news-4"
+    }
 
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=response)
-            )
+    try:
+        message = ""
+        response = requests.get(url_map[news_type])
+        response.raise_for_status()  # Raise HTTPError for bad responses
+        root = BeautifulSoup(response.text, "html.parser")
+        tbody = root.find("tbody")
+        links = tbody.find_all("a")
 
-        except Exception as e:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="發生錯誤: {}".format(str(e)))
-            )
+        for link in links:
+            message += "{}:\n{}\n".format(news_type, link.text.strip())
+            message += "連結: {}\n\n".format(link["href"])
 
-    elif event.message.text == "徵才公告":
-        try:
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            service = ChromeService(executable_path=executable_path)
-            driver = webdriver.Chrome(service=service, options=options)
+        return message.strip()
 
-            driver.get("https://news.scu.edu.tw/news-6")
-            time.sleep(5)
-            tbody = driver.find_element(By.XPATH, "//tbody")
-            links = tbody.find_elements(By.TAG_NAME, "a")
-            
-            response = "徵才公告:\n"
-            for link in links:
-                response += "{}\n連結: {}\n".format(link.text, link.get_attribute("href"))
+    except Exception as e:
+        return '無法取得最新消息，請稍後再試：{}'.format(str(e))
 
-            if not links:
-                response += "目前沒有相關的公告。"
-
-            driver.close()
-
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=response)
-            )
-
-        except Exception as e:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="發生錯誤: {}".format(str(e)))
-            )
-    elif event.message.text == "學生活動":
-        try:
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            service = ChromeService(executable_path=executable_path)
-            driver = webdriver.Chrome(service=service, options=options)
-
-            driver.get("https://news.scu.edu.tw/news-5")
-            time.sleep(5)
-            tbody = driver.find_element(By.XPATH, "//tbody")
-            links = tbody.find_elements(By.TAG_NAME, "a")
-            
-            response = "學生活動:\n"
-            for link in links:
-                response += "{}\n連結: {}\n".format(link.text, link.get_attribute("href"))
-
-            if not links:
-                response += "目前沒有相關的公告。"
-
-            driver.close()
-
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=response)
-            )
-
-        except Exception as e:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text="發生錯誤: {}".format(str(e)))
-            )
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=8000)
