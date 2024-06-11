@@ -34,7 +34,7 @@ def callback():
 def index():
     return "Hello, World!"
 
-chrome_driver_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/chromedriver.exe"
+chrome_driver_url = "https://github.com/nee1216/linebot_openai/blob/master/chromedriver"
 driver_path = "chromedriver.exe"
 
 response = requests.get(chrome_driver_url)
