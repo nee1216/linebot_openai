@@ -34,8 +34,7 @@ def callback():
 def index():
     return "Hello, World!"
 
-chrome_driver_url = "https://github.com/nee1216/linebot_openai/blob/master/chromedriver.exe"
-
+chrome_driver_url = "https://raw.githubusercontent.com/nee1216/linebot_openai/master/chromedriver.exe"
 driver_path = "chromedriver.exe"
 
 response = requests.get(chrome_driver_url)
@@ -61,28 +60,121 @@ def handle_message(event):
             TextSendMessage(text="請選擇你想了解的校園頭條類別：", quick_reply=quick_reply_buttons)
         )
 
-    elif event.message.text in ["一般公告", "學術活動", "學生活動", "徵才公告"]:
+    elif event.message.text == "一般公告":
         try:
             options = webdriver.ChromeOptions()
+            options.add_argument("--headless")
             service = ChromeService(executable_path=executable_path)
             driver = webdriver.Chrome(service=service, options=options)
 
-            driver.get("https://www-news.scu.edu.tw/news-7?page=1")
+            driver.get("https://news.scu.edu.tw/news-3")
             time.sleep(5)
             tbody = driver.find_element(By.XPATH, "//tbody")
             links = tbody.find_elements(By.TAG_NAME, "a")
             
-            response = ""
+            response = "一般公告:\n"
             for link in links:
-                category = event.message.text
-                if category in link.text:
-                    response += "校園頭條: {}\n".format(link.text)
-                    response += "連結: {}\n".format(link.get_attribute("href"))
+                response += "{}\n連結: {}\n".format(link.text, link.get_attribute("href"))
+
+            if not links:
+                response += "目前沒有相關的公告。"
 
             driver.close()
 
-            if response == "":
-                response = "目前沒有相關的校園頭條。"
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=response)
+            )
+
+        except Exception as e:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="發生錯誤: {}".format(str(e)))
+            )
+
+    elif event.message.text == "學術活動":
+        try:
+            options = webdriver.ChromeOptions()
+            options.add_argument("--headless")
+            service = ChromeService(executable_path=executable_path)
+            driver = webdriver.Chrome(service=service, options=options)
+
+            driver.get("https://news.scu.edu.tw/news-4")
+            time.sleep(5)
+            tbody = driver.find_element(By.XPATH, "//tbody")
+            links = tbody.find_elements(By.TAG_NAME, "a")
+            
+            response = "學術活動:\n"
+            for link in links:
+                response += "{}\n連結: {}\n".format(link.text, link.get_attribute("href"))
+
+            if not links:
+                response += "目前沒有相關的活動。"
+
+            driver.close()
+
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=response)
+            )
+
+        except Exception as e:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="發生錯誤: {}".format(str(e)))
+            )
+
+    elif event.message.text == "徵才公告":
+        try:
+            options = webdriver.ChromeOptions()
+            options.add_argument("--headless")
+            service = ChromeService(executable_path=executable_path)
+            driver = webdriver.Chrome(service=service, options=options)
+
+            driver.get("https://news.scu.edu.tw/news-6")
+            time.sleep(5)
+            tbody = driver.find_element(By.XPATH, "//tbody")
+            links = tbody.find_elements(By.TAG_NAME, "a")
+            
+            response = "徵才公告:\n"
+            for link in links:
+                response += "{}\n連結: {}\n".format(link.text, link.get_attribute("href"))
+
+            if not links:
+                response += "目前沒有相關的公告。"
+
+            driver.close()
+
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=response)
+            )
+
+        except Exception as e:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text="發生錯誤: {}".format(str(e)))
+            )
+    elif event.message.text == "學生活動":
+        try:
+            options = webdriver.ChromeOptions()
+            options.add_argument("--headless")
+            service = ChromeService(executable_path=executable_path)
+            driver = webdriver.Chrome(service=service, options=options)
+
+            driver.get("https://news.scu.edu.tw/news-5")
+            time.sleep(5)
+            tbody = driver.find_element(By.XPATH, "//tbody")
+            links = tbody.find_elements(By.TAG_NAME, "a")
+            
+            response = "學生活動:\n"
+            for link in links:
+                response += "{}\n連結: {}\n".format(link.text, link.get_attribute("href"))
+
+            if not links:
+                response += "目前沒有相關的公告。"
+
+            driver.close()
 
             line_bot_api.reply_message(
                 event.reply_token,
